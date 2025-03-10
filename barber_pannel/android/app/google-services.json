@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "76576135686",
+    "project_id": "cav-log",
+    "storage_bucket": "cav-log.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76576135686:android:d7a89bcb634b429eb10187",
+        "android_client_info": {
+          "package_name": "com.example.admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVlTisIpz_RpkrLcpAIvwaKbwv6Ed3fp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76576135686:android:5c147d8f5a237c08b10187",
+        "android_client_info": {
+          "package_name": "com.example.barber_pannel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVlTisIpz_RpkrLcpAIvwaKbwv6Ed3fp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76576135686:android:cd7e647bad2f8c15b10187",
+        "android_client_info": {
+          "package_name": "com.example.user_panel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVlTisIpz_RpkrLcpAIvwaKbwv6Ed3fp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

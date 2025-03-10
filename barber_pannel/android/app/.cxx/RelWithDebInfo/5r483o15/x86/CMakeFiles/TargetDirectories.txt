@@ -1,0 +1,2 @@
+C:/project/CAVLOG/barber_pannel/android/app/.cxx/RelWithDebInfo/5r483o15/x86/CMakeFiles/edit_cache.dir
+C:/project/CAVLOG/barber_pannel/android/app/.cxx/RelWithDebInfo/5r483o15/x86/CMakeFiles/rebuild_cache.dir
