@@ -1,9 +1,9 @@
-import 'package:barber_pannel/core/themes/colors.dart';
-import 'package:barber_pannel/presentation/widgets/login_widget/google_sign_widget.dart';
+import 'package:barber_pannel/presentation/provider/cubit/icon/icon_cubit.dart';
 import 'package:barber_pannel/presentation/widgets/login_widget/login_form_widget.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../core/common/google_singin_common.dart';
 import '../../../core/routes/routes.dart';
 import '../../../core/utils/constant/constant.dart';
 
@@ -43,9 +43,19 @@ class LotinBottomSection extends StatelessWidget {
                       fontSize: 28, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(width: 5),
-                Text(
-                  '👋',
-                  style: TextStyle(fontSize: 28),
+                BlocSelector<IconCubit, IconState, bool>(
+                  selector: (state) {
+                    if (state is PasswordVisibilityUpdated) {
+                      return state.isVisible;
+                    }
+                    return false;
+                  },
+                  builder: (context, isVisible) {
+                    return Text(
+                     isVisible ? '😎' : '👋', 
+                      style: TextStyle(fontSize: 28),
+                    );
+                  },
                 ),
               ],
             ),
@@ -54,29 +64,14 @@ class LotinBottomSection extends StatelessWidget {
                 'Please enter your login information below to access your account'),
             ConstantWidgets.hight10(context),
             LoginForm(screenHight: screenHight, screenWidth: screenWidth),
-            Align(
-              alignment: Alignment.topCenter,
-              child: RichText(
-                text: TextSpan(
-                  text: "Don't have an account? ",
-                  style: TextStyle(
-                    color: AppPalette.blackClr,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: "Register",
-                      style: TextStyle(
-                        color: AppPalette.blackClr,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      recognizer: TapGestureRecognizer()..onTap = ()  => Navigator.pushNamed(context, AppRoutes.register),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ConstantWidgets.hight20(context),
-            GoogleSignUp(screenWidth: screenWidth, screenHight: screenHight)
+            GoogleSignInModule(
+              screenWidth: screenWidth,
+              screenHight: screenHight,
+              prefixText: "Don't have an account?",
+              suffixText: " Register",
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutes.registerDetails),
+            )
           ],
         ),
       ),

@@ -9,10 +9,14 @@ part 'icon_state.dart';
 class IconCubit extends Cubit<IconState> {
   IconCubit() : super(IconInitial());
 
-  void updateIcon(bool isMaxLength, IconData changeIcon, IconData defaultIcon){
+  void updateIcon(bool isMaxLength,){
     emit(
       ColorUpdated(
         color: isMaxLength ? AppPalette.greenClr : AppPalette.hintClr,)
     );
+  }
+
+  void togglePasswordVisibility(bool isVisible){
+    emit(PasswordVisibilityUpdated(isVisible: !isVisible));
   }
 }

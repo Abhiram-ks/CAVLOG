@@ -9,12 +9,16 @@ class TextfiledPhone extends StatelessWidget {
   final String label;
   final String hintText;
   final IconData prefixIcon;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
 
   const TextfiledPhone({
     super.key,
     required this.label,
     required this.hintText,
     required this.prefixIcon,
+    required this.validator,
+    required this.controller
   });
 
   @override
@@ -40,18 +44,20 @@ class TextfiledPhone extends StatelessWidget {
             Color suffixColor = state?.color ?? AppPalette.hintClr;
 
             return TextFormField(
+              controller: controller,
+              validator: validator,
               obscureText: false,
               style: const TextStyle(fontSize: 16),
-              keyboardType: TextInputType.phone,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              keyboardType:  TextInputType.number,
               inputFormatters: [
                 LengthLimitingTextInputFormatter(10),
                 FilteringTextInputFormatter.digitsOnly,
               ],
               onChanged: (value) {
-                context.read<IconCubit>().updateIcon(
+              context.read<IconCubit>().updateIcon(
                       value.length == 10,
-                      suffixColor,
-                    );
+              );
               },
               decoration: InputDecoration(
                 hintText: hintText,
@@ -79,6 +85,13 @@ class TextfiledPhone extends StatelessWidget {
                     width: 1,
                   ),
                 ),
+                 errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: AppPalette.redClr,
+                    width: 1,
+                  ),
+                )
               ),
             );
           },

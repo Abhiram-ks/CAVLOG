@@ -4,14 +4,15 @@ import '../../../core/themes/colors.dart';
 import '../../../core/utils/image/app_images.dart';
 
 class GoogleSignUp extends StatelessWidget {
+  final double screenWidth;
+  final double screenHight;
+
+  
   const GoogleSignUp({
     super.key,
     required this.screenWidth,
     required this.screenHight,
   });
-
-  final double screenWidth;
-  final double screenHight;
 
   @override
   Widget build(BuildContext context) {

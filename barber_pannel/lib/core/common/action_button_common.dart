@@ -1,4 +1,7 @@
+import 'package:barber_pannel/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../themes/colors.dart';
 
 class ActionButton extends StatelessWidget {
@@ -27,14 +30,27 @@ class ActionButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           splashColor: Colors.white.withAlpha(77),
           child: Center(
-            child: Text(
+            child: BlocBuilder<ButtonProgressCubit, ButtonProgressState>
+            (builder: (context, state) {
+              if (state is ButtonProgressLoading) {
+                return SpinKitFadingFour(
+                  color: AppPalette.whiteClr,
+                  size: 23.0,
+                ); 
+              }return             Text(
               label,
               style: TextStyle(
                 fontSize: 18,
                 color: AppPalette.whiteClr,
                 fontWeight: FontWeight.bold,
               ),
-            ),
+            );
+              
+            },
+            
+            )
+            
+
           ),
         ),
       ),

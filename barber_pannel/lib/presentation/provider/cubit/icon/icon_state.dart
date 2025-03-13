@@ -19,3 +19,14 @@ class ColorUpdated extends IconState {
   @override
   List<Object> get props => [ color];
 }
+
+
+class PasswordVisibilityUpdated extends IconState {
+  final bool isVisible;
+
+  const PasswordVisibilityUpdated({required this.isVisible});
+  
+    @override
+  List<Object> get props => [isVisible];
+  
+}
