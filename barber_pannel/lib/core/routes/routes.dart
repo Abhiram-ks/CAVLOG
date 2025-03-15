@@ -1,3 +1,4 @@
+import 'package:barber_pannel/presentation/screens/adminRequst/admin_request.dart';
 import 'package:barber_pannel/presentation/screens/login/login_screen.dart';
 import 'package:barber_pannel/presentation/screens/register/register_credentials_screen.dart';
 import 'package:barber_pannel/presentation/screens/register/register_details_screen.dart';
@@ -11,6 +12,7 @@ class AppRoutes {
   static const String registerDetails  = '/register_details_screen';
   static const String registerCredentials = '/register_credentials_screen';
   static const String otp = '/otp_screen';
+  static const String adminRequest = '/admin_request';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings){
@@ -25,6 +27,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_)=>  RegisterCredentialsScreen());
       case otp:
          return MaterialPageRoute(builder:(_) => const OtpScreen());
+      case adminRequest:
+        return MaterialPageRoute(builder: (_) => const AdminRequest());
       default:
        return MaterialPageRoute(
           builder: (_) => const Scaffold(

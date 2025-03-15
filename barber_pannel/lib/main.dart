@@ -5,6 +5,7 @@ import 'package:barber_pannel/presentation/provider/bloc/RegisterSubmition/regis
 import 'package:barber_pannel/presentation/provider/bloc/splash/splash_bloc.dart';
 import 'package:barber_pannel/presentation/provider/cubit/Checkbox/checkbox_cubit.dart';
 import 'package:barber_pannel/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
+import 'package:barber_pannel/presentation/provider/cubit/timerCubit/timer_cubit_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => IconCubit()),
         BlocProvider(create: (context) => CheckboxCubit()),
         BlocProvider(create: (context) => ButtonProgressCubit()),
+        BlocProvider(create: (context) => TimerCubitCubit()),
       ],
       child:  MaterialApp(
           debugShowCheckedModeBanner: false,

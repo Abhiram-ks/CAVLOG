@@ -4,6 +4,8 @@ import 'package:barber_pannel/core/validation/validation.dart';
 import 'package:barber_pannel/presentation/provider/bloc/RegisterSubmition/register_submition_bloc.dart';
 import 'package:barber_pannel/presentation/provider/cubit/Checkbox/checkbox_cubit.dart';
 import 'package:barber_pannel/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
+import 'package:barber_pannel/presentation/provider/cubit/timerCubit/timer_cubit_cubit.dart';
+import 'package:barber_pannel/presentation/widgets/otp_widget/otp_snackbar_message_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/common/action_button_common.dart';
@@ -67,56 +69,48 @@ class _CredentialsFormFieldState extends State<CredentialsFormField> {
           ConstantWidgets.hight30(context),
           TermsAndConditionsWidget(),
           ConstantWidgets.hight10(context),
-          BlocSelector<RegisterSubmitionBloc, RegisterSubmitionState, bool>(
-            selector: (state) => state is RegisterSuccess,
-            builder: (context, state) {
-              return ActionButton(
-                  screenWidth: widget.screenWidth,
-                  onTap: () async {
-                    final registerBloc = context.read<RegisterSubmitionBloc>();
-                    final buttonCubit = context.read<ButtonProgressCubit>();
-                    final isCheked =
-                        context.read<CheckboxCubit>().state is CheckboxChecked;
-                    if (widget.formKey.currentState!.validate()) {
-                      if (isCheked) {
-                        buttonCubit.startLoading();
-                        if (!mounted) return;
-                        await Future.delayed(const Duration(seconds: 3));
-                        registerBloc.add(UpdateCredentials(
-                            email: emailController.text,
-                            isVerified: false,
-                            password: passwordController.text,
-                            isBloc: false));
-                        registerBloc.add(SubmitRegistration());
-                        buttonCubit.stopLoading();
-                        Navigator.pushNamed(context, AppRoutes.otp);
-                      } else {
-                        if (!mounted) return;
-                        CustomeSnackBar.show(
-                            context: context,
-                            title: 'Oops, you missed the checkbox',
-                            description:
-                                'Agree with our terms and conditions before proceeding..',
-                            iconColor: AppPalette.redClr,
-                            icon: CupertinoIcons.checkmark_square);
-                      }
-                    } else {
-                      if (!mounted) return;
-                      CustomeSnackBar.show(
-                          context: context,
-                          title: 'Submission Faild',
-                          description:
-                              'Please fill in all the required fields before proceeding..',
-                          iconColor: AppPalette.redClr,
-                          icon: CupertinoIcons.clear_circled);
-                    }
-                  },
-                  label: 'Register',
-                  screenHight: widget.screenHight);
-            },
+          BlocListener<RegisterSubmitionBloc, RegisterSubmitionState>(listener: (context, state) {
+            handleOtpState(context, state, true);
+          },
+          child: ActionButton(screenWidth: widget.screenWidth,label: 'Send code', screenHight: widget.screenHight,
+           onTap: () async{
+              final timerCubit = context.read<TimerCubitCubit>();
+              final registerBloc = context.read<RegisterSubmitionBloc>();
+              final buttonCubit = context.read<ButtonProgressCubit>();
+              final isChecked = context.read<CheckboxCubit>().state is CheckboxChecked;
+
+              if (widget.formKey.currentState!.validate()) {
+                if (isChecked) {
+                  buttonCubit.startLoading();
+                  if (!mounted) return;
+                  registerBloc.add(UpdateCredentials(email: emailController.text, isVerified: false, password: passwordController.text, isBloc: false));
+                  registerBloc.add(GenerateOTPEvent());
+                  timerCubit.startTimer();
+                  await Future.delayed(const Duration(seconds: 3));
+                   buttonCubit.stopLoading();
+                  if (mounted) {
+                    Navigator.pushNamed(context, AppRoutes.otp);
+                   }
+                }else{
+                  CustomeSnackBar.show(
+                  context: context,
+                  title: 'Oops, you missed the checkbox',
+                  description:'Agree with our terms and conditions before proceeding..',
+                  iconColor: AppPalette.redClr,icon: CupertinoIcons.checkmark_square);
+                }
+              }else{
+                 CustomeSnackBar.show(
+                 context: context,
+                 title: 'Submission Faild',
+                 description:'Please fill in all the required fields before proceeding..',
+                 iconColor: AppPalette.redClr,
+                icon: CupertinoIcons.clear_circled);
+              }
+           } ),
           )
         ],
       ),
     );
   }
 }
+

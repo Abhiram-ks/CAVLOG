@@ -1,10 +1,11 @@
-import 'package:barber_pannel/core/common/action_button_common.dart';
+
 import 'package:barber_pannel/core/common/custom_appbar_common.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/utils/constant/constant.dart';
 import '../../../core/utils/media_quary/meida_quary_helper.dart';
+import '../../widgets/otp_widget/otp_widget.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
@@ -35,16 +36,9 @@ class OtpScreen extends StatelessWidget {
                       fontSize: 28, fontWeight: FontWeight.bold),
                 ),
                 ConstantWidgets.hight10(context),
-                Text( 'Please enter the authentication code that we have sent to your email.'),
+                Text('Almost there! Please check your email and enter the authentication code we have sent to your email  *******@gmail.com'),
                ConstantWidgets.hight10(context),
-                Text(
-                  'Have not receive code?',
-                  style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.bold),
-                
-                ),
-                TextFormField(),
-                ConstantWidgets.hight10(context),
-                ActionButton(screenWidth: screenWidth, onTap: (){}, label: 'Send', screenHight: screenHight)
+               OtpVerificationWidget(screenWidth: screenWidth, screenHight: screenHight)
               ],
             ),
           ),

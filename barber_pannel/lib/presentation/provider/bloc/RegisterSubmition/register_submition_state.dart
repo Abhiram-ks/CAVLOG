@@ -14,6 +14,29 @@ class RegisterFailure extends RegisterSubmitionState {
   final String error;
 
    RegisterFailure({required this.error});
-     @override
+  @override
   List<Object?> get props => [error];
+}
+
+class OtpLoading extends  RegisterSubmitionState {}
+class OtpSuccess extends  RegisterSubmitionState{}
+class OtpFailure extends RegisterSubmitionState {
+  final String error;
+
+  OtpFailure({required this.error});
+
+  @override
+   List<Object?> get props => [error];
+}
+
+
+//OTP varification states
+class OtpVarifyed extends RegisterSubmitionState{}
+class OtpIncorrect extends RegisterSubmitionState{
+  final String error;
+
+  OtpIncorrect({required this.error});
+
+  @override
+   List<Object?> get props => [error];
 }

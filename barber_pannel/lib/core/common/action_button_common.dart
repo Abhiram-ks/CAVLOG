@@ -37,7 +37,7 @@ class ActionButton extends StatelessWidget {
                   color: AppPalette.whiteClr,
                   size: 23.0,
                 ); 
-              }return             Text(
+              }return Text(
               label,
               style: TextStyle(
                 fontSize: 18,

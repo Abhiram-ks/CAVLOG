@@ -70,6 +70,11 @@ class _DetilsFormFieldState extends State<DetilsFormField> {
             validate: ValidatorHelper.validateText,
           ),
           ConstantWidgets.hight30(context),
+          ActionButton(screenWidth: widget.screenWidth, onTap: ()=> Navigator.pushNamed(context, AppRoutes.registerCredentials), label: 'Register', screenHight: widget.screenHight),
+
+            
+
+
           BlocSelector<RegisterSubmitionBloc,RegisterSubmitionState, bool>(
            selector: (state) => state is RegisterSuccess,
                 builder: (context, state) {

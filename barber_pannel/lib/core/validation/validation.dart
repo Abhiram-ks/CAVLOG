@@ -50,7 +50,7 @@ class ValidatorHelper {
    }
 
     if (password.length < 6 || password.length > 15) {
-      return 'Password must be between 4 and 15 range.';
+      return 'Password must be between 6 and 15 range.';
     }
 
     if (password.contains(' ')) {

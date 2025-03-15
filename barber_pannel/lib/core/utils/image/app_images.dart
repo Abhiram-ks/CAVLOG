@@ -5,3 +5,7 @@ class AppImages {
   static const String googleImage= 'assets/images/googlelogoimage.png'; 
 }
 
+class LottieImages {
+  static const String otpWaitingEmailLottie = 'assets/lotties/otpWaitingEmail.json';
+}
+
