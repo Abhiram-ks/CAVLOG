@@ -1,5 +1,5 @@
 import 'package:barber_pannel/core/themes/colors.dart';
-import 'package:barber_pannel/presentation/screens/adminRequst/admin_request.dart';
+import 'package:barber_pannel/presentation/screens/AuthenticationScreens/adminRequst/admin_request.dart';
 import 'package:flutter/material.dart';
 
 

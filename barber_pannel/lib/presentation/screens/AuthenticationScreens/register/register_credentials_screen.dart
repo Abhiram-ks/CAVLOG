@@ -1,11 +1,11 @@
 
-import 'package:barber_pannel/core/common/custom_appbar_common.dart';
+import 'package:barber_pannel/core/common/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../core/utils/constant/constant.dart';
-import '../../../core/utils/media_quary/meida_quary_helper.dart';
-import '../../widgets/register_widget/credential_form_filed.dart';
+import '../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../core/utils/media_quary/meida_quary_helper.dart';
+import '../../../widgets/register_widget/credential_form_filed.dart';
 
 class RegisterCredentialsScreen extends StatelessWidget {
    RegisterCredentialsScreen({super.key});

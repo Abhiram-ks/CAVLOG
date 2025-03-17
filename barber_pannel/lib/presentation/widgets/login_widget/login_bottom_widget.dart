@@ -1,3 +1,4 @@
+import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/presentation/provider/cubit/icon/icon_cubit.dart';
 import 'package:barber_pannel/presentation/widgets/login_widget/login_form_widget.dart';
 import 'package:flutter/material.dart';
@@ -5,17 +6,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/common/google_singin_common.dart';
 import '../../../core/routes/routes.dart';
-import '../../../core/utils/constant/constant.dart';
+import '../../../core/utils/media_quary/constant/constant.dart';
 
 class LotinBottomSection extends StatelessWidget {
   const LotinBottomSection({
     super.key,
     required this.screenWidth,
     required this.screenHight,
+    required this.formKey,
   });
 
   final double screenWidth;
   final double screenHight;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -60,17 +63,15 @@ class LotinBottomSection extends StatelessWidget {
               ],
             ),
             ConstantWidgets.hight10(context),
-            Text(
-                'Please enter your login information below to access your account'),
+            Text( 'Please enter your login information below to access your account',style: TextStyle(color: AppPalette.greyClr),),
             ConstantWidgets.hight10(context),
-            LoginForm(screenHight: screenHight, screenWidth: screenWidth),
+            LoginForm(screenHight: screenHight, screenWidth: screenWidth,formKey: formKey,),
             GoogleSignInModule(
               screenWidth: screenWidth,
               screenHight: screenHight,
               prefixText: "Don't have an account?",
               suffixText: " Register",
-              onTap: () =>
-                  Navigator.pushNamed(context, AppRoutes.registerDetails),
+              onTap: () =>Navigator.pushNamed(context, AppRoutes.registerDetails),
             )
           ],
         ),

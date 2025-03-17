@@ -9,7 +9,7 @@ class TimerCubitCubit extends Cubit<TimerCubitState> {
   TimerCubitCubit() : super(TimerCubitInitial());
 
   Timer? _timer;
-  static const int _initialTime = 30;
+  static const int _initialTime = 119;
 
   void startTimer(){
    emit(TimerCubitRunning(_initialTime, _formatTime(_initialTime)));

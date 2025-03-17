@@ -2,10 +2,11 @@ import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/core/utils/media_quary/meida_quary_helper.dart';
 import 'package:barber_pannel/presentation/widgets/login_widget/login_top_widget.dart';
 import 'package:flutter/material.dart';
-import '../../widgets/login_widget/login_bottom_widget.dart';
+import '../../../widgets/login_widget/login_bottom_widget.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+   LoginScreen({super.key});
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     LoginTopSection(screenHight: screenHight, screenWidth: screenWidth),
-                    LotinBottomSection(screenWidth: screenWidth, screenHight: screenHight)
+                    LotinBottomSection(screenWidth: screenWidth, screenHight: screenHight,formKey: _formKey,)
                   ],
                 ),
               ),

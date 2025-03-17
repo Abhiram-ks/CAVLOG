@@ -1,6 +1,6 @@
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/utils/image/app_images.dart';
-import 'package:barber_pannel/core/utils/constant/constant.dart';
+import 'package:barber_pannel/core/utils/media_quary/constant/constant.dart';
 import 'package:barber_pannel/presentation/provider/bloc/splash/splash_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

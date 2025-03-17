@@ -25,6 +25,7 @@ class EmailService {
       <p>Welcome to Cavlog - your gateway to a seamless experience!</p>
       <p style="color: #d3d3d3; margin-bottom: 30px;">Join us and unlock a world of possibilities.</p>
       <p>Here's your OTP: <span style="color: orange; font-weight: bold; background-color: lightgray; padding: 5px 10px; border-radius: 5px; display: inline-block;">$otp</span></p>
+      <p><small style="color: red;">OTP will expire at ${DateTime.now().add(Duration(minutes: 2))}</small></p>
 
 
 
@@ -33,7 +34,7 @@ class EmailService {
 
 
 
-
+ 
       <h2>HAVE QUESTIONS?</h2>
       <p>Need help? Contact us at <strong>$_username</strong>, and we'll assist you!</p>
       <p><small>${DateTime.now()}</small></p>

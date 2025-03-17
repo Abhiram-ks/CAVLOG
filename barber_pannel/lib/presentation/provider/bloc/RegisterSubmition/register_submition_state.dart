@@ -32,6 +32,7 @@ class OtpFailure extends RegisterSubmitionState {
 
 //OTP varification states
 class OtpVarifyed extends RegisterSubmitionState{}
+class OtpExpired extends RegisterSubmitionState {}
 class OtpIncorrect extends RegisterSubmitionState{
   final String error;
 

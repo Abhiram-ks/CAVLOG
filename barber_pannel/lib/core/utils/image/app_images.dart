@@ -6,6 +6,5 @@ class AppImages {
 }
 
 class LottieImages {
-  static const String otpWaitingEmailLottie = 'assets/lotties/otpWaitingEmail.json';
+  static const String adminRequstW8Image = 'assets/lotties/adminRequstW8.json';
 }
-

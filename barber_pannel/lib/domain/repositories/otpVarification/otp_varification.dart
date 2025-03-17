@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class OtpVarification {
-  DateTime _otpCreationTime = DateTime.now();
+  DateTime otpCreationTime = DateTime.now();
   final Duration otpValidity  = Duration(minutes: 2);
 
 
@@ -18,7 +18,7 @@ class OtpVarification {
        return false;
       }
 
-      if (DateTime.now().difference(_otpCreationTime) > otpValidity){
+      if (DateTime.now().difference(otpCreationTime) > otpValidity){
           debugPrint('OTP expired.');
           return false;
         }

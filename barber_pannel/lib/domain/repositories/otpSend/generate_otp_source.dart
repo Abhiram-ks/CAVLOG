@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:barber_pannel/data/repositories/email_service.dart';
 import 'package:barber_pannel/domain/repositories/otpVarification/otp_varification.dart';
+import 'package:flutter/cupertino.dart';
 
 class OtpService {
   final EmailService _emailService = EmailService();
@@ -13,7 +14,7 @@ class OtpService {
   Future<String?> sendOtpToEmail(String email) async {
     try {
       String otp = await _generateOTP();
-      print('$otp **************************************************************************************************************');
+      debugPrint('$otp **************************************************************************************************************');
       
 
       bool emailSent = await _emailService.sendOTPEmail(email, otp);
@@ -23,7 +24,7 @@ class OtpService {
         return null;
       }
     } catch (e) {
-      print('Error sending otp $e');
+      debugPrint('Error sending otp $e');
       return null;
     }
   }

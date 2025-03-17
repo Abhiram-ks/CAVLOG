@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../core/common/snackbar_common.dart';
+import '../../../core/common/snackbar_helper.dart';
 import '../../../core/themes/colors.dart';
 import '../../provider/bloc/RegisterSubmition/register_submition_bloc.dart';
 

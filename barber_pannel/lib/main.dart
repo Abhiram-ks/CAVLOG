@@ -1,6 +1,7 @@
 import 'package:barber_pannel/core/routes/routes.dart';
-import 'package:barber_pannel/core/themes/theme.dart';
+import 'package:barber_pannel/core/themes/theme_manager.dart';
 import 'package:barber_pannel/firebase_options.dart';
+import 'package:barber_pannel/presentation/provider/bloc/Login_bloc/login_bloc.dart';
 import 'package:barber_pannel/presentation/provider/bloc/RegisterSubmition/register_submition_bloc.dart';
 import 'package:barber_pannel/presentation/provider/bloc/splash/splash_bloc.dart';
 import 'package:barber_pannel/presentation/provider/cubit/Checkbox/checkbox_cubit.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         //Bloc section
         BlocProvider(create: (context) => SplashBloc()..add(StartSplashEvent())),
         BlocProvider(create: (context) => RegisterSubmitionBloc()),
+        BlocProvider(create: (context) => LoginBloc()),
         //Cubit section
         BlocProvider(create: (context) => IconCubit()),
         BlocProvider(create: (context) => CheckboxCubit()),

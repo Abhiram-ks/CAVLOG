@@ -1,13 +1,30 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class ValidatorHelper {
   static final emailRegex = RegExp(r'^[a-zA-Z0-9._%-]+@gmail\.com$');
 
-  static String? validateEmailId(String? value) {
+  static String? validateEmailId(String? value){
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     } else if (!emailRegex.hasMatch(value)) {
       return 'Enter a valid Gmail address';
     }
     return null;
+  }
+
+  static Future<String?> validateEmailWithFirebase(String email) async{
+      if(!emailRegex.hasMatch(email)){
+        return 'Enter a valid Gmail address';
+      }
+     
+    final QuerySnapshot emailQuery = await FirebaseFirestore.instance
+        .collection('barbers')
+        .where('email', isEqualTo: email)
+        .get();
+        if(emailQuery.docs.isNotEmpty){
+          return 'Email already exits';
+        }
+       return null;
   }
 
   static String? validatePhoneNumber(String? value){
@@ -110,6 +127,17 @@ class ValidatorHelper {
     if (!RegExp(r'^[A-Z]').hasMatch(text)){
       return "The first letter must be uppercase.";
     }
+    }
+    return null;
+  }
+
+  static String? loginValidation(String? password){
+    if(password == null || password.isEmpty){
+      return 'please enter your password';
+    }else {
+      if (password.length > 15){
+        return 'Password must be less than 15 characters';
+      }
     }
     return null;
   }

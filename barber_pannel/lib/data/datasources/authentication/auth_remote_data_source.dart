@@ -19,31 +19,35 @@ class AuthRemoteDataSource {
     int? age,
   }) async {
     try {
-      QuerySnapshot query = await _firestore
-      .collection('barbers')
-      .where('barberName', isEqualTo: barberName,)
-      .get();
-      
-      if (query.docs.isNotEmpty) {
-        log('Barber Name already exists');
+      QuerySnapshot emailQuery = await _firestore
+          .collection('barbers')
+          .where(
+            'email',
+            isEqualTo: email,
+          )
+          .get();
+
+      if (emailQuery.docs.isNotEmpty) {
+        log('Email already exists');
         return false;
       }
-      
-      UserCredential response = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential response = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
 
       if (response.user != null) {
         await response.user!.sendEmailVerification();
-         log('Verification email sent to: $email');
+        log('Verification email sent to: $email');
         await _firestore.collection('barbers').doc(response.user!.uid).set({
-         'barberName': barberName,
-         'ventureName': ventureName,
-         'phoneNumber': phoneNumber,
-         'address': address,
-         'email': email,
-         'isVerified': isVerified,
-         'image': image ?? '',
-         'age': age ?? 0,
-         'isBlok':isblok
+          'barberName': barberName,
+          'ventureName': ventureName,
+          'phoneNumber': phoneNumber,
+          'address': address,
+          'email': email,
+          'isVerified': isVerified,
+          'image': image ?? '',
+          'age': age ?? 0,
+          'isBlok': isblok,
+          'Uid':response.user!.uid,
         });
         log('$barberName $ventureName $phoneNumber $address $email $isVerified');
         return true;
@@ -72,4 +76,3 @@ class AuthRemoteDataSource {
   //   }
   // }
 }
-
