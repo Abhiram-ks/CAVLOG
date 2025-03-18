@@ -4,7 +4,6 @@ import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/core/validation/input_validations.dart';
 import 'package:barber_pannel/presentation/provider/bloc/Login_bloc/login_bloc.dart';
 import 'package:barber_pannel/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
-import 'package:barber_pannel/presentation/screens/AuthenticationScreens/resetPassword/reset_password_screen.dart';
 import 'package:barber_pannel/presentation/widgets/login_widget/handle_login_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

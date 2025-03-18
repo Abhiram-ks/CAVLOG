@@ -52,7 +52,7 @@ class TextFormFieldWidget extends StatelessWidget {
                 hintStyle: TextStyle(color: AppPalette.hintClr),
                 prefixIcon: Icon(
                   prefixIcon,
-                  color: Colors.black,
+                  color: const Color.fromARGB(255, 52, 52, 52),
                 ),
                 suffixIcon: isPasswordField
                     ? GestureDetector(

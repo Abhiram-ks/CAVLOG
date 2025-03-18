@@ -37,7 +37,7 @@ class AppRoutes {
       case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case resetPassword:
-        return CupertinoPageRoute(builder: (_) => const ResetPasswordScreen());
+        return CupertinoPageRoute(builder: (_) =>  ResetPasswordScreen());
       default:
        return MaterialPageRoute(
           builder: (_) => const Scaffold(
