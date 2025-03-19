@@ -26,7 +26,6 @@ class PasswordVisibilityUpdated extends IconState {
 
   const PasswordVisibilityUpdated({required this.isVisible});
   
-    @override
+  @override
   List<Object> get props => [isVisible];
-  
 }

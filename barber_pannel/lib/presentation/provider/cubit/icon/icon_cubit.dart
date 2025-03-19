@@ -19,4 +19,5 @@ class IconCubit extends Cubit<IconState> {
   void togglePasswordVisibility(bool isVisible){
     emit(PasswordVisibilityUpdated(isVisible: !isVisible));
   }
-}
+
+} 

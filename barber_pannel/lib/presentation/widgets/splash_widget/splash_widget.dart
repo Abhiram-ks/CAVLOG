@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../core/themes/colors.dart';
+
 class SplashWidget extends StatelessWidget {
   const SplashWidget({
     super.key,
@@ -16,11 +18,7 @@ class SplashWidget extends StatelessWidget {
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
        if (state is SplashAnimationCompleted) {
-         Future.delayed(const Duration(microseconds: 500),(){
-          if (context.mounted) {
-            Navigator.pushReplacementNamed(context, AppRoutes.login);
-          }
-         });
+         Navigator.pushReplacementNamed(context, AppRoutes.login);
        }
       },
       builder: (context, state) {
@@ -31,8 +29,8 @@ class SplashWidget extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: SizedBox(
-                width: 140,
-                height: 140,
+                width: 170,
+                height: 170,
                 child: Image.asset(
                   AppImages.splashImage,
                   fit: BoxFit.contain,
@@ -50,7 +48,7 @@ class SplashWidget extends StatelessWidget {
                 return ShaderMask(
                   shaderCallback: (bounds) {
                     return LinearGradient(
-                      colors: [Colors.white, Colors.black],
+                       colors: [AppPalette.whiteClr, AppPalette.blackClr],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       stops: [animationValue, animationValue + 0.3],
@@ -59,7 +57,7 @@ class SplashWidget extends StatelessWidget {
                   child: Text(
                     'C Λ V L O G',
                     style: GoogleFonts.poppins(
-                      color: Colors.white,
+                      color: AppPalette.whiteClr,
                       fontSize: 33,
                       fontWeight: FontWeight.w800,
                     ),

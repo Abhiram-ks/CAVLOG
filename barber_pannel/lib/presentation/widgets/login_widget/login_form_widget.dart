@@ -74,7 +74,7 @@ class _LoginFormState extends State<LoginForm> {
             child: ActionButton(
               screenHight: widget.screenHight,
               screenWidth: widget.screenWidth,
-              label: 'Login',
+              label: 'Sign In',
               onTap: () async{
                 if (!mounted) return;
                final loginBloc = context.read<LoginBloc>();

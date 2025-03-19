@@ -35,6 +35,7 @@ class RegisterSubmitionBloc extends Bloc<RegisterSubmitionEvent, RegisterSubmiti
      _ventureName = event.ventureName;
      _phoneNumber = event.phoneNumber;
      _address = event.address;
+     
     });
 
     on<UpdateCredentials>((event, emit) {
@@ -62,13 +63,16 @@ class RegisterSubmitionBloc extends Bloc<RegisterSubmitionEvent, RegisterSubmiti
          if (otpSend != null) {
          emit(OtpSuccess());
          log('OTP sent successfully to $_email');
+         await Future.delayed(Duration(seconds: 120));
+         if (_otp != null) {
+            emit(OtpExpired());
+         }
 
-
-         Future.delayed(Duration(seconds: 120), (){
-          if (_otp!= null) {
-           emit(OtpExpired());
-          }
-         });
+        //  Future.delayed(Duration(seconds: 120), (){
+        //   if (_otp!= null) {
+        //     emit(OtpExpired());
+        //   }
+        //  });
 
         }else {
           emit(OtpFailure(error: "Failed to Sent OTP"));
@@ -95,8 +99,9 @@ class RegisterSubmitionBloc extends Bloc<RegisterSubmitionEvent, RegisterSubmiti
       try {
        final OtpVarification otpVarification = OtpVarification();
        bool response = await otpVarification.verifyOTP(inputOtp: event.inputOtp.trim(),otp: _otp);
+
        if (response) {
-         await Future.delayed(Duration(milliseconds: 50)); 
+        //  await Future.delayed(Duration(milliseconds: 50)); 
         emit(OtpVarifyed());
        }else{
          emit(OtpLoading()); 
@@ -105,8 +110,6 @@ class RegisterSubmitionBloc extends Bloc<RegisterSubmitionEvent, RegisterSubmiti
         emit(OtpIncorrect(error: 'OTP Invalid'));
        }
       } catch (e) {
-         emit(OtpLoading()); 
-      await Future.delayed(Duration(milliseconds: 50)); 
         log('OTP varification failed: $e');
          emit(OtpIncorrect(error: e.toString()));
       }
@@ -129,6 +132,8 @@ class RegisterSubmitionBloc extends Bloc<RegisterSubmitionEvent, RegisterSubmiti
     });
   }
 }
+
+
 
 
 

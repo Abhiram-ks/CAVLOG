@@ -73,7 +73,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/logcavalog.png
+    - assets/images/applogo.gif
     - assets/images/loginbgbelow.png
     - assets/images/loginbgAbove.png
     - assets/images/googlelogoimage.png

@@ -134,10 +134,8 @@ class ValidatorHelper {
   static String? loginValidation(String? password){
     if(password == null || password.isEmpty){
       return 'please enter your password';
-    }else {
-      if (password.length > 15){
-        return 'Password must be less than 15 characters';
-      }
+    }else if (password.length > 15){
+        return 'Oops! That password doesn’t look right.';
     }
     return null;
   }

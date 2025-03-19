@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import '../../../widgets/login_widget/login_bottom_widget.dart';
 
 class LoginScreen extends StatelessWidget {
-   LoginScreen({super.key});
   final _formKey = GlobalKey<FormState>();
+   LoginScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
