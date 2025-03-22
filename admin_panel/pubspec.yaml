@@ -46,7 +46,10 @@ dependencies:
   flutter_spinkit: ^5.2.1
   mailer: ^6.4.1
   lottie: ^3.3.1
+  crypto: ^3.0.6
   equatable: ^2.0.7
+  connectivity_plus: ^6.1.3
+  floating_tabbar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +79,9 @@ flutter:
     - assets/lotties/pagenotfound.json
     - assets/images/loginbgbelow.png
     - assets/images/loginbgAbove.png
+    - assets/images/dashbordimg.gif
+    - assets/lotties/nonetworklottie.json
+    - assets/lotties/emptylistlottie.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

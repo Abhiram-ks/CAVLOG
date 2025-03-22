@@ -17,21 +17,21 @@ class LoginScreen extends StatelessWidget {
      resizeToAvoidBottomInset: true,
      body: ColoredBox(
       color: AppPalette.mainClr,
-      child: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: SingleChildScrollView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                LoginTopSection(screenHight: screenHight, screenWidth: screenWidth),
-                LoginBottomSection(screenHight: screenHight, screenWidth: screenWidth, formKey: _formKey)
-              ],
-            ),
-          ),
-        )
-      ),
+       child: SafeArea(
+         child: GestureDetector(
+           onTap: () => FocusScope.of(context).unfocus(),
+           child: SingleChildScrollView(
+             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+             physics: BouncingScrollPhysics(),
+             child: Column(
+               children: [
+                 LoginTopSection(screenHight: screenHight, screenWidth: screenWidth),
+                 LoginBottomSection(screenHight: screenHight, screenWidth: screenWidth, formKey: _formKey)
+               ],
+             ),
+           ),
+         )
+       ),
      ),
     );
   }

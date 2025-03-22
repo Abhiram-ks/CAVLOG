@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ButtonProgressCubit()),
         BlocProvider(create: (context) => TimerCubitCubit()),
       ],
-      child:  MaterialApp(
+      child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
           initialRoute: AppRoutes.splash,

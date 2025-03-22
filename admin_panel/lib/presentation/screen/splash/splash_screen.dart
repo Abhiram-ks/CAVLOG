@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       body: ColoredBox(
         color: AppPalette.blackClr,
         child: SafeArea(
-          child:  SplashWidget()
+          child: SplashWidget()
           
         ),
       ),

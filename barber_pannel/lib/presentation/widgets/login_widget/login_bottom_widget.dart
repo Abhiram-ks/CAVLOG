@@ -41,29 +41,14 @@ class LotinBottomSection extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Welcome back',
+                  'Welcome back!',
                   style: GoogleFonts.plusJakartaSans(
                       fontSize: 28, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(width: 5),
-                BlocSelector<IconCubit, IconState, bool>(
-                  selector: (state) {
-                    if (state is PasswordVisibilityUpdated) {
-                      return state.isVisible;
-                    }
-                    return false;
-                  },
-                  builder: (context, isVisible) {
-                    return Text(
-                     isVisible ? '😎' : '👋', 
-                      style: TextStyle(fontSize: 28),
-                    );
-                  },
                 ),
               ],
             ),
             ConstantWidgets.hight10(context),
-            Text( "Please enter your login information below to access your account. Join now!",style: TextStyle(color: AppPalette.greyClr),),
+            Text( "Please enter your login information below to access your account. Join now.",style: TextStyle(color: AppPalette.greyClr),),
             ConstantWidgets.hight10(context),
             LoginForm(screenHight: screenHight, screenWidth: screenWidth,formKey: formKey,),
             GoogleSignInModule(

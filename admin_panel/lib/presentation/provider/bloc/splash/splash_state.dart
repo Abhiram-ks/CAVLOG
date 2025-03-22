@@ -11,3 +11,4 @@ class  SplashAnimating  extends SplashState {
 }
 
 class SplashAnimationCompleted extends SplashState {}
+class AdminGoToHome extends SplashState {}

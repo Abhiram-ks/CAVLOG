@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/routes/routes.dart';
 import '../../../core/utils/images/app_images.dart';
 import '../../../core/utils/media_quary/constant/constant.dart';
+import '../../provider/bloc/fetchbarbers/fetch_barbers_bloc.dart';
 import '../../provider/bloc/splash/splash_bloc.dart';
 
 class SplashWidget extends StatelessWidget {
@@ -19,6 +20,9 @@ class SplashWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is SplashAnimationCompleted) {
           Navigator.pushReplacementNamed(context, AppRoutes.login);
+        }else if(state is AdminGoToHome){
+          context.read<FetchBarbersBloc>().add(FetchBarbersDataEvent());
+          Navigator.pushReplacementNamed(context, AppRoutes.home);
         }
       },
       builder: (context, state) {

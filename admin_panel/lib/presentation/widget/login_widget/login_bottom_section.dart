@@ -1,11 +1,8 @@
 import 'package:admin/presentation/widget/login_widget/login_form_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../core/themes/colors.dart';
 import '../../../core/utils/media_quary/constant/constant.dart';
-import '../../provider/cubit/Icon/icon_cubit.dart';
 
 class LoginBottomSection extends StatelessWidget {
   final double screenHight;
@@ -35,29 +32,13 @@ class LoginBottomSection extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Welcome back',
-                  style: GoogleFonts.plusJakartaSans(
-                      fontSize: 28, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(width: 5),
-                BlocSelector<IconCubit, IconState, bool>(
-                  selector: (state) {
-                    if (state is PasswordVisibilityUpdated) {
-                      return state.isVisible;
-                    }
-                    return false;
-                  },
-                  builder: (context, isVisible) {
-                    return Text(
-                     isVisible ? '😎' : '👋', 
-                      style: TextStyle(fontSize: 28),
-                    );
-                  },
+                  'Welcome back!',
+                  style: GoogleFonts.plusJakartaSans(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
             ConstantWidgets.hight10(context),
-            Text( "Please enter your login information below to access your account. Join now!",style: TextStyle(color: AppPalette.greyClr),),
+            Text( "Please enter your login information below to access your account. Join now.",style: TextStyle(color: AppPalette.greyClr),),
             ConstantWidgets.hight20(context),
             LoginForm(screenHight: screenHight, screenWidth: screenWidth,formKey: formKey,),
           ],

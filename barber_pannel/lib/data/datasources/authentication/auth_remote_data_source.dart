@@ -48,6 +48,7 @@ class AuthRemoteDataSource {
           'age': age ?? 0,
           'isBlok': isblok,
           'Uid':response.user!.uid,
+          'createdAt': FieldValue.serverTimestamp(),
         });
         log('$barberName $ventureName $phoneNumber $address $email $isVerified');
         return true;

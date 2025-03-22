@@ -78,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
               onTap: () async{
                 if (!mounted) return;
                final loginBloc = context.read<LoginBloc>();
-                  final buttonCubit = context.read<ButtonProgressCubit>();
+               final buttonCubit = context.read<ButtonProgressCubit>();
 
                 if(widget.formKey.currentState!.validate()){
                  buttonCubit.startLoading();

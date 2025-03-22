@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'splash_event.dart';
 part 'splash_state.dart';
@@ -9,6 +10,8 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       on<StartSplashEvent>(_onStartSplash);
   }
    Future<void> _onStartSplash(StartSplashEvent event, Emitter<SplashState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool isAdminLog = prefs.getBool('isAdminLog') ?? false;
     const duration =  Duration(seconds: 3);
     final stopwatch = Stopwatch()..start();
 
@@ -18,7 +21,12 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         await Future.delayed(const Duration(milliseconds: 30));
       }
    }
-   emit (SplashAnimationCompleted());
+
+   if (isAdminLog) {
+     emit(AdminGoToHome());
+   } else {
+     emit (SplashAnimationCompleted());
+   }
   }
 }
 
