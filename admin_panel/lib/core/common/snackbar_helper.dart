@@ -45,7 +45,7 @@ class CustomeSnackBar {
                         Text(
                           description,
                           style: TextStyle(
-                           color: AppPalette.hintClr,
+                           color: const Color.fromARGB(255, 206, 208, 213),
                           ),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,

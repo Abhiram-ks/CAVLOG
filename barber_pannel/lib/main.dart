@@ -1,5 +1,6 @@
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/themes/theme_manager.dart';
+import 'package:barber_pannel/data/repositories/auth_repository_impl.dart';
 import 'package:barber_pannel/data/repositories/reset_password_repo.dart';
 import 'package:barber_pannel/firebase_options.dart';
 import 'package:barber_pannel/presentation/provider/bloc/Login_bloc/login_bloc.dart';
@@ -9,6 +10,7 @@ import 'package:barber_pannel/presentation/provider/bloc/splash/splash_bloc.dart
 import 'package:barber_pannel/presentation/provider/cubit/Checkbox/checkbox_cubit.dart';
 import 'package:barber_pannel/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
 import 'package:barber_pannel/presentation/provider/cubit/timerCubit/timer_cubit_cubit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,10 +33,10 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         //Bloc section
-        BlocProvider(create: (context) => SplashBloc()..add(StartSplashEvent())),
+        BlocProvider(create: (context) => SplashBloc(FirebaseFirestore.instance)..add(StartSplashEvent())),
         BlocProvider(create: (context) => ResetPasswordBloc(ResetPasswordRepository())),
         BlocProvider(create: (context) => RegisterSubmitionBloc()),
-        BlocProvider(create: (context) => LoginBloc()),
+        BlocProvider(create: (context) => LoginBloc(AuthRepositoryImpl())),
         //Cubit section
         BlocProvider(create: (context) => IconCubit()),
         BlocProvider(create: (context) => CheckboxCubit()),

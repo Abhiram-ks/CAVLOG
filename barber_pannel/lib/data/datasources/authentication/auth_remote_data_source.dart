@@ -61,19 +61,4 @@ class AuthRemoteDataSource {
       return false;
     }
   }
-  // Future<bool> isEmailVerified() async {
-  //   User? user = _auth.currentUser;
-  //   if(user != null){
-  //   await user.reload();
-  //   return user.emailVerified;
-  //   }
-  //   return false;
-  // }
-
-  // Future<void> sendEmailVerification() async{
-  //   User? user = FirebaseAuth.instance.currentUser;
-  //   if (user != null && !user.emailVerified) {
-  //     await user.sendEmailVerification();
-  //   }
-  // }
 }

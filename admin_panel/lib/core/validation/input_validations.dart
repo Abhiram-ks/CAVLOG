@@ -18,4 +18,19 @@ class ValidatorHelper {
     }
     return null;
   }
+
+    static String? validateText(String? text){
+    if (text == null || text.isEmpty) {
+      return 'Plase fill the field';
+    }else{
+       if(text.startsWith(' ')){
+       return "Cannot start with a space.";
+    }
+
+    if (!RegExp(r'^[A-Z]').hasMatch(text)){
+      return "The first letter must be uppercase.";
+    }
+    }
+    return null;
+  }
 }

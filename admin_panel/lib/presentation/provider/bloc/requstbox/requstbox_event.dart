@@ -11,8 +11,6 @@ class AcceptAction extends RequstboxEvent {
 }
 class AcceptActionAllow extends RequstboxEvent {}
 
-class AcceptActionACancel extends RequstboxEvent {}
-
 class RejectAction extends RequstboxEvent {
 final String barbername;
  final String uid;
@@ -21,7 +19,7 @@ final String barbername;
  
  RejectAction({required this.barbername, required this.uid, required this.email, required this.ventureName});
 }
-class RejectActionAllow extends RequstboxEvent {}
+
 class RejectActionCancel extends RequstboxEvent {}
 class RejectActionAllowReason extends RequstboxEvent {
   final String reason;

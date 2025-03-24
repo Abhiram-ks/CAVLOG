@@ -11,3 +11,11 @@ class  SplashAnimating  extends SplashState {
 }
 
 class SplashAnimationCompleted extends SplashState {}
+
+
+class GoToHomePage extends SplashState {
+  final BarberModel barberModel;
+  GoToHomePage(this.barberModel);
+}
+
+class GoToLoginPage extends SplashState{}

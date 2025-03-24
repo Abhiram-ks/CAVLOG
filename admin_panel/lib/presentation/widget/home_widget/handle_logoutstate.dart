@@ -9,20 +9,23 @@ import '../../../core/common/alertbox_helper.dart';
 
 void handleLogoutState(BuildContext context, LogoutState state) {
   if (state is ShowLogoutDialogState) {
-    AlertBoxHelper().showAlertDialog(
-        context: context,
-        title: "Session Expiration Warning !",
-        description:"Are you sure you want to logout? This will remove your session and log you out.",
-        firstButtonText: 'Yes, Log Out',
-        firstButtonAction: () {
-          BlocProvider.of<LogoutBloc>(context).add(ConfirmLogoutEvent());
-        },
-        firstButtonColor: AppPalette.redClr,
-        secoundButtonText: 'No, Log Out',
-        secoundButtonAction: () {
-          BlocProvider.of<LogoutBloc>(context).add(CancelLogoutEvent());
-        },
-        secoundButtonColor: AppPalette.blackClr);
+  BottomSheetHelper().showBottomSheet(
+  context: context,
+  title: "Session Expiration Warning!",
+  description: "Are you sure you want to logout? This will remove your session and log you out.",
+  firstButtonText: 'Yes, Log Out',
+  firstButtonAction: () {
+    BlocProvider.of<LogoutBloc>(context).add(ConfirmLogoutEvent());
+    Navigator.pop(context); 
+  },
+  firstButtonColor: AppPalette.redClr,
+  secondButtonText: 'No, Cancel',
+  secondButtonAction: () {
+    BlocProvider.of<LogoutBloc>(context).add(CancelLogoutEvent());
+
+  },
+  secondButtonColor: AppPalette.blackClr,
+);
   } else if (state is LogoutCancelState) {
     Navigator.pop(context);
   } else if (state is LogoutSuccessState) {

@@ -16,14 +16,15 @@ class HomeScreen extends StatelessWidget {
         return DefaultTabController(
           length: 3,
           child: Scaffold(
+            // resizeToAvoidBottomInset: false,
             appBar: TabBarCustom(screenWidth: screenWidth),
             body: SafeArea(
               child: TabBarView(
                 physics: BouncingScrollPhysics(),
                 children: [
                   ManageBarberScreen(screenHeight: screenHeight,screenWidth: screenWidth,),
-                  ServiceScreen(),
-                  BannerManagement()
+                  ServiceScreen(screenHeight: screenHeight,screenWidth: screenWidth,),
+                  BannerManagement(screenHeight: screenHeight,screenWidth: screenWidth,)
                 ],
               ),
             ),

@@ -17,9 +17,11 @@ class SplashWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
-       if (state is SplashAnimationCompleted) {
-         Navigator.pushReplacementNamed(context, AppRoutes.login);
-       }
+        if(state is GoToHomePage){
+          Navigator.pushReplacementNamed(context,AppRoutes.home);
+        }else if(state is GoToLoginPage){
+          Navigator.pushReplacementNamed(context, AppRoutes.login);
+        }
       },
       builder: (context, state) {
         return Column(

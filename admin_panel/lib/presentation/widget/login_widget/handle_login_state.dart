@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 import '../../../core/common/snackbar_helper.dart';
 import '../../../core/routes/routes.dart';
 import '../../../core/themes/colors.dart';

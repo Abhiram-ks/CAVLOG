@@ -11,13 +11,11 @@ class RequstboxBloc extends Bloc<RequstboxEvent, RequstboxState> {
   String _ventureName = '';
   String _uid = ''; 
   String _email = '';
-  String _reason = '';
 
   String get fullNme => _fullName;
   String get ventureName => _ventureName;
   String get uid => _uid;
   String get email => _email;
-  String get reason => _reason;
 
   RequstboxBloc() : super(RequstboxInitial()) {
     on<AcceptAction>((event, emit) {
@@ -32,7 +30,7 @@ class RequstboxBloc extends Bloc<RequstboxEvent, RequstboxState> {
       try {
         log('Registration Accept: $_email<$_fullName');
         emit(RequstboxLoading());
-        final result = await AcceptReqRemoteData(FirebaseFirestore.instance).updateBarberVerificationStatus(_uid,_fullName,_ventureName,_email).first;
+        final result = await RequstRemoteData(FirebaseFirestore.instance).updateBarberVerificationStatus(_uid,_fullName,_ventureName,_email).first;
 
         if (result) {
           emit(AcceptAlertsuccess());
@@ -44,8 +42,29 @@ class RequstboxBloc extends Bloc<RequstboxEvent, RequstboxState> {
       }
     });
 
-    on<AcceptActionACancel>((event, emit) {
-      emit(AcceptAlertDismiss());
+    on<RejectAction>((event, emit) {
+      _fullName = event.barbername;
+      _uid = event.uid;
+      _ventureName = event.ventureName;
+      _email = event.email;
+      emit(RejectAllowAlertBox());
+    });
+
+
+    on<RejectActionAllowReason>((event, emit) async{
+      try {
+        log('$_email, $_fullName ${event.reason}');
+        emit(RequstboxLoading());
+        final result = await RequstRemoteData(FirebaseFirestore.instance).updateRejectBarberVerificationStatus(_uid,_fullName, _ventureName,_email,event.reason).first;
+        
+        if (result) {
+          emit(RejectAlertBoxSuccess());
+        } else {
+          emit(RequstboxError(error: 'Rejection failed!.'));
+        }
+      } catch (e) {
+        emit(RequstboxError(error: 'Rejection Failure: $e'));
+      }
     });
   }
 }
