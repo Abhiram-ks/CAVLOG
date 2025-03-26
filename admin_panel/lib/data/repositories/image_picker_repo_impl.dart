@@ -11,6 +11,5 @@ class ImagePickerRepositoryImpl implements ImagePickerRepository{
   final XFile? image = await _imagePicker.pickImage(source: ImageSource.gallery);
   return image?.path;                                                                      
   }
-  
 }
 

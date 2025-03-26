@@ -5,10 +5,8 @@ import 'package:admin/data/repositories/reject_email_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class RequstBarberRemoteDataSorce {
-
   Stream<bool> updateBarberVerificationStatus(String uid, String barberName, String ventureName, String emaiId);
-
-   Stream<bool> updateRejectBarberVerificationStatus(String uid, String barberName, String ventureName, String emaiId, String reason);
+  Stream<bool> updateRejectBarberVerificationStatus(String uid, String barberName, String ventureName, String emaiId, String reason);
 }
 
 class RequstRemoteData implements RequstBarberRemoteDataSorce {

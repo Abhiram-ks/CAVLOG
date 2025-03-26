@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypto/crypto.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AuthRemoteDataSource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -16,10 +17,13 @@ class AuthRemoteDataSource {
 
   Future<void> storeAdminCredentials()async{
      try {
-       String hashedPassword  = hashPassword("admin@1234");
+      String adminEmail = dotenv.env['ADMIN_EMAIL'] ?? 'localadmin@gmail.com';
+      String adminPassword = dotenv.env['ADMIN_PASSWORD'] ?? 'admin@0000';
+
+       String hashedPassword  = hashPassword(adminPassword);
 
        await _firestore.collection('admin').doc('credentials').set({
-        'email': 'admin@gmail.com',
+        'email': adminEmail,
         'password': hashedPassword,
        });
 

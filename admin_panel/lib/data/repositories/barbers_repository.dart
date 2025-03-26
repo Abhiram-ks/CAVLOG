@@ -45,6 +45,5 @@ class BarbersRepository {
 
     final barbers = docs.map((data) => Barber.fromFirestore(data)).toList();
     sendPort.send(barbers);
-
   }
 }
