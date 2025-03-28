@@ -1,3 +1,5 @@
+import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/buttomnav/buttom_nav_cubit.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/profiletab/profiletab_cubit.dart';
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/themes/theme_manager.dart';
 import 'package:barber_pannel/cavlog/auth/data/repositories/auth_repository_impl.dart';
@@ -42,6 +44,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => CheckboxCubit()),
         BlocProvider(create: (context) => ButtonProgressCubit()),
         BlocProvider(create: (context) => TimerCubitCubit()),
+        //Appcore cubit
+        BlocProvider(create: (context) => ButtomNavCubit()),
+        BlocProvider(create: (context) => ProfiletabCubit())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

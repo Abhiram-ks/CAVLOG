@@ -5,12 +5,17 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   static final lightTheme = ThemeData(
     primaryColor: AppPalette.blueClr,
-    brightness: Brightness.dark,
+    brightness: Brightness.light,
     scaffoldBackgroundColor: AppPalette.whiteClr,
     fontFamily: GoogleFonts.roboto().fontFamily,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+     backgroundColor: AppPalette.whiteClr,
+      selectedItemColor: AppPalette.blackClr,
+      unselectedItemColor: const Color.fromARGB(255, 86, 86, 86),
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: AppPalette.blueClr,
-       iconTheme: IconThemeData(color: Colors.black),
+     iconTheme: IconThemeData(color: Colors.black),
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: AppPalette.blackClr),
