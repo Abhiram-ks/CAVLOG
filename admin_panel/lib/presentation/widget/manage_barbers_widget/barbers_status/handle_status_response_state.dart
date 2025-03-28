@@ -4,7 +4,6 @@ import 'package:admin/core/themes/colors.dart';
 import 'package:admin/presentation/provider/bloc/barber_status/barberstatus_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/common/snackbar_helper.dart';
 
 void handStatusResponseState(BuildContext context, BarberstatusState state){

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:admin/data/models/banner_models.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -14,7 +12,6 @@ class BannerRepositoty {
         return BannerModels.fromMap(data);
       });
     } catch (e) {
-      log('Error while fetching user banners: $e');
       rethrow;
     }
   }
@@ -25,7 +22,6 @@ class BannerRepositoty {
         return BannerModels.fromMap(data);
       });
     } catch (e) {
-      log('Error while fetching barber banners: $e');
       rethrow;
     }
   }

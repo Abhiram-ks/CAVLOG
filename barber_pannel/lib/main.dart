@@ -1,21 +1,21 @@
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/themes/theme_manager.dart';
-import 'package:barber_pannel/data/repositories/auth_repository_impl.dart';
-import 'package:barber_pannel/data/repositories/reset_password_repo.dart';
+import 'package:barber_pannel/cavlog/auth/data/repositories/auth_repository_impl.dart';
+import 'package:barber_pannel/cavlog/auth/data/repositories/reset_password_repo.dart';
 import 'package:barber_pannel/firebase_options.dart';
-import 'package:barber_pannel/presentation/provider/bloc/Login_bloc/login_bloc.dart';
-import 'package:barber_pannel/presentation/provider/bloc/RegisterSubmition/register_submition_bloc.dart';
-import 'package:barber_pannel/presentation/provider/bloc/ResetPasswordBloc/reset_password_bloc.dart';
-import 'package:barber_pannel/presentation/provider/bloc/splash/splash_bloc.dart';
-import 'package:barber_pannel/presentation/provider/cubit/Checkbox/checkbox_cubit.dart';
-import 'package:barber_pannel/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
-import 'package:barber_pannel/presentation/provider/cubit/timerCubit/timer_cubit_cubit.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/bloc/Login_bloc/login_bloc.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/bloc/RegisterSubmition/register_submition_bloc.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/bloc/ResetPasswordBloc/reset_password_bloc.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/bloc/splash/splash_bloc.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/Checkbox/checkbox_cubit.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/timerCubit/timer_cubit_cubit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'presentation/provider/cubit/icon/icon_cubit.dart';
+import 'cavlog/auth/presentation/provider/cubit/icon/icon_cubit.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

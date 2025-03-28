@@ -3,17 +3,22 @@ import 'package:admin/core/themes/themes_manager.dart';
 import 'package:admin/data/datasources/coudinary_service.dart/cloudinary_service.dart';
 import 'package:admin/data/datasources/coudinary_service.dart/firestore_imgae_service.dart';
 import 'package:admin/data/repositories/auth_repository.dart';
+import 'package:admin/data/repositories/banner_repositoty.dart';
 import 'package:admin/data/repositories/barbers_repository.dart';
 import 'package:admin/data/repositories/image_picker_repo_impl.dart';
 import 'package:admin/data/repositories/service_repository.dart';
+import 'package:admin/domain/useCase/delete_image_url_usecase.dart';
 import 'package:admin/domain/useCase/image_picker_usecasee.dart';
 import 'package:admin/domain/useCase/login_usecase.dart';
 import 'package:admin/domain/useCase/upload_service_usecase.dart';
 import 'package:admin/firebase_options.dart';
 import 'package:admin/presentation/provider/bloc/barber_status/barberstatus_bloc.dart';
+import 'package:admin/presentation/provider/bloc/fetchbannerbarber/fetch_banner_barber_bloc.dart';
 import 'package:admin/presentation/provider/bloc/fetchbarbers/fetch_barbers_bloc.dart';
 import 'package:admin/presentation/provider/bloc/fetching_service/fetching_service_bloc.dart';
+import 'package:admin/presentation/provider/bloc/fetchuserbanner/fetch_user_banner_bloc.dart';
 import 'package:admin/presentation/provider/bloc/imageUpload/image_upload_bloc.dart';
+import 'package:admin/presentation/provider/bloc/imagedeletion/image_deletion_bloc.dart';
 import 'package:admin/presentation/provider/bloc/loging/login_bloc.dart';
 import 'package:admin/presentation/provider/bloc/logout/logout_bloc.dart';
 import 'package:admin/presentation/provider/bloc/pick_image/pick_image_bloc.dart';
@@ -58,12 +63,15 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => BarberstatusBloc()),
           BlocProvider(create: (context) => ButtonProgressCubit()),
           BlocProvider(create: (context) => ServiceTagsCubitCubit()),
+          BlocProvider(create: (context) => ImageDeletionBloc(FirestoreImageServiceDeletion())),
           BlocProvider(create: (context) => ImageUploadBloc(FirestoreImageService(), CloudinaryService())),
           BlocProvider(create: (context) => LoginBloc(LoginUsecase(authRepository: AuthnticationProcess()))),
           BlocProvider(create: (context) => PickImageBloc(PickImageUseCase(ImagePickerRepositoryImpl(ImagePicker())))),
           BlocProvider(create: (context) => ServiceMangementBloc(FirebaseServiceRepository(FirebaseFirestore.instance))),
           BlocProvider(create: (context) => FetchingServiceBloc(ServiceRepository(FirebaseFirestore.instance))..add(FetchServiceDataEvent())),
           BlocProvider(create: (context) => FetchBarbersBloc(BarbersRepository(FirebaseFirestore.instance))..add(FetchBarbersDataEvent())),
+          BlocProvider(create: (context) => FetchUserBannerBloc(BannerRepositoty(FirebaseFirestore.instance))..add(FetchUserBannerAction())),
+          BlocProvider(create: (context) => FetchBannerBarberBloc(BannerRepositoty(FirebaseFirestore.instance))..add(FetchBarberBannerAction()))
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -74,3 +82,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

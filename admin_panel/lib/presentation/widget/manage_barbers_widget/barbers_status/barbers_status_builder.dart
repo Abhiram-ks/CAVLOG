@@ -100,7 +100,7 @@ class BarbersStatusBuilder extends StatelessWidget {
                           .add(ShowBlockAlert(uid: barber.uid));
                     }
                   },
-                  imagePath: AppImages.loginImageAbove,
+                  imagePath:barber.image ?? '',
                   isBlock: barber.isBlocked,
                 );
               },

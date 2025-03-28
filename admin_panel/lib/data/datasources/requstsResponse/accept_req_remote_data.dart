@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:admin/data/repositories/accept_email_helper.dart';
 import 'package:admin/data/repositories/reject_email_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,7 +25,6 @@ class RequstRemoteData implements RequstBarberRemoteDataSorce {
           yield false;
         }
       } catch (e) {
-        log("Error updating verification Status: $e");
         yield false;
       }
     }
@@ -45,7 +42,6 @@ class RequstRemoteData implements RequstBarberRemoteDataSorce {
         yield false;
       }
     } catch (e) {
-      log("Error updating rejection status: $e");
       yield false;
     }
   }

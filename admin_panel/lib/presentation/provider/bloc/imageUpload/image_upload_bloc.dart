@@ -1,6 +1,4 @@
-import 'dart:developer';
 import 'dart:io';
-
 import 'package:admin/data/datasources/coudinary_service.dart/cloudinary_service.dart';
 import 'package:admin/data/datasources/coudinary_service.dart/firestore_imgae_service.dart';
 import 'package:bloc/bloc.dart';
@@ -17,7 +15,6 @@ class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
       try {
         final uploadedUrl = await _cloudinaryService.uploadImage(File(event.imageUrl));
         if (uploadedUrl == null) {
-          log('Failed to upload image to cloudinary');
           emit(ImageUploadError('Failed to upload image to Cloudinary'));
           return;
         }

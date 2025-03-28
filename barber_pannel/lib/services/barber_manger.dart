@@ -1,4 +1,4 @@
-import 'package:barber_pannel/data/models/barber_model.dart';
+import 'package:barber_pannel/cavlog/auth/data/models/barber_model.dart';
 
 class BarberManger {
   static final BarberManger _instance = BarberManger._internal();

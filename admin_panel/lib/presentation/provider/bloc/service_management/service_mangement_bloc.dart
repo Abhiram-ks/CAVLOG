@@ -1,6 +1,3 @@
-
-import 'dart:developer';
-
 import 'package:admin/domain/useCase/upload_service_usecase.dart';
 import 'package:bloc/bloc.dart';
 part 'service_mangement_event.dart';
@@ -38,10 +35,8 @@ class ServiceMangementBloc extends Bloc<ServiceMangementEvent, ServiceMangementS
    
    on<DeleteConfirmation>((event, emit)async {
     try {
-      log('Deleting serviceid $_serviceId');
      final response = await repository.deleteService(serviceId: _serviceId);
      if (response) {
-      log('Successfully deleted service with ID: $serviceId');
        emit(DeleteServiceConfirmationSuccess());
      } else { 
        emit(ServiceErrorState(error: 'Unexpected Error occured'));

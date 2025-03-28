@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class StatusBarberRemoteDataSource {
@@ -18,7 +16,6 @@ class StatusBarberRemoteData implements StatusBarberRemoteDataSource{
       yield true;
 
     } catch (e) {
-      log('Error Updation block or unblock:$e');
       yield false;
     }
   }

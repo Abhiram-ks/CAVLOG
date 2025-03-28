@@ -1,11 +1,6 @@
-
-import 'dart:developer';
-
 import 'package:admin/data/models/barber_models.dart';
 import 'package:bloc/bloc.dart';
-
 import '../../../../data/repositories/barbers_repository.dart';
-
 part 'fetch_barbers_event.dart';
 part 'fetch_barbers_state.dart';
 
@@ -23,7 +18,6 @@ class FetchBarbersBloc extends Bloc<FetchBarbersEvent, FetchBarbersState> {
         return BarberLoadedState(barbers);
       },
        onError: (error, stackTrace) {
-         log('Error in FetchBarbersbloc: $error');
          return BarberErrorState('Fetching Datas Error: $error');
        },
       );

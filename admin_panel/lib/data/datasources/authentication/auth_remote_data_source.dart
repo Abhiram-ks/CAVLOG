@@ -27,9 +27,8 @@ class AuthRemoteDataSource {
         'password': hashedPassword,
        });
 
-       log("Credentials stored successfully");
      } catch (e) {
-       log("Error storing credentials: $e");
+       log('$e from Admin credentials');
      }
   }
 }

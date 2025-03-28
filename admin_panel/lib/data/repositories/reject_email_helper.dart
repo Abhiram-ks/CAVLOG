@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 
@@ -43,10 +41,8 @@ class RejectionEmailService {
 """;
     try {
       await send(message, smtpServer);
-      log('successfully to: $recipientEmail');
       return true;
-    } on MailerException catch (e) {
-      log('faild to send  : ${e.toString()}');
+    } on MailerException {
       return false;
     }
   }

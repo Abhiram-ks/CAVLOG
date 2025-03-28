@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypto/crypto.dart';
 
@@ -26,8 +24,6 @@ class AuthnticationProcess implements AuthRepository{
      if(adminDoc.exists){
       String storedEmail = adminDoc['email'];
       String storedHashedPassword = adminDoc['password'];
-      
-      log('Admin login process: $storedEmail == $email && $storedHashedPassword == ${_hashPassword(password)} is correct');
 
       if (email == storedEmail && _hashPassword(password) == storedHashedPassword) {
         return true;
@@ -37,8 +33,7 @@ class AuthnticationProcess implements AuthRepository{
      }
      return false;
    } catch (e) {
-     log('Error verifying credenials: $e');
      return false;
    }
   }
-}
+} 

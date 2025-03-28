@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseServiceRepository  {
@@ -16,7 +15,6 @@ class FirebaseServiceRepository  {
       });
        return true;
     } catch (e) {
-      log('message: from service Upload error due to: $e');
       return false;
     }
   }
@@ -26,8 +24,7 @@ class FirebaseServiceRepository  {
       await firestore.collection('services').doc(serviceId).update({'name':updatedService});
 
       return true;
-    } catch (e) {  
-      log('Error Updating service status: $e');
+    } catch (e) { 
       return false;
     }
    }
@@ -37,7 +34,6 @@ class FirebaseServiceRepository  {
       await firestore.collection('services').doc(serviceId).delete();
       return true;
     } catch (e) {
-      log('Message: Error deleting service: $e');
       return false;
     }
    }

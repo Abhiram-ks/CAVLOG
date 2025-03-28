@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:admin/data/models/service_models.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -15,7 +13,6 @@ class ServiceRepository {
         return snapshot.docs.map((doc) => ServiceModels.fromFirestore(doc.data())).toList();
       });
     } catch (e) {
-      log('Error due to fetching ServiceRepository: $e');
       rethrow;
     }
   }

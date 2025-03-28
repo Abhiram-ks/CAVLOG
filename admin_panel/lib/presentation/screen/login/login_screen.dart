@@ -2,7 +2,6 @@ import 'package:admin/core/themes/colors.dart';
 import 'package:admin/presentation/widget/login_widget/login_bottom_section.dart';
 import 'package:admin/presentation/widget/login_widget/login_top_section.dart';
 import 'package:flutter/material.dart';
-
 import '../../../core/utils/media_quary/media_quary_helper.dart';
 
 class LoginScreen extends StatelessWidget {

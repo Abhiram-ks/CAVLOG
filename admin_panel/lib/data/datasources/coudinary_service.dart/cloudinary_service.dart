@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
-
 import 'package:admin/core/cloudinary/cloudinary_config.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,11 +20,9 @@ class CloudinaryService {
         final jsonResponse = json.decode(responseBody);
         return jsonResponse['secure_url'] as String?;
       }else {
-        log("Upload failed with status code: ${response.statusCode}");
         return null;
       }
     } catch (e) {
-      log("Error during upload: $e");
       return null;
     }
   }

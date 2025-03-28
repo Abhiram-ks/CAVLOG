@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:isolate';
 import 'package:admin/data/models/barber_models.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,6 +10,7 @@ class BarbersRepository {
 
   Future<bool> _checkNetworkConnection() async{
     final connectivityResult = await Connectivity().checkConnectivity();
+    // ignore: unrelated_type_equality_checks
     return connectivityResult != ConnectivityResult.none;
   }
 
@@ -27,7 +27,6 @@ class BarbersRepository {
         return await _transformToBarberList(docs);
       });
     } catch (e) {
-      log('Error in BarberRepository: $e');
       rethrow;
     }
   }

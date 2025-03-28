@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreImageService {
@@ -14,20 +13,17 @@ class FirestoreImageService {
       } else if (index == 3) {
         docIds.addAll(['user_doc', 'barber_doc']);
       } else {
-        log("Invalid index: $index");
         return false;
       }
       for (String docId in docIds) {
         final success = await storeImageUrlInFirestore(imageUrl, docId);
         if (!success) {
-          log("Failed to store image URL in $docId");
           return false;
         }
       }
 
       return true;
     } catch (e) {
-      log("Error in selectionSlot: $e");
       return false;
     }
   }
@@ -37,10 +33,8 @@ class FirestoreImageService {
       await docRef.set({
         'image_urls': FieldValue.arrayUnion([imageUrl]),
       }, SetOptions(merge: true));
-      log("Image URL stored successfully in 'banner_images/$docId'");
       return true;
     } catch (e) {
-      log("Error storing image URL in Firestore: $e");
       return false;
     }
   }

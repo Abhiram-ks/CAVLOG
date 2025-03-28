@@ -1,4 +1,4 @@
-
+import 'package:admin/core/utils/images/app_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -62,12 +62,41 @@ class RequestCardWidget extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Image.asset(
-                      imagePath,
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
+                    child: imagePath.startsWith("http")
+                        ? Image.network(
+                            imagePath,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.cover,
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  color: AppPalette.buttonClr,
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          (loadingProgress.expectedTotalBytes ??
+                                              1)
+                                      : null,
+                                ),
+                              );
+                            },
+                            errorBuilder: (context, error, stackTrace) {
+                              return const Center(
+                                child: Icon(
+                                  Icons.image_not_supported_outlined,
+                                  color: AppPalette.greyClr,
+                                ),
+                              );
+                            },
+                          )
+                        : Image.asset(
+                            AppImages.loginImageAbove,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
                   ),
                 ),
               ),
@@ -140,10 +169,17 @@ class RequestCardWidget extends StatelessWidget {
                         Text(
                           time!,
                           style: TextStyle(color: AppPalette.hintClr),
-                        ) else if(isBlock != null)
-                        isBlock!? Text("Blocked",style: TextStyle(color: AppPalette.redClr,))
-                        : Text('Active',style: TextStyle(color: AppPalette.greenClr),)
-                      
+                        )
+                      else if (isBlock != null)
+                        isBlock!
+                            ? Text("Blocked",
+                                style: TextStyle(
+                                  color: AppPalette.redClr,
+                                ))
+                            : Text(
+                                'Active',
+                                style: TextStyle(color: AppPalette.greenClr),
+                              )
                     ],
                   ))
             ],

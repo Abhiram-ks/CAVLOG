@@ -2,7 +2,6 @@ import 'package:admin/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../core/routes/routes.dart';
 import '../../../core/utils/images/app_images.dart';
 import '../../../core/utils/media_quary/constant/constant.dart';

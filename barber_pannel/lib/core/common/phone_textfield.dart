@@ -1,4 +1,4 @@
-import 'package:barber_pannel/presentation/provider/cubit/icon/icon_cubit.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/icon/icon_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

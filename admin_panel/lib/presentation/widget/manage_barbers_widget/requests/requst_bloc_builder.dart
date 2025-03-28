@@ -79,7 +79,7 @@ class RequstBlocBuilder extends StatelessWidget {
                   onNegative: () {
                     context.read<RequstboxBloc>().add(RejectAction(barbername: barber.barberName, uid: barber.uid, email: barber.email, ventureName: barber.ventureName));
                   },
-                  imagePath: AppImages.loginImageAbove,
+                  imagePath: barber.image ?? '',
                   time: barber.createdAt != null
                       ? '${barber.createdAt!.hour}:${barber.createdAt!.minute} ${barber.createdAt!.hour > 12 ? "PM" : "AM"}'
                       : 'N/A',

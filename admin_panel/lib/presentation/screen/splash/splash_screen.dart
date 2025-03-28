@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/themes/colors.dart';
 import '../../widget/splashWidget/splash_widget.dart';
 

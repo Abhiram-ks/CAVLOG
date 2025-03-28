@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:admin/data/datasources/requstsResponse/accept_req_remote_data.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -28,7 +26,6 @@ class RequstboxBloc extends Bloc<RequstboxEvent, RequstboxState> {
 
     on<AcceptActionAllow>((event, emit)async {
       try {
-        log('Registration Accept: $_email<$_fullName');
         emit(RequstboxLoading());
         final result = await RequstRemoteData(FirebaseFirestore.instance).updateBarberVerificationStatus(_uid,_fullName,_ventureName,_email).first;
 
@@ -53,7 +50,6 @@ class RequstboxBloc extends Bloc<RequstboxEvent, RequstboxState> {
 
     on<RejectActionAllowReason>((event, emit) async{
       try {
-        log('$_email, $_fullName ${event.reason}');
         emit(RequstboxLoading());
         final result = await RequstRemoteData(FirebaseFirestore.instance).updateRejectBarberVerificationStatus(_uid,_fullName, _ventureName,_email,event.reason).first;
         

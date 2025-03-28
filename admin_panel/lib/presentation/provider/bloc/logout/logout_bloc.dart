@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 part 'logout_event.dart';
 part 'logout_state.dart';
 

@@ -1,4 +1,4 @@
-import 'package:barber_pannel/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
+import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

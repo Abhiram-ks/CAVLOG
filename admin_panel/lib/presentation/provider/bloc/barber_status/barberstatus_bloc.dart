@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:admin/data/datasources/block_unblock_data_source.dart/block_unblock_remote_data.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,7 +16,6 @@ class BarberstatusBloc extends Bloc<BarberstatusEvent, BarberstatusState> {
 
     on<ConfirmBlock>((event, emit) async{
       try {
-         log('Message: Attempting to block barber with uid: $_uid');
         final response = await StatusBarberRemoteData(FirebaseFirestore.instance).updateBarberStatusBlockORUnblock(_uid, true).first;
 
         if (response) {
@@ -27,7 +24,6 @@ class BarberstatusBloc extends Bloc<BarberstatusEvent, BarberstatusState> {
           emit(StatusErrorState('Error: Block operation failed due to unknown issues.'));
         }
       } catch (e) {
-        log('Error: Block operation failed due to $e');
         emit(StatusErrorState('Error: Block operation failed due to $e'));
       }
     });
@@ -39,7 +35,6 @@ class BarberstatusBloc extends Bloc<BarberstatusEvent, BarberstatusState> {
 
     on<ConfirmUnblock>((event, emit) async {
       try {
-       log('Message: Attempting to Unblock barber with uid: $_uid');
         final response = await StatusBarberRemoteData(FirebaseFirestore.instance).updateBarberStatusBlockORUnblock(_uid, false).first;
 
        if (response) {
@@ -48,7 +43,6 @@ class BarberstatusBloc extends Bloc<BarberstatusEvent, BarberstatusState> {
          emit(StatusErrorState('Error: UnBlock operation failed due to unknown issues.'));
        }
       } catch (e) {
-        log('Error: UnBlock operation failed due to $e');
         emit(StatusErrorState('Error: UnBlock operation failed due to $e'));
       }
     });
