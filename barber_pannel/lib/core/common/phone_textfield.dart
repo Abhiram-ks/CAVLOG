@@ -11,6 +11,8 @@ class TextfiledPhone extends StatelessWidget {
   final IconData prefixIcon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final bool enabled;
+  final Color iconColor;
 
   const TextfiledPhone({
     super.key,
@@ -18,7 +20,9 @@ class TextfiledPhone extends StatelessWidget {
     required this.hintText,
     required this.prefixIcon,
     required this.validator,
-    required this.controller
+    required this.controller,
+    this.enabled = true,
+    this.iconColor = AppPalette.hintClr
   });
 
   @override
@@ -41,7 +45,7 @@ class TextfiledPhone extends StatelessWidget {
             return null;
           },
           builder: (context, state) {
-            Color suffixColor = state?.color ?? AppPalette.hintClr;
+            Color suffixColor = state?.color ?? iconColor;
 
             return TextFormField(
               controller: controller,
@@ -50,6 +54,7 @@ class TextfiledPhone extends StatelessWidget {
               style: const TextStyle(fontSize: 16),
               autovalidateMode: AutovalidateMode.onUserInteraction,
               keyboardType:  TextInputType.number,
+              enabled: enabled,
               inputFormatters: [
                 LengthLimitingTextInputFormatter(10),
                 FilteringTextInputFormatter.digitsOnly,

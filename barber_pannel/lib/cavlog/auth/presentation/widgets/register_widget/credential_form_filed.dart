@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:barber_pannel/core/common/snackbar_helper.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/core/validation/input_validations.dart';
@@ -79,6 +78,7 @@ class _CredentialsFormFieldState extends State<CredentialsFormField> {
               if (widget.formKey.currentState!.validate()) {
                 if (isChecked) {
                   if(error != null && error.isNotEmpty){
+                      if (!context.mounted) return;
                      CustomeSnackBar.show(context: context,
                      title: "Email alredy exitst",
                      description: 'Email already exists, please try another email.', iconColor: AppPalette.redClr, icon:CupertinoIcons.mail_solid);
@@ -95,6 +95,7 @@ class _CredentialsFormFieldState extends State<CredentialsFormField> {
                     navigator.pushNamed(AppRoutes.otp);
                    }
                 }else{
+                  if(!context.mounted) return;
                   CustomeSnackBar.show(
                   context: context,
                   title: 'Oops, you missed the checkbox',
@@ -102,6 +103,7 @@ class _CredentialsFormFieldState extends State<CredentialsFormField> {
                   iconColor: AppPalette.redClr,icon: CupertinoIcons.checkmark_square);
                 }
               }else{
+                 if(!context.mounted) return;
                  CustomeSnackBar.show(
                  context: context,
                  title: 'Submission Faild',

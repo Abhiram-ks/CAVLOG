@@ -1,4 +1,4 @@
-import 'package:admin/domain/useCase/image_picker_usecasee.dart';
+import 'package:admin/domain/useCase/image_picker_usecase.dart';
 import 'package:bloc/bloc.dart';
 part 'pick_image_event.dart';
 part 'pick_image_state.dart';

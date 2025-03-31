@@ -67,7 +67,7 @@ class ImagePickerWIdget extends StatelessWidget {
                   ),
                 );
               } else if (state is ImagePickerError) {
-                Column(
+                return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

@@ -12,13 +12,14 @@ class TextFormFieldWidget extends StatelessWidget {
   final bool isPasswordField;
   final TextEditingController controller;
   final String? Function(String? value) validate;
+  final bool enabled;
 
   const TextFormFieldWidget(
       {super.key,
       required this.label,
       required this.hintText,
       required this.prefixIcon,
-      this.isPasswordField = false, required this.controller,required this.validate});
+      this.isPasswordField = false, required this.controller,required this.validate, this.enabled = true});
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,7 @@ class TextFormFieldWidget extends StatelessWidget {
               obscureText: isPasswordField ? !isVisible : false,
               style: const TextStyle(fontSize: 16),
               autovalidateMode: AutovalidateMode.onUserInteraction,
+              enabled: enabled,
               // enableInteractiveSelection: false,
               decoration: InputDecoration(
                 hintText: hintText,

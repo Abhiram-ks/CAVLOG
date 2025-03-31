@@ -5,7 +5,8 @@ abstract class LoginEvent {}
 class LoginActionEvent extends LoginEvent {
   final String email;
   final String password;
+  final BuildContext context;
 
-  LoginActionEvent({required this.email, required this.password});
+  LoginActionEvent(this.context, {required this.email, required this.password});
 }
 

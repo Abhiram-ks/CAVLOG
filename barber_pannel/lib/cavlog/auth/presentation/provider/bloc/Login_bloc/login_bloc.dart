@@ -2,9 +2,12 @@ import 'dart:developer';
 import 'package:barber_pannel/cavlog/auth/data/models/barber_model.dart';
 import 'package:barber_pannel/cavlog/auth/data/repositories/auth_repository_impl.dart';
 import 'package:barber_pannel/services/barber_manger.dart';
-import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../../app/presentation/provider/bloc/fetchbarber/fetch_barber_bloc.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 
@@ -14,17 +17,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginActionEvent>((event, emit) async {
      emit(LoginLoading());
      try {
-      log('Email; ${event.email}, password: ${event.password}');
       await emit.forEach<BarberModel?>(
         _authRepository.login(event.email, event.password), 
         onData: (barber) {
           if (barber != null) {
             BarberManger().setUser(barber);
-            log("Barber is: ${barber.toMap()}");
               if (barber.isblok) {
                 return LoginBlocked();
               }else if(barber.isVerified) {
-                _handleVerifiedBarber(barber);
+                _handleVerifiedBarber(barber, event.context);
                 return LoginVarified();
               }else {
                  return LoginNotVerified();
@@ -54,11 +55,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
   }
 
-  Future<void> _handleVerifiedBarber(BarberModel barber) async{
+  Future<void> _handleVerifiedBarber(BarberModel barber, BuildContext context) async{
     try {
       final SharedPreferences prefsBarber = await SharedPreferences.getInstance();
       await prefsBarber.setBool('isLoggedIn', true);
+      log('Barber login BarberId: ${barber.uid}');
       await prefsBarber.setString('barberUid', barber.uid);
+      if (!context.mounted) return;
+      context.read<FetchBarberBloc>().add(FetchCurrentBarber());
       log("Barber varified and saved to sharedPreference!>");
     } catch (e) {
       log('Error saving barber data: ${e.toString()}');

@@ -98,7 +98,10 @@ class ValidatorHelper {
     return null;
   }
 
-  static String? validateAge(String age) {
+  static String? validateAge(String? age) {
+    if (age == null || age.isEmpty) {
+      return 'Enter your Answer';
+    }
     if (!RegExp(r'^\d+$').hasMatch(age)) {
       return 'Age must contain only numbers.';
     }

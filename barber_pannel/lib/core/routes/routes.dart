@@ -1,13 +1,16 @@
 import 'package:barber_pannel/cavlog/app/presentation/screens/navigation/bottom_navigation_controllers.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/settings/chenge_password.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/settings/profile_edit_details.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/adminRequst/admin_request.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/blocked/blocked_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/login/login_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/register/register_credentials_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/register/register_details_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/resetPassword/reset_password_screen.dart';
-import 'package:barber_pannel/cavlog/app/presentation/screens/dashbord/home/home_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/splash/splash_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/otp/otp_screen.dart';
+import 'package:barber_pannel/core/common/lottie_widget.dart';
+import 'package:barber_pannel/core/utils/image/app_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +24,8 @@ class AppRoutes {
   static const String home = '/bottom_navigation_controllers';
   static const String resetPassword = '/reset_password_screen';
   static const String blocked = '/blocked_screen';
+  static const String chengePassword = '/chenge_password'; 
+  static const String accountScreen = '/profile_edit_details';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings){
@@ -43,10 +48,22 @@ class AppRoutes {
         return CupertinoPageRoute(builder: (_) =>  ResetPasswordScreen());
       case blocked:
         return CupertinoPageRoute(builder: (_) => BlockedScreen());
+      case chengePassword:
+        return CupertinoPageRoute(builder: (_) => ChengePassword());
+      case accountScreen:
+        final args = settings.arguments as bool;
+        return CupertinoPageRoute(builder: (_) => ProfileEditDetails(isShow: args));
       default:
        return MaterialPageRoute(
-          builder: (_) => const Scaffold(
-            body: Center(child: Text('No route defined')),
+          builder: (_) =>  Scaffold(
+            body: Center(child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                LottiefilesCommon(assetPath: LottieImages.pageNotFound, width: 200, height: 200),
+                Text('Oops!. PAGE NOT FOUND')
+              ],
+            )),
           ),
         );
     }

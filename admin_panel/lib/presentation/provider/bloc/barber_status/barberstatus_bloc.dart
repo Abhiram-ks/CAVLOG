@@ -1,4 +1,4 @@
-import 'package:admin/data/datasources/block_unblock_data_source.dart/block_unblock_remote_data.dart';
+import 'package:admin/data/datasources/blockandunblock/block_unblock_remote_data.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 part 'barberstatus_event.dart';

@@ -1,4 +1,4 @@
-import 'package:admin/domain/useCase/image_picker_usecasee.dart';
+import 'package:admin/domain/useCase/image_picker_usecase.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerRepositoryImpl implements ImagePickerRepository{

@@ -82,7 +82,7 @@ class _LoginFormState extends State<LoginForm> {
 
                 if(widget.formKey.currentState!.validate()){
                  buttonCubit.startLoading();
-                loginBloc.add(LoginActionEvent(email: emailController.text.trim(), password: passwordController.text.trim()));
+                loginBloc.add(LoginActionEvent(email: emailController.text.trim(), password: passwordController.text.trim(), context ));
                 await Future.delayed(const Duration(seconds: 2));
                 buttonCubit.stopLoading();
                 }else {

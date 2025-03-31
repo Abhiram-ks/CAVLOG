@@ -19,7 +19,7 @@ class AuthRepositoryImpl implements AuthRepository {
           if (userCredential.user != null) {
             String uid = userCredential.user!.uid;
             DocumentSnapshot userDoc = await _firestore.collection('barbers').doc(uid).get();
-
+             
             if (userDoc.exists) {
               return BarberModel.fromMap(uid, userDoc.data() as Map<String, dynamic>);
             } else {

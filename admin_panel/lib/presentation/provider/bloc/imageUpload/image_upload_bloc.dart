@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:admin/data/datasources/coudinary_service.dart/cloudinary_service.dart';
-import 'package:admin/data/datasources/coudinary_service.dart/firestore_imgae_service.dart';
+import 'package:admin/data/datasources/cloudinary_service/cloudinary_service.dart';
+import 'package:admin/data/datasources/cloudinary_service/firestore_image_service.dart';
 import 'package:bloc/bloc.dart';
 
 part 'image_upload_event.dart';

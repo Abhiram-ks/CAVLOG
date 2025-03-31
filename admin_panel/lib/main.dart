@@ -1,14 +1,14 @@
 import 'package:admin/core/cloudinary/cloudinary_config.dart';
 import 'package:admin/core/themes/themes_manager.dart';
-import 'package:admin/data/datasources/coudinary_service.dart/cloudinary_service.dart';
-import 'package:admin/data/datasources/coudinary_service.dart/firestore_imgae_service.dart';
+import 'package:admin/data/datasources/cloudinary_service/cloudinary_service.dart';
+import 'package:admin/data/datasources/cloudinary_service/firestore_image_service.dart';
 import 'package:admin/data/repositories/auth_repository.dart';
 import 'package:admin/data/repositories/banner_repositoty.dart';
 import 'package:admin/data/repositories/barbers_repository.dart';
 import 'package:admin/data/repositories/image_picker_repo_impl.dart';
 import 'package:admin/data/repositories/service_repository.dart';
 import 'package:admin/domain/useCase/delete_image_url_usecase.dart';
-import 'package:admin/domain/useCase/image_picker_usecasee.dart';
+import 'package:admin/domain/useCase/image_picker_usecase.dart';
 import 'package:admin/domain/useCase/login_usecase.dart';
 import 'package:admin/domain/useCase/upload_service_usecase.dart';
 import 'package:admin/firebase_options.dart';

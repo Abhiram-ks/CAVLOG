@@ -7,4 +7,6 @@ class AppImages {
 
 class LottieImages {
   static const String adminRequstW8Image = 'assets/lotties/adminRequstW8.json';
+  static const String emptyData = 'assets/lotties/emptylistlottie.json';
+  static const String pageNotFound = 'assets.lotties/pagenotfound.json';
 }

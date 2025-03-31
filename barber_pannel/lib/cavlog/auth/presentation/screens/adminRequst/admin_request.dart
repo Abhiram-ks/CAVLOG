@@ -12,6 +12,7 @@ class AdminRequest extends StatelessWidget {
     double screenHight = MeidaQuaryHelper.height(context);
     double screenWidth = MeidaQuaryHelper.width(context);
 
+    // ignore: deprecated_member_use
     return WillPopScope(
         onWillPop: () async {
           Navigator.pushNamedAndRemoveUntil(

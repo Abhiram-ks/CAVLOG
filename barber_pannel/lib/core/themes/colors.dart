@@ -7,6 +7,7 @@ class AppPalette  {
   static const whiteClr  = Colors.white;
   static const greenClr  = Colors.green;
   static const redClr    = Color.fromARGB(255, 249, 96, 85);
+  static const logoutClr = Color.fromARGB(255, 255, 17, 0);
   static const greyClr   = Colors.grey;
   static const blueClr   = Colors.blue;
   static const hintClr   = Color.fromARGB(255, 220, 222, 226);

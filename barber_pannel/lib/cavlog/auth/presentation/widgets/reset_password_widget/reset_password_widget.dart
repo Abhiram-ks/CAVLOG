@@ -17,10 +17,14 @@ class ResetPasswordWIdget extends StatefulWidget {
     required this.screenWidth,
     required this.screenHight,
     required this.formKey,
+    required this.description,
+    required this.title
   });
 
   final double screenWidth;
   final double screenHight;
+  final String title;
+  final String description;
   final GlobalKey<FormState> formKey;
 
   @override
@@ -40,13 +44,13 @@ class _ResetPasswordWIdgetState extends State<ResetPasswordWIdget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Forgot password?',
+            widget.title,
             style: GoogleFonts.plusJakartaSans(
                 fontSize: 28, fontWeight: FontWeight.bold),
           ),
           ConstantWidgets.hight10(context),
           Text(
-              "Enter your registered email address to receive a password reset link. Make sure to check your email for further instructions."),
+            widget.description),
           ConstantWidgets.hight50(context),
           Form(
             key: widget.formKey,

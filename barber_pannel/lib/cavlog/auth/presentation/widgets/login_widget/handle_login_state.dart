@@ -1,3 +1,4 @@
+
 import 'package:barber_pannel/core/common/snackbar_helper.dart';
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
@@ -9,7 +10,7 @@ void handleLoginState(BuildContext context, LoginState state) {
   if(state is LoginBlocked){
    Navigator.pushNamed(context, AppRoutes.blocked);
   }else if(state is LoginVarified) {
-    Navigator.pushReplacementNamed(context, AppRoutes.home);
+     Navigator.pushReplacementNamed(context, AppRoutes.home);
   } else if (state is LoginNotVerified) {
     navigateToAdminRequest(context);
   } else if (state is LoginFiled) {
