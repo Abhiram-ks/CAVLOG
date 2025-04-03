@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/themes/colors.dart';
-import '../../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../../core/utils/constant/constant.dart';
 
 class TabbarSettings extends StatelessWidget {
   final double screenHeight;

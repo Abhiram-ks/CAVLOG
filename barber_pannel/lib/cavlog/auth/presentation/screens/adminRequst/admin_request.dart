@@ -2,7 +2,7 @@ import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/widgets/admin_widget/admin_requst_widet.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/utils/media_quary/meida_quary_helper.dart';
+import '../../../../../core/utils/media_quary/media_quary_helper.dart';
 
 class AdminRequest extends StatelessWidget {
   const AdminRequest({super.key});

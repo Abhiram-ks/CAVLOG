@@ -1,4 +1,4 @@
-import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barber_details.dart';
+import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barberdata_repo.dart';
 import 'package:barber_pannel/cavlog/app/data/repositories/image_picker_repo.dart';
 import 'package:barber_pannel/cavlog/app/domain/usecases/image_picker_usecase.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchbarber/fetch_barber_bloc.dart';
@@ -64,6 +64,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LogoutBloc(context.read<ButtomNavCubit>())),
       ],
       child: MaterialApp(
+          title: 'Cavlog-Business',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
           initialRoute: AppRoutes.splash,

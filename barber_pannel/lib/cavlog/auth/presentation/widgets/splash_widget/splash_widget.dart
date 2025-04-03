@@ -1,6 +1,6 @@
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/utils/image/app_images.dart';
-import 'package:barber_pannel/core/utils/media_quary/constant/constant.dart';
+import 'package:barber_pannel/core/utils/constant/constant.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/provider/bloc/splash/splash_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,7 +57,7 @@ class SplashWidget extends StatelessWidget {
                     ).createShader(bounds);
                   },
                   child: Text(
-                    'C Λ V L O G',
+                    'C Λ V L O G ',
                     style: GoogleFonts.poppins(
                       color: AppPalette.whiteClr,
                       fontSize: 33,
@@ -66,7 +66,14 @@ class SplashWidget extends StatelessWidget {
                   ),
                 );
               },
-            )
+            ),
+              Text(
+              'Innovate, Execute, Succeed',
+              style: GoogleFonts.poppins(
+                color: AppPalette.greyClr,
+                fontWeight: FontWeight.w200,
+              ),
+            ),
           ],
         );
       },

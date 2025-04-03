@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/common/google_singin_common.dart';
 import '../../../../../core/routes/routes.dart';
-import '../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../core/utils/constant/constant.dart';
 
 class LotinBottomSection extends StatelessWidget {
   const LotinBottomSection({
@@ -27,7 +27,7 @@ class LotinBottomSection extends StatelessWidget {
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
-        color: Colors.white,
+        color: AppPalette.whiteClr,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(

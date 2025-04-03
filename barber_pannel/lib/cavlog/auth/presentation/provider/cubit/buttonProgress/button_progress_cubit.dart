@@ -1,6 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-
 part 'button_progress_state.dart';
 
 class ButtonProgressCubit extends Cubit<ButtonProgressState> {

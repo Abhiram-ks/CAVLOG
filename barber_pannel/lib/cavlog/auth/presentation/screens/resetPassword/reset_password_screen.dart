@@ -1,6 +1,6 @@
 
 import 'package:barber_pannel/core/common/custom_app_bar.dart';
-import 'package:barber_pannel/core/utils/media_quary/meida_quary_helper.dart';
+import 'package:barber_pannel/core/utils/media_quary/media_quary_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/reset_password_widget/reset_password_widget.dart';

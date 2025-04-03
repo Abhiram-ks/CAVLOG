@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../../../../core/common/custom_app_bar.dart';
 import '../../../../../core/common/lottie_widget.dart';
-import '../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../core/utils/constant/constant.dart';
 import '../../provider/bloc/fetchbarber/fetch_barber_bloc.dart';
 import '../../widgets/profile_widgets/settings_widget/detail_edition_widget/details_fileds_widget.dart' show ProfileEditDetailsFormsWidget;
 

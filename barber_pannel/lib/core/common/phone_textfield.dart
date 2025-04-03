@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../themes/colors.dart';
-import '../utils/media_quary/constant/constant.dart';
+import '../utils/constant/constant.dart';
 
 class TextfiledPhone extends StatelessWidget {
   final String label;

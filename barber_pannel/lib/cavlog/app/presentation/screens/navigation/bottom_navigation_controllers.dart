@@ -23,7 +23,7 @@ class BottomNavigationControllers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
        data: Theme.of(context).copyWith(
-        splashColor: AppPalette.buttonClr.withAlpha((0.3 * 255).round()),
+        splashColor: AppPalette.hintClr.withAlpha((0.3 * 255).round()),
          highlightColor: AppPalette.blackClr.withAlpha((0.2 * 255).round()), 
       ),
       child: Scaffold(

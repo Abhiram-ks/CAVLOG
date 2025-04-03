@@ -17,14 +17,20 @@ class ValidatorHelper {
         return 'Enter a valid Gmail address';
       }
      
-    final QuerySnapshot emailQuery = await FirebaseFirestore.instance
-        .collection('barbers')
-        .where('email', isEqualTo: email)
-        .get();
-        if(emailQuery.docs.isNotEmpty){
-          return 'Email already exits';
-        }
-       return null;
+      try {
+       final futures = [
+      FirebaseFirestore.instance.collection('barbers').where('email', isEqualTo: email).get(),
+      FirebaseFirestore.instance.collection('users').where('email', isEqualTo: email).get(),
+     ];
+
+     final result = await Future.wait(futures);
+     if (result[0].docs.isNotEmpty || result[1].docs.isNotEmpty) {
+        return 'Email already exists';
+     }
+     return null;
+    } catch (e) {
+         return 'Error checking email: $e';
+     }
   }
 
   static String? validatePhoneNumber(String? value){

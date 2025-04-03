@@ -1,5 +1,5 @@
 import 'package:barber_pannel/core/themes/colors.dart';
-import 'package:barber_pannel/core/utils/media_quary/meida_quary_helper.dart';
+import 'package:barber_pannel/core/utils/media_quary/media_quary_helper.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/widgets/login_widget/login_top_widget.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/login_widget/login_bottom_widget.dart';

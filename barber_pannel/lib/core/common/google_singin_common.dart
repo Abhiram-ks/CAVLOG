@@ -1,5 +1,5 @@
 
-import 'package:barber_pannel/core/utils/media_quary/constant/constant.dart';
+import 'package:barber_pannel/core/utils/constant/constant.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../themes/colors.dart';

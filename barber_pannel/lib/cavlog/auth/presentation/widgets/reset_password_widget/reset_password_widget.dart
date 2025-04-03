@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/themes/colors.dart';
-import '../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../core/utils/constant/constant.dart';
 import '../../provider/bloc/ResetPasswordBloc/reset_password_bloc.dart';
 
 class ResetPasswordWIdget extends StatefulWidget {

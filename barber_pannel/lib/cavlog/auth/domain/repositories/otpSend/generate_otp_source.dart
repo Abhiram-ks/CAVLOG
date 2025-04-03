@@ -14,7 +14,6 @@ class OtpService {
   Future<String?> sendOtpToEmail(String email) async {
     try {
       String otp = await _generateOTP();
-      debugPrint('$otp ************');
       bool emailSent = await _emailService.sendOTPEmail(email, otp);
       if (emailSent) {
         return otp;

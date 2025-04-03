@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/themes/colors.dart';
-import '../../../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../../../core/utils/constant/constant.dart';
 
 ClipRRect settingsWidget({required double screenHeight,required BuildContext context, required IconData icon,required  String title, required VoidCallback onTap}) {
   return ClipRRect(

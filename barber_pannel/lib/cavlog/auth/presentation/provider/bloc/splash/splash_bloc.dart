@@ -17,7 +17,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
    Future<void> _onStartSplash(StartSplashEvent event, Emitter<SplashState> emit) async {
       try {
-    const duration =  Duration(milliseconds: 2555);
+    const duration =  Duration(milliseconds: 3000);
     final stopwatch = Stopwatch()..start();
 
     while (stopwatch.elapsed < duration) {
@@ -53,7 +53,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     log('Error in splash screen ; $e');
      emit(GoToLoginPage());
    } finally {
-      emit (SplashAnimationCompleted());
+    emit (SplashAnimationCompleted());
    }
   }
 }

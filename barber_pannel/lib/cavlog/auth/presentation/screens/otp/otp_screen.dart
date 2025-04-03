@@ -3,8 +3,8 @@ import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../core/utils/media_quary/constant/constant.dart';
-import '../../../../../core/utils/media_quary/meida_quary_helper.dart';
+import '../../../../../core/utils/constant/constant.dart';
+import '../../../../../core/utils/media_quary/media_quary_helper.dart';
 import '../../widgets/otp_widget/otp_widget.dart';
 
 class OtpScreen extends StatelessWidget {
@@ -42,8 +42,7 @@ class OtpScreen extends StatelessWidget {
                 ),
                 
                 ConstantWidgets.hight20(context),
-                OtpVerificationWidget(
-                    screenWidth: screenWidth, screenHight: screenHight)
+                OtpVerificationWidget(screenWidth: screenWidth, screenHight: screenHight)
               ],
             ),
           ),

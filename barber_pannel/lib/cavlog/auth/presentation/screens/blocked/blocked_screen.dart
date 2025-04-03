@@ -1,6 +1,6 @@
 import 'package:barber_pannel/core/common/custom_app_bar.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
-import 'package:barber_pannel/core/utils/media_quary/constant/constant.dart';
+import 'package:barber_pannel/core/utils/constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';

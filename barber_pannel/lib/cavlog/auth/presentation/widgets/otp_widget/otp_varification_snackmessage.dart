@@ -24,8 +24,7 @@ void handleOTPVarificationState(
     CustomeSnackBar.show(
       context: context,
       title: 'OTP Expired',
-      description:
-          "Oops! The OTP you entered has expired. Please request a new OTP.",
+      description: "Oops! The OTP you entered has expired. Please request a new OTP.",
       iconColor: AppPalette.redClr,
       icon: CupertinoIcons.time_solid,
     );

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barber_details.dart';
+import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barberdata_repo.dart';
 import 'package:barber_pannel/cavlog/auth/data/models/barber_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';

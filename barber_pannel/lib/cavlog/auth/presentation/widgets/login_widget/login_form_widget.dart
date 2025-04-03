@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/common/action_button.dart';
 import '../../../../../core/common/textfield_helper.dart';
-import '../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../core/utils/constant/constant.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -40,7 +40,7 @@ class _LoginFormState extends State<LoginForm> {
         children: [
           TextFormFieldWidget(
             label: 'Email',
-            hintText: 'Enter emial id',
+            hintText: 'Enter email id',
             prefixIcon: CupertinoIcons.mail_solid,
             controller: emailController,
             validate: ValidatorHelper.validateEmailId,
@@ -65,8 +65,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
           ),
-          ConstantWidgets.hight10(context),
-          ConstantWidgets.hight10(context),
+          ConstantWidgets.hight20(context),
           BlocListener<LoginBloc, LoginState>(
             listener: (context, state) {
               handleLoginState(context, state);

@@ -21,12 +21,9 @@ class UpdateCredentials  extends RegisterSubmitionEvent {
   UpdateCredentials ({required this.email, required this.isVerified, required this.password, required this.isBloc});
 }
 
-class SubmitRegistration extends RegisterSubmitionEvent {
-  
-}
+class SubmitRegistration extends RegisterSubmitionEvent { }
 
-class GenerateOTPEvent extends RegisterSubmitionEvent {
-}
+class GenerateOTPEvent extends RegisterSubmitionEvent {}
 
 class VerifyOTPEvent extends RegisterSubmitionEvent{
   final String inputOtp;

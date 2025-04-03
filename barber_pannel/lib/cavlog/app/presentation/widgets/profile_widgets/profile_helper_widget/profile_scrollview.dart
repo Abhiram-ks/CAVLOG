@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../../core/utils/image/app_images.dart';
-import '../../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../../core/utils/constant/constant.dart';
 import '../../../provider/cubit/profiletab/profiletab_cubit.dart';
 
 class ProfileScrollView extends StatelessWidget {

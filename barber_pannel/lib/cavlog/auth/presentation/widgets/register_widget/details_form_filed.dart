@@ -8,7 +8,7 @@ import '../../../../../core/common/action_button.dart';
 import '../../../../../core/common/textfield_helper.dart';
 import '../../../../../core/common/phone_textfield.dart';
 import '../../../../../core/routes/routes.dart';
-import '../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../core/utils/constant/constant.dart';
 import '../../../../../core/validation/input_validations.dart';
 import '../../provider/cubit/buttonProgress/button_progress_cubit.dart';
 
@@ -81,17 +81,15 @@ class _DetilsFormFieldState extends State<DetilsFormField> {
 
                     if (widget.formKey.currentState!.validate()) {
                       buttonCubit.startLoading();
-                      registerBloc.add(
-                       UpdatePersonalDetails( fullName: nameController.text,
+                      registerBloc.add(UpdatePersonalDetails( fullName: nameController.text,
                               ventureName: ventureNameController.text,
                               phoneNumber: phoneController.text,
                               address: addressController.text));
-                      await Future.delayed(const Duration(seconds: 1));
-                      buttonCubit.stopLoading();
+                      await Future.delayed(const Duration(milliseconds: 40));
                       if (mounted) {
                        navigator.pushNamed(AppRoutes.registerCredentials);
                       }
-
+                      buttonCubit.stopLoading();
                     } else {
                       CustomeSnackBar.show(
                           context: context,

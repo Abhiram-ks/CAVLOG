@@ -16,7 +16,7 @@ void handleOtpState(
       description: otpsed
           ? "Please wait while we send your OTP email."
           : "We're resending the verification email. Please wait...",
-      iconColor: AppPalette.orengeClr,
+      iconColor: AppPalette.buttonClr,
       icon: CupertinoIcons.mail_solid,
     );
   } else if (state is OtpSuccess) {

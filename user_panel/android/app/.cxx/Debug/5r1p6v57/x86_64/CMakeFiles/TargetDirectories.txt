@@ -1,0 +1,2 @@
+C:/project/CAVLOG/user_panel/android/app/.cxx/Debug/5r1p6v57/x86_64/CMakeFiles/edit_cache.dir
+C:/project/CAVLOG/user_panel/android/app/.cxx/Debug/5r1p6v57/x86_64/CMakeFiles/rebuild_cache.dir

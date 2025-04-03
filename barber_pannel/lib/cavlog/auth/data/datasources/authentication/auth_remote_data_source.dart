@@ -24,8 +24,7 @@ class AuthRemoteDataSource {
           .where(
             'email',
             isEqualTo: email,
-          )
-          .get();
+          ).get();
 
       if (emailQuery.docs.isNotEmpty) {
         log('Email already exists');
@@ -35,7 +34,7 @@ class AuthRemoteDataSource {
           email: email, password: password);
 
       if (response.user != null) {
-        await response.user!.sendEmailVerification();
+       // await response.user!.sendEmailVerification();
         log('Verification email sent to: $email');
         await _firestore.collection('barbers').doc(response.user!.uid).set({
           'barberName': barberName,
@@ -53,7 +52,6 @@ class AuthRemoteDataSource {
         log('$barberName $ventureName $phoneNumber $address $email $isVerified');
         return true;
       } else {
-        log(response.user.toString());
         return false;
       }
     } catch (e) {

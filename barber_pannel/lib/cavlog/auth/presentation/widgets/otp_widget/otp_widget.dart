@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/timerCubit/timer_cubit_cubit.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/widgets/otp_widget/opttextformfiled.dart';
@@ -8,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/common/action_button.dart';
-import '../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../core/utils/constant/constant.dart';
 import '../../provider/bloc/RegisterSubmition/register_submition_bloc.dart';
 import '../../provider/cubit/buttonProgress/button_progress_cubit.dart';
 
@@ -24,8 +23,7 @@ class OtpVerificationWidget extends StatefulWidget {
 }
 
 class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
-  final List<TextEditingController> otpControllers =
-      List.generate(6, (index) => TextEditingController());
+  final List<TextEditingController> otpControllers = List.generate(6, (index) => TextEditingController());
 
   void onOtpChanged() {
     if (otpControllers.every((controller) => controller.text.isNotEmpty)) {
@@ -73,7 +71,6 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
           children: [
             BlocListener<RegisterSubmitionBloc, RegisterSubmitionState>(
               listener: (context, state) {
-                log('Checking state: $state');
                 handleOTPVarificationState(context, state);
               },
               child: ActionButton(
@@ -101,15 +98,13 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                 return Text(
                   "Resend OTP in ${state.formattedTime}s",
                   style: GoogleFonts.plusJakartaSans(
-                      fontWeight: FontWeight.bold, color: Colors.red),
+                      fontWeight: FontWeight.bold, color: AppPalette.redClr),
                 );
               } else if (state is TimerCubitCompleted) {
                 return GestureDetector(
                     onTap: () {
                       context.read<TimerCubitCubit>().startTimer();
-                      context
-                          .read<RegisterSubmitionBloc>()
-                          .add(GenerateOTPEvent());
+                      context.read<RegisterSubmitionBloc>().add(GenerateOTPEvent());
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

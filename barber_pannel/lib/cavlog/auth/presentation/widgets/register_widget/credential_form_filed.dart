@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/common/action_button.dart';
 import '../../../../../core/common/textfield_helper.dart';
 import '../../../../../core/routes/routes.dart';
-import '../../../../../core/utils/media_quary/constant/constant.dart';
+import '../../../../../core/utils/constant/constant.dart';
 import 'terms_and_conditions_widget.dart';
 
 class CredentialsFormField extends StatefulWidget {

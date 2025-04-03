@@ -3,9 +3,8 @@ import 'package:barber_pannel/core/common/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/common/google_singin_common.dart';
-import '../../../../../core/routes/routes.dart';
-import '../../../../../core/utils/media_quary/constant/constant.dart';
-import '../../../../../core/utils/media_quary/meida_quary_helper.dart';
+import '../../../../../core/utils/constant/constant.dart';
+import '../../../../../core/utils/media_quary/media_quary_helper.dart';
 import '../../widgets/register_widget/details_form_filed.dart';
 
 class RegisterDetailsScreen extends StatelessWidget {
@@ -36,14 +35,14 @@ class RegisterDetailsScreen extends StatelessWidget {
                       ),ConstantWidgets.hight10(context),
                       Text('Please enter your data to complete your account registration process.'),
                       ConstantWidgets.hight20(context),
-                      DetilsFormField( screenWidth: screenWidth, screenHight: screenHight, formKey: _formKey,), //form widget
+                      DetilsFormField( screenWidth: screenWidth, screenHight: screenHight, formKey: _formKey,),
                       ConstantWidgets.hight10(context),
                       GoogleSignInModule(
                           screenWidth: screenWidth,
                           screenHight: screenHight,
                           prefixText: "Already have an account?",
                           suffixText: " Login",
-                          onTap: () => Navigator.pushNamed(context, AppRoutes.login)),
+                          onTap: () => Navigator.pop(context)),
                     ],
                   )),
             ),

@@ -1,4 +1,4 @@
-package com.example.user_panel
+package com.cavlog.app
 
 import io.flutter.embedding.android.FlutterActivity
 
