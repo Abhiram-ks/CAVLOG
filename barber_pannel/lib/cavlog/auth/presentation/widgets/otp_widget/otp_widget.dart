@@ -6,7 +6,7 @@ import 'package:barber_pannel/cavlog/auth/presentation/widgets/otp_widget/otp_va
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../../core/common/action_button.dart';
+import '../../../../../core/common/common_action_button.dart';
 import '../../../../../core/utils/constant/constant.dart';
 import '../../provider/bloc/RegisterSubmition/register_submition_bloc.dart';
 import '../../provider/cubit/buttonProgress/button_progress_cubit.dart';

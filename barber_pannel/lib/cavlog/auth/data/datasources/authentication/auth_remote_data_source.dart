@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:barber_pannel/core/common/common_hashfunction_class.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -30,8 +31,10 @@ class AuthRemoteDataSource {
         log('Email already exists');
         return false;
       }
+      final String hashedPassword = Hashfunction.generateHash(password);
       UserCredential response = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: email, password: hashedPassword);
+      log('message: $hashedPassword ');
 
       if (response.user != null) {
        // await response.user!.sendEmailVerification();

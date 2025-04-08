@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:user_panel/auth/data/models/user_model.dart';
+import 'package:user_panel/core/common/custom_hashing_class.dart';
 
 class AuthRemoteDataSource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -27,8 +29,10 @@ class AuthRemoteDataSource {
         log('Email alredy exists');
         return false;
       }
+      String hashPassword = Hashfunction.generateHash(password);
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: hashPassword);
+      String uid = userCredential.user!.uid; 
 
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       
       if (userCredential.user != null) {
         await _firestore.collection('users').doc(userCredential.user!.uid).set({
@@ -38,25 +42,24 @@ class AuthRemoteDataSource {
        'email': email,
        'image': image ?? '',
        'age': age ?? 0,
-       'uid': userCredential.user!.uid,
+       'uid': uid,
+       'google': false,
        'createdAt': FieldValue.serverTimestamp(),
       });
-      log('User success fully register : $userName, $email');
        return true;
       }else {
        return false;
       }
     } catch (e) { 
-      log('Error during sign-up: $e');
       return false;
     }
   }
 
 
-  Future<Map<String, dynamic>> signInWithGoogle() async {
+  Future<UserModel?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) return {'success': false, 'uid': null};
+      if (googleUser == null) return null;
 
       final GoogleSignInAuthentication googleAuth  = await googleUser.authentication;
       final OAuthCredential credential = GoogleAuthProvider.credential(
@@ -71,21 +74,27 @@ class AuthRemoteDataSource {
          DocumentSnapshot userDoc = await _firestore.collection('users').doc(user.uid).get();
 
          if (!userDoc.exists) {
-           await _firestore.collection('users').doc(user.uid).set({
-            'userName': user.displayName ?? '',
-            'phoneNumber': user.phoneNumber ?? '',
-            'email': user.email ?? '',
-            'image': user.photoURL ?? '',
-            'uid': user.uid,
-            'createdAt': FieldValue.serverTimestamp(),
-           });
+           UserModel newUser = UserModel(
+            uid: user.uid, 
+            userName: user.displayName ?? '', 
+            phoneNumber: user.phoneNumber ?? '', 
+            address: '', 
+            email: user.email ?? '', 
+            image: user.photoURL ?? '', 
+            age: 0, 
+            google: true,
+            createdAt: DateTime.now());
+
+            await _firestore.collection('users').doc(user.uid).set(newUser.toMap());
+            return newUser;
+         } else {
+           return UserModel.fromMap(user.uid, userDoc.data() as Map<String, dynamic>);
          }
-         return {'success': true, 'uid': user.uid};
        }
     } catch (e) {  
-     log('Google sign-in successful');
-      return {'success': false, 'uid': null};
+       log('Google sign-in Eroor: $e');
+      return null;
     }
-    return {'success': false, 'uid': null}; 
+    return null;
   }
 }

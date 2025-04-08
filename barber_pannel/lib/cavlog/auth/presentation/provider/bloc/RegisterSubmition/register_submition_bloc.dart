@@ -53,9 +53,9 @@ class RegisterSubmitionBloc extends Bloc<RegisterSubmitionEvent, RegisterSubmiti
         emit(OtpFailure(error: 'Email is Required to generate OTP'));
         return;
       }
-
+      
+       emit(OtpLoading());
       try {
-         emit(OtpLoading());
          String? otpSend = await OtpService().sendOtpToEmail(_email);
          _otp = otpSend;
          _otpGeneratedTime = DateTime.now();
@@ -67,12 +67,6 @@ class RegisterSubmitionBloc extends Bloc<RegisterSubmitionEvent, RegisterSubmiti
          if (_otp != null) {
             emit(OtpExpired());
          }
-
-        //  Future.delayed(Duration(seconds: 120), (){
-        //   if (_otp!= null) {
-        //     emit(OtpExpired());
-        //   }
-        //  });
 
         }else {
           emit(OtpFailure(error: "Failed to Sent OTP"));

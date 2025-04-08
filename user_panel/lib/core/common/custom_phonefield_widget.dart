@@ -14,7 +14,7 @@ class CustomPhonefieldWidget {
     required BuildContext context,
     required TextEditingController controller,
     required String? Function(String?)? validator,
-    Color iconColor = AppPalette.whiteClr,
+    Color iconColor = AppPalette.hintClr,
     bool enabled = true
   }) {
     return Column(

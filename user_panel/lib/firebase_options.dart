@@ -42,12 +42,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCoVWdl91AGCIV3-GTV1fgAuXKkA0ssxug',
-    appId: '1:76576135686:web:5b812037debaeee0b10187',
+    appId: '1:76576135686:web:2b501083bbb141adb10187',
     messagingSenderId: '76576135686',
     projectId: 'cav-log',
     authDomain: 'cav-log.firebaseapp.com',
     storageBucket: 'cav-log.firebasestorage.app',
-    measurementId: 'G-CS4R678ZV9',
+    measurementId: 'G-XTG3YQW9WX',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -64,6 +64,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '76576135686',
     projectId: 'cav-log',
     storageBucket: 'cav-log.firebasestorage.app',
+    iosClientId: '76576135686-ugntsp1k95qap5f6mc1huiog5guhdtqv.apps.googleusercontent.com',
     iosBundleId: 'com.example.userPanel',
   );
 
@@ -73,6 +74,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '76576135686',
     projectId: 'cav-log',
     storageBucket: 'cav-log.firebasestorage.app',
+    iosClientId: '76576135686-ugntsp1k95qap5f6mc1huiog5guhdtqv.apps.googleusercontent.com',
     iosBundleId: 'com.example.userPanel',
   );
 
@@ -85,4 +87,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'cav-log.firebasestorage.app',
     measurementId: 'G-XTG3YQW9WX',
   );
+
 }

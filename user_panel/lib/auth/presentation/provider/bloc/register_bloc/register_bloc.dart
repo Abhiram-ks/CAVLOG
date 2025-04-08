@@ -32,7 +32,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
     on<RegisterCredentialsData>((event, emit) {
       _email = event.email;
-      _password = event.email;
+      _password = event.password;
     });
 
     on<GenerateOTPEvent>((event, emit) async {
@@ -42,7 +42,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         emit(OtpFailure('Email is Required to generate OTP'));
         return;
       }
-
+       
       try {
         emit(OtpLoading());
         String? otpSend = await OtpService().sendOtpToEmail(_email);
@@ -93,7 +93,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
     on<RegisterSubmit>((event, emit)async {
       try {
-        bool response = await AuthRemoteDataSource().signUpUser(userName: fullName, phoneNumber: phoneNumber, address: address, email: email, password: password);
+        log('Registraction message: $_fullName, $_phoneNumber, $_address, $_email, $_password');
+        bool response = await AuthRemoteDataSource().signUpUser(userName: _fullName, phoneNumber: _phoneNumber, address: _address, email: _email, password: _password);
         log('Working well $fullName  $email');
         if (response) {
           emit(RegisterSuccess());

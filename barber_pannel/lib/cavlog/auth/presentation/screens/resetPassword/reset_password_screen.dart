@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import '../../widgets/reset_password_widget/reset_password_widget.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  ResetPasswordScreen({super.key});
+  final bool isWhat;
+  ResetPasswordScreen({super.key, required this.isWhat});
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -21,7 +22,7 @@ class ResetPasswordScreen extends StatelessWidget {
           child: SingleChildScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             physics: BouncingScrollPhysics(),
-            child: ResetPasswordWIdget(screenWidth: screenWidth,screenHight: screenHight,formKey: _formKey,title: 'Forgot password?' ,description:  "Enter your registered email address to receive a password reset link. Make sure to check your email for further instructions.",),
+            child: ResetPasswordWIdget(screenWidth: screenWidth,screenHight: screenHight,formKey: _formKey, isWhat: isWhat,),
           ),
         )
         ),

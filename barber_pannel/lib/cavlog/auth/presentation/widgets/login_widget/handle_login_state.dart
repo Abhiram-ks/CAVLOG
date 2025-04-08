@@ -5,26 +5,33 @@ import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/provider/bloc/Login_bloc/login_bloc.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/widgets/otp_widget/navigation_to_admin.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../provider/cubit/buttonProgress/button_progress_cubit.dart';
 
 void handleLoginState(BuildContext context, LoginState state) {
-  if(state is LoginBlocked){
+  final buttonCubit = context.read<ButtonProgressCubit>();
+
+  if (state is LoginLoading) {
+    buttonCubit.startLoading();
+  }
+  else if(state is LoginBlocked){
    Navigator.pushNamed(context, AppRoutes.blocked);
+   buttonCubit.stopLoading(); 
   }else if(state is LoginVarified) {
      Navigator.pushReplacementNamed(context, AppRoutes.home);
+     buttonCubit.stopLoading(); 
   } else if (state is LoginNotVerified) {
     navigateToAdminRequest(context);
+    buttonCubit.stopLoading(); 
   } else if (state is LoginFiled) {
-    IconData errorIcon = CupertinoIcons.clear_fill;
     String errorMessage = 'Login failed';
 
     if (state.error.contains("Incorrect Email or Password")) {
-      errorIcon = CupertinoIcons.exclamationmark_triangle_fill;
       errorMessage = 'Incorrect Email or Password';
     } else if (state.error.contains("Too many requests")) {
-      errorIcon = CupertinoIcons.timer_fill;
       errorMessage = 'Too many requests';
     } else if (state.error.contains("Network Error")) {
-      errorIcon = CupertinoIcons.wifi_exclamationmark;
       errorMessage = 'Connection failed';
     }
 
@@ -32,8 +39,8 @@ void handleLoginState(BuildContext context, LoginState state) {
       context: context,
       title: errorMessage,
       description: 'Oops! Login failed. Error: ${state.error}',
-      iconColor: AppPalette.redClr,
-      icon: errorIcon,
+      titleClr: AppPalette.redClr,
     );
+    buttonCubit.stopLoading(); 
   }
 }

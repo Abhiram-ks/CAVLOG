@@ -16,6 +16,8 @@ class SplashWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is GoToLoginPage) {
           Navigator.pushReplacementNamed(context, AppRoutes.login);
+        }else if (state is GoToHomePage){
+          Navigator.pushReplacementNamed(context, AppRoutes.home);
         }
       },
       builder: (context, state) {

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:user_panel/auth/presentation/widget/register_widget/register_credentialform_widget.dart';
 import 'package:user_panel/core/common/custom_appbar_widget.dart';
-
 import '../../../../core/utils/constant/constant.dart';
-
 class RegisterCredentialsScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
    RegisterCredentialsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    
     return LayoutBuilder(
       builder: (context, constraints){
        double screenHeight = constraints.maxHeight;

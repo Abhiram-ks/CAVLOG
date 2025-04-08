@@ -25,7 +25,7 @@ class ButtonComponents{
             child: BlocBuilder<ButtonProgressCubit, ButtonProgressState>
             (builder: (context, state) {
               if (state is ButtonProgressLoading) {
-                return SpinKitFadingFour(
+                return const SpinKitFadingFour(
                   color: AppPalette.whiteClr,
                   size: 23.0,
                 ); 

@@ -11,7 +11,6 @@ part 'reset_password_state.dart';
 class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
   final ResetPasswordRepository _repository;
   ResetPasswordBloc(this._repository) : super(ResetPasswordInitial()) {
-
      on<ResetPasswordRequested>(_onResetPasswordRequested);
     }
 
@@ -27,11 +26,12 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
         }else{
           emit(ResetPasswordFailure('Email not found, Please enter a valid email.'));
         }
-      } catch (e) {
-
+      } catch (e) {     
+        log('Error in Reset Password: ${e.toString()}');
         if(e is FirebaseAuthException){
           emit(ResetPasswordFailure("Databse Error: ${e.message}"));
         }else{
+
           emit(ResetPasswordFailure("Failed to reset Password: ${e.toString()}"));
         }
       }

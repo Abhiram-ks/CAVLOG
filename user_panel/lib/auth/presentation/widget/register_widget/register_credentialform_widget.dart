@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_panel/auth/presentation/provider/bloc/register_bloc/register_bloc.dart';
@@ -10,7 +11,6 @@ import 'package:user_panel/core/common/custom_formfield_widget.dart';
 import 'package:user_panel/core/routes/routes.dart';
 import 'package:user_panel/core/utils/constant/constant.dart';
 import 'package:user_panel/core/validation/input_validation.dart';
-
 import '../../../../core/common/custom_actionbutton_widget.dart';
 import '../../../../core/common/custom_snackbar_widget.dart';
 import '../../../../core/themes/colors.dart';
@@ -76,30 +76,31 @@ class _RegisterCredentialformWidgetState
                   screenWidth: widget.screenWidth,
                   label: 'Send code',
                   onTap: () async{
+                    if (!mounted) return;
                     final timerCubit = context.read<TimerCubit>();
                     final registerBloc = context.read<RegisterBloc>();
                     final buttonCubit = context.read<ButtonProgressCubit>();
                     final isChecked = context.read<CheckboxCubit>().state is CheckboxChecked;
                     final navigator = Navigator.of(context);
                     String? error = await ValidatorHelper.validateEmailWithFirebase(emailController.text);
-
+                    log('Error due to email valid : ${error.toString()}');
+                    
                     if (!mounted) return;
                     if (widget.formKey.currentState!.validate()) {
                       if (isChecked) {
                         if (error != null && error.isNotEmpty) {
                           if (!context.mounted) return;
-                             CustomeSnackBar.show(context: context,
-                                title: "Email alredy exitst",
-                                description: 'Email already exists, please try another email.', iconColor: AppPalette.redClr, icon:CupertinoIcons.mail_solid);
+                         CustomeSnackBar.show(context: context,title: "Oops, Error Occured",
+                                description: '$error. Occured. Please try again!.', iconColor: AppPalette.redClr, icon:CupertinoIcons.mail_solid);
                            return;
                         }
                          buttonCubit.startLoading();
-                         if (!mounted) return;
+                         log('message: user enter email: ${emailController.text.trim()} and password: ${passwordController.text.trim()}');
                          registerBloc.add(RegisterCredentialsData(email: emailController.text.trim(), password: passwordController.text.trim()));
                          registerBloc.add(GenerateOTPEvent());
+                         await Future.delayed(const Duration(seconds: 2));
                          timerCubit.startTimer();
-                        await Future.delayed(const Duration(seconds: 3));
-                        buttonCubit.stopLoading();
+                         buttonCubit.stopLoading();
                         if (mounted) {
                            navigator.pushNamed(AppRoutes.otp);
                         }

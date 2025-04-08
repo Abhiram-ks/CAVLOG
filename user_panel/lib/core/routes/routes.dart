@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:user_panel/app/presentation/screens/navigation/bottom_navigation_controllers.dart';
+import 'package:user_panel/app/presentation/screens/settings/settings_subscreens/profile_and_edit_screen.dart';
 import 'package:user_panel/auth/presentation/screen/location_screen/location_screen.dart';
 import 'package:user_panel/auth/presentation/screen/login_screen/login_screen.dart';
 import 'package:user_panel/auth/presentation/screen/otp_screen/otp_screen.dart';
@@ -18,6 +20,8 @@ class AppRoutes {
   static const String locationAccess= '/location_screen';
   static const String registerCredential = '/register_credentials_screen';
   static const String otp = '/otp_screen';
+  static const String home = '/bottom_navigation_controllers';
+  static const String account = '/profile_and_edit_screen';
 
   static Route<dynamic> generateRoute(RouteSettings settings){
     switch (settings.name) {
@@ -37,6 +41,11 @@ class AppRoutes {
         return CupertinoPageRoute(builder:(_) => RegisterCredentialsScreen());
       case otp:
         return CupertinoPageRoute(builder:(_) => OtpScreen());
+      case home:
+        return MaterialPageRoute(builder: (_) => BottomNavigationControllers());
+      case account:
+        final args = settings.arguments as bool;
+        return CupertinoPageRoute(builder:(_) => ProfileEditDetails(isShow: args));
       default: 
         return MaterialPageRoute(
           builder: (_) => Scaffold(

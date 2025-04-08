@@ -76,7 +76,7 @@ class BlockedAcWidget extends StatelessWidget {
             } catch (e) {
               if (!context.mounted) return;
                 CustomeSnackBar.show(
-                  context: context, title: 'Email not open', description: "Unable to open the email app at this time. Try opening your email manually. Error: $e", iconColor: AppPalette.redClr, icon: Icons.email_rounded);
+                  context: context, title: 'Email not open', description: "Unable to open the email app at this time. Try opening your email manually. Error: $e", titleClr: AppPalette.redClr);
             }
           },
            child: Text(

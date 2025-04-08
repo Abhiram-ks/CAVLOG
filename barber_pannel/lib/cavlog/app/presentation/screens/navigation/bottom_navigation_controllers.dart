@@ -1,9 +1,9 @@
 import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/buttomnav/buttom_nav_cubit.dart';
-import 'package:barber_pannel/cavlog/app/presentation/screens/dashbord/chat/chat_screen.dart';
-import 'package:barber_pannel/cavlog/app/presentation/screens/dashbord/home/home_screen.dart';
-import 'package:barber_pannel/cavlog/app/presentation/screens/dashbord/profile/profile_screen.dart';
-import 'package:barber_pannel/cavlog/app/presentation/screens/dashbord/revenue/revenue_screen.dart';
-import 'package:barber_pannel/cavlog/app/presentation/screens/dashbord/service/service_screen.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/pages/chat/chat_screen.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/pages/home/home_screen.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/pages/profile/profile_screen.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/pages/revenue/revenue_screen.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/pages/service/service_screen.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,8 +23,8 @@ class BottomNavigationControllers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
        data: Theme.of(context).copyWith(
-        splashColor: AppPalette.hintClr.withAlpha((0.3 * 255).round()),
-         highlightColor: AppPalette.blackClr.withAlpha((0.2 * 255).round()), 
+        splashColor: AppPalette.whiteClr.withAlpha((0.3 * 255).round()),
+         highlightColor: AppPalette.buttonClr.withAlpha((0.2 * 255).round()), 
       ),
       child: Scaffold(
        body: BlocBuilder<ButtomNavCubit, BottomNavItem>(
@@ -41,7 +41,7 @@ class BottomNavigationControllers extends StatelessWidget {
            case BottomNavItem.profile:
             return _screens[4];
           }
-        },),
+        }),
         bottomNavigationBar: BlocBuilder<ButtomNavCubit,BottomNavItem>(
           builder: (context, state) {
             return Padding(

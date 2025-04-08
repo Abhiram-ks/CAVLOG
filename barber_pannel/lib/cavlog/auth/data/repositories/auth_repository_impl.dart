@@ -1,8 +1,11 @@
+
 import 'dart:developer';
 
 import 'package:barber_pannel/cavlog/auth/data/models/barber_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../../../../core/common/common_hashfunction_class.dart';
+
 
 abstract class AuthRepository {
   Stream<BarberModel?> login(String email, String password);
@@ -15,7 +18,9 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Stream<BarberModel?> login(String email, String password) async* {
     try {
-      yield* Stream.fromFuture(_auth.signInWithEmailAndPassword(email: email, password: password)).asyncMap((UserCredential userCredential) async {
+      final String hashedPassword = Hashfunction.generateHash(password);
+      log('message: $hashedPassword');
+      yield* Stream.fromFuture(_auth.signInWithEmailAndPassword(email: email, password: hashedPassword)).asyncMap((UserCredential userCredential) async {
           if (userCredential.user != null) {
             String uid = userCredential.user!.uid;
             DocumentSnapshot userDoc = await _firestore.collection('barbers').doc(uid).get();
@@ -29,11 +34,11 @@ class AuthRepositoryImpl implements AuthRepository {
           return null;
       });
     } on FirebaseException catch (e){
-      log('FirebaseAuthException: ${e.message}');
+      Exception('Firebase Exception: ${e.code}');
       yield null;
       rethrow;
     }catch (e) {
-       log('An Error Occurred Login: ${e.toString()}');
+      Exception('An Error Occurred: ${e.toString()}');
       yield null;
     }
   }

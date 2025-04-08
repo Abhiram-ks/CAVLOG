@@ -4,7 +4,7 @@ import 'package:barber_pannel/cavlog/auth/presentation/provider/bloc/RegisterSub
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/common/action_button.dart';
+import '../../../../../core/common/common_action_button.dart';
 import '../../../../../core/common/textfield_helper.dart';
 import '../../../../../core/common/phone_textfield.dart';
 import '../../../../../core/routes/routes.dart';
@@ -95,7 +95,7 @@ class _DetilsFormFieldState extends State<DetilsFormField> {
                           context: context,
                           title: 'Submission Failed',
                           description:'Please fill in all the required fields before proceeding.',
-                          iconColor: AppPalette.redClr,icon: CupertinoIcons.clear_circled);
+                          titleClr: AppPalette.redClr);
                     }
                   },
                   label: 'Next',

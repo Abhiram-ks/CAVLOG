@@ -3,12 +3,11 @@ import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/core/validation/input_validations.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/provider/bloc/Login_bloc/login_bloc.dart';
-import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/widgets/login_widget/handle_login_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/common/action_button.dart';
+import '../../../../../core/common/common_action_button.dart';
 import '../../../../../core/common/textfield_helper.dart';
 import '../../../../../core/utils/constant/constant.dart';
 
@@ -55,7 +54,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, AppRoutes.resetPassword);
+              Navigator.pushNamed(context, AppRoutes.resetPassword, arguments: true);
             },
             child: Align(
               alignment: Alignment.bottomRight,
@@ -77,18 +76,13 @@ class _LoginFormState extends State<LoginForm> {
               onTap: () async{
                 if (!mounted) return;
                final loginBloc = context.read<LoginBloc>();
-               final buttonCubit = context.read<ButtonProgressCubit>();
 
                 if(widget.formKey.currentState!.validate()){
-                 buttonCubit.startLoading();
                 loginBloc.add(LoginActionEvent(email: emailController.text.trim(), password: passwordController.text.trim(), context ));
-                await Future.delayed(const Duration(seconds: 2));
-                buttonCubit.stopLoading();
                 }else {
                   CustomeSnackBar.show(context: context, title: 'Submission Faild',
                  description:'Please fill in all the required fields before proceeding..',
-                 iconColor: AppPalette.redClr,
-                icon: CupertinoIcons.clear_circled);
+                 titleClr: AppPalette.redClr,);
                 }
               },
             ),

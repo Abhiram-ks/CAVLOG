@@ -1,6 +1,7 @@
 import 'package:barber_pannel/cavlog/app/presentation/screens/navigation/bottom_navigation_controllers.dart';
-import 'package:barber_pannel/cavlog/app/presentation/screens/settings/chenge_password.dart';
-import 'package:barber_pannel/cavlog/app/presentation/screens/settings/profile_edit_details.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/settings/edit_details_screen/profile_edit_details.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/settings/service_management_screen/service_add_screen.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/settings/service_management_screen/service_manage_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/adminRequst/admin_request.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/blocked/blocked_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/login/login_screen.dart';
@@ -24,8 +25,9 @@ class AppRoutes {
   static const String home = '/bottom_navigation_controllers';
   static const String resetPassword = '/reset_password_screen';
   static const String blocked = '/blocked_screen';
-  static const String chengePassword = '/chenge_password'; 
   static const String accountScreen = '/profile_edit_details';
+  static const String serviceManageScreen = '/service_manage_screen';
+  static const String serviceAddscreen = '/service_add_screen';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings){
@@ -45,14 +47,17 @@ class AppRoutes {
       case home:
         return MaterialPageRoute(builder: (_) =>  BottomNavigationControllers());
       case resetPassword:
-        return CupertinoPageRoute(builder: (_) =>  ResetPasswordScreen());
+        final args = settings.arguments as bool;
+        return CupertinoPageRoute(builder: (_) =>  ResetPasswordScreen(isWhat: args));
       case blocked:
         return CupertinoPageRoute(builder: (_) => BlockedScreen());
-      case chengePassword:
-        return CupertinoPageRoute(builder: (_) => ChengePassword());
       case accountScreen:
         final args = settings.arguments as bool;
         return CupertinoPageRoute(builder: (_) => ProfileEditDetails(isShow: args));
+      case serviceAddscreen: 
+        return CupertinoPageRoute(builder: (_) => ServiceAddScreen());
+      case serviceManageScreen:
+        return CupertinoPageRoute(builder: (_) => ServiceManageScreen());
       default:
        return MaterialPageRoute(
           builder: (_) =>  Scaffold(

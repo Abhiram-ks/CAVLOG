@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ValidatorHelper {
@@ -12,13 +13,13 @@ class ValidatorHelper {
     return null;
   }
 
-  static Future<String?> validateEmailWithFirebase(String email) async{
+    static Future<String?> validateEmailWithFirebase(String email) async{
       if(!emailRegex.hasMatch(email)){
         return 'Enter a valid Gmail address';
       }
      
       try {
-       final futures = [
+         final futures = [
       FirebaseFirestore.instance.collection('barbers').where('email', isEqualTo: email).get(),
       FirebaseFirestore.instance.collection('users').where('email', isEqualTo: email).get(),
      ];
@@ -29,7 +30,7 @@ class ValidatorHelper {
      }
      return null;
     } catch (e) {
-         return 'Error checking email: $e';
+      return 'Error checking email: $e';
      }
   }
   

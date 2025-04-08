@@ -12,7 +12,7 @@ class CustomeSnackBar {
   }){
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    
+  
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: TweenAnimationBuilder<double>(tween: Tween(begin: 0.0, end: 1.0), duration: const Duration(milliseconds: 500),
@@ -27,7 +27,7 @@ class CustomeSnackBar {
            children: [
              Row(
               children: [
-                Icon(icon, color: iconColor, size: 28),
+                Icon(icon, color: iconColor.withAlpha(138), size: 28),
                 ConstantWidgets.width20(context),
                 Expanded(child: Column(
                    crossAxisAlignment: CrossAxisAlignment.start,

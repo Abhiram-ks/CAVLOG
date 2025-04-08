@@ -15,6 +15,7 @@ class LocationTextformWidget {
     required Color suffixClr,
     required VoidCallback action,
     required BuildContext context,
+    bool enabled = true
   }){
        return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,6 +33,7 @@ class LocationTextformWidget {
               obscureText: false,
               style: const TextStyle(fontSize: 16),
               autovalidateMode: AutovalidateMode.onUserInteraction,
+              enabled: enabled,
               decoration: InputDecoration(
                 hintText: hintText,
                 hintStyle: TextStyle(color: AppPalette.hintClr),

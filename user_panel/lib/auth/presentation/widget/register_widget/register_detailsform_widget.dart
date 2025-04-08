@@ -59,7 +59,7 @@ class _RegisterDetailsFormWidgetState extends State<RegisterDetailsFormWidget>
               label: 'Address',
               hintText: "Select Address",
               prefixIcon: CupertinoIcons.location_solid,
-              suffixIcon: CupertinoIcons.map_fill,
+              suffixIcon: CupertinoIcons.compass,
               controller: _addressController,
               validator: ValidatorHelper.validateLocation,
               prefixClr: AppPalette.redClr,
@@ -86,7 +86,7 @@ class _RegisterDetailsFormWidgetState extends State<RegisterDetailsFormWidget>
                     if (widget.formKey.currentState!.validate()) {
                       buttonCubit.startLoading();
                       registerBloc.add(RegisterPersonalData(fullName: _nameController.text.trim(), phoneNumber: _phoneController.text, address: _addressController.text.trim()));
-                      await Future.delayed(const Duration(milliseconds: 50));
+                      await Future.delayed(const Duration(milliseconds: 20));
                       if (mounted){ navigator.pushNamed(AppRoutes.registerCredential);}
                       buttonCubit.stopLoading();
                     } else {

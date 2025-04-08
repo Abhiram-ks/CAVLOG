@@ -11,6 +11,7 @@ class RegisterDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return LayoutBuilder(
       builder: (context, constraints) {
        double screenHeight = constraints.maxHeight;

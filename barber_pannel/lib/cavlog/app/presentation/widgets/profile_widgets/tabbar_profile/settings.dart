@@ -1,6 +1,6 @@
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/logout/logout_bloc.dart';
-import 'package:barber_pannel/cavlog/app/presentation/widgets/profile_widgets/settings_widget/logout_widget/logout_state_handle.dart';
-import 'package:barber_pannel/cavlog/app/presentation/widgets/profile_widgets/settings_widget/settings_filed_widget/settings_custom_widget.dart';
+import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/logout_widget/logout_state_handle.dart';
+import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/settings_filed_widget/settings_custom_widget.dart';
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,37 +27,22 @@ class TabbarSettings extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ConstantWidgets.hight20(context),
-            Text('Settings & privacy',
-                style: TextStyle(
-                  color: AppPalette.blackClr,
-                )),
-            Text('Your account',
-                style: TextStyle(
-                  color: AppPalette.greyClr,
-                )),
+            Text('Settings & privacy',style: TextStyle(color: AppPalette.blackClr,)),
+            Text('Your account',style: TextStyle(color: AppPalette.greyClr,)),
+            settingsWidget(context: context,screenHeight: screenHeight, icon: CupertinoIcons.profile_circled,title: 'Profile details',
+                onTap: () { Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: false);}),
+            settingsWidget(context: context,screenHeight: screenHeight, icon: CupertinoIcons.square_pencil,title: 'Edit Profile',
+                onTap: () {Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: true);}),
+            settingsWidget(context: context, screenHeight: screenHeight,icon: CupertinoIcons.lock, title: 'Change Password',
+                onTap: () { Navigator.pushNamed(context, AppRoutes.resetPassword,arguments: false);}),
+            settingsWidget(context: context, screenHeight: screenHeight,icon:		CupertinoIcons.wrench,title: 'Service Management',
+                onTap: () {Navigator.pushNamed(context, AppRoutes.serviceManageScreen);}),
             settingsWidget(
                 context: context,
                 screenHeight: screenHeight,
-                icon: CupertinoIcons.profile_circled,
-                title: 'Profile details',
+                icon: CupertinoIcons.clock,
+                title: 'Time We Serve You',
                 onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: false);
-                }),
-            settingsWidget(
-                context: context,
-                screenHeight: screenHeight,
-                icon: CupertinoIcons.square_pencil,
-                title: 'Edit Profile',
-                onTap: () {
-                   Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: true);
-                }),
-            settingsWidget(
-                context: context,
-                screenHeight: screenHeight,
-                icon: CupertinoIcons.lock,
-                title: 'Change Password',
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.chengePassword);
                 }),
             Divider(
               color: AppPalette.hintClr,

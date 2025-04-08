@@ -1,6 +1,5 @@
 
 import 'package:barber_pannel/core/themes/colors.dart';
-import 'package:barber_pannel/core/utils/constant/constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomeSnackBar {
@@ -8,8 +7,7 @@ class CustomeSnackBar {
     required BuildContext context,
     required String title,
     required String description,
-    required Color iconColor,
-    required IconData icon,
+    required Color titleClr,
   }){
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -28,8 +26,6 @@ class CustomeSnackBar {
            children: [
              Row(
               children: [
-                Icon(icon, color: iconColor, size: 28),
-                ConstantWidgets.width20(context),
                 Expanded(child: Column(
                    crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -37,7 +33,7 @@ class CustomeSnackBar {
                     Text(
                           title,
                           style: TextStyle(
-                            color: AppPalette.blackClr,
+                            color:titleClr,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -46,7 +42,7 @@ class CustomeSnackBar {
                         Text(
                           description,
                           style: TextStyle(
-                           color: AppPalette.hintClr,
+                           color: AppPalette.greyClr,
                           ),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
@@ -73,7 +69,6 @@ class CustomeSnackBar {
           behavior: SnackBarBehavior.floating,
           elevation: 3,
            dismissDirection:  DismissDirection.down,
-
           backgroundColor: AppPalette.whiteClr,
            shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

@@ -1,7 +1,7 @@
 import 'package:admin/core/cloudinary/cloudinary_config.dart';
 import 'package:admin/core/themes/themes_manager.dart';
-import 'package:admin/data/datasources/cloudinary_service/cloudinary_service.dart';
-import 'package:admin/data/datasources/cloudinary_service/firestore_image_service.dart';
+import 'package:admin/core/cloudinary/cloudinary_service.dart';
+import 'package:admin/data/datasources/store_imageservice/firestore_image_service.dart';
 import 'package:admin/data/repositories/auth_repository.dart';
 import 'package:admin/data/repositories/banner_repositoty.dart';
 import 'package:admin/data/repositories/barbers_repository.dart';

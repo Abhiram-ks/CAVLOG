@@ -6,6 +6,7 @@ import 'package:barber_pannel/cavlog/app/presentation/widgets/profile_widgets/ta
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/common/common_imageshow.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../../core/utils/image/app_images.dart';
 import '../../../../../../core/utils/constant/constant.dart';
@@ -44,11 +45,7 @@ class ProfileScrollView extends StatelessWidget {
                     title: isCollapsed
                         ? Row(
                             children: [
-                              Icon(
-                                Icons.sensor_occupied,
-                                color: AppPalette.greyClr,
-                              ),
-                              ConstantWidgets.width20(context),
+                              ConstantWidgets.width40(context),
                               Text(
                                 barber.barberName,
                                 style: TextStyle(color: AppPalette.whiteClr),
@@ -89,47 +86,17 @@ class ProfileScrollView extends StatelessWidget {
                                   Row(
                                     children: [
                                       ClipRRect(
-                                        borderRadius: BorderRadius.circular(100),
+                                        borderRadius:
+                                            BorderRadius.circular(100),
                                         child: Container(
-                                          color: AppPalette.greyClr,
+                                            color: AppPalette.greyClr,
                                             width: 60,
                                             height: 60,
-                                            child: (barber.image != null && barber.image!.startsWith('http'))
-                                                    ? Image.network(
-                                                        barber.image!,
-                                                        fit: BoxFit.contain,
-                                                        loadingBuilder: (context,
-                                                            child,
-                                                            loadingProgress) {
-                                                          if (loadingProgress == null) return child;
-                                                          return Center(
-                                                            child:CircularProgressIndicator(
-                                                              color: AppPalette
-                                                                  .buttonClr,
-                                                              value: loadingProgress
-                                                                          .expectedTotalBytes !=
-                                                                      null
-                                                                  ? loadingProgress
-                                                                          .cumulativeBytesLoaded /
-                                                                      (loadingProgress
-                                                                              .expectedTotalBytes ??
-                                                                          1)
-                                                                  : null,
-                                                            ),
-                                                          );
-                                                        },
-                                                        errorBuilder: (context,
-                                                            error, stackTrace) {
-                                                          return Image.asset(
-                                                        AppImages.loginImageAbove,
-                                                        fit: BoxFit.cover,
-                                                      );
-                                                        },
-                                                      )
-                                                    : Image.asset(
-                                                        AppImages.loginImageAbove,
-                                                        fit: BoxFit.cover,
-                                                      )),
+                                            child: (barber.image != null &&
+                                                    barber.image!
+                                                        .startsWith('http'))
+                                                ? imageshow(imageUrl: barber.image!,imageAsset:AppImages.loginImageAbove)
+                                                : Image.asset(AppImages.loginImageAbove,fit: BoxFit.cover,)),
                                       ),
                                       ConstantWidgets.width40(context),
                                       Column(
@@ -145,7 +112,9 @@ class ProfileScrollView extends StatelessWidget {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                               Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: true);
+                                              Navigator.pushNamed(context,
+                                                  AppRoutes.accountScreen,
+                                                  arguments: true);
                                             },
                                             style: TextButton.styleFrom(
                                               backgroundColor:

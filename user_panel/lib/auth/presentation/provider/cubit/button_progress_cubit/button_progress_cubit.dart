@@ -11,4 +11,20 @@ class ButtonProgressCubit extends Cubit<ButtonProgressState> {
   void stopLoading(){
     emit(ButtonProgressSuccess());
   }
+
+  void googleSingInStart(){
+    emit(GoogleSignInLoadingButton());
+  }
+
+  void googleSingInStop(){
+    emit(GoogleSignInSuccessButton());
+  }
+
+  void bottomSheetStart() {
+    emit(BottomSheetButtonLoading());
+  }
+
+  void bottomSheetStop() {
+    emit(BottomSheetButtonSuccess());
+  }
 }

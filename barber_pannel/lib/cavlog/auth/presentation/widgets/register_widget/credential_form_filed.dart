@@ -9,7 +9,7 @@ import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/timerCubit
 import 'package:barber_pannel/cavlog/auth/presentation/widgets/otp_widget/otp_snackbar_message_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/common/action_button.dart';
+import '../../../../../core/common/common_action_button.dart';
 import '../../../../../core/common/textfield_helper.dart';
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/constant/constant.dart';
@@ -81,15 +81,15 @@ class _CredentialsFormFieldState extends State<CredentialsFormField> {
                       if (!context.mounted) return;
                      CustomeSnackBar.show(context: context,
                      title: "Email alredy exitst",
-                     description: 'Email already exists, please try another email.', iconColor: AppPalette.redClr, icon:CupertinoIcons.mail_solid);
+                     description: 'Email already exists, please try another email.', titleClr: AppPalette.redClr,);
                      return;
                   }
                   buttonCubit.startLoading();
                   if (!mounted) return;
                   registerBloc.add(UpdateCredentials(email: emailController.text, isVerified: false, password: passwordController.text, isBloc: false));
                   registerBloc.add(GenerateOTPEvent());
+                  await Future.delayed(const Duration(seconds: 2));
                   timerCubit.startTimer();
-                  await Future.delayed(const Duration(seconds: 3));
                    buttonCubit.stopLoading();
                   if (mounted) {
                     navigator.pushNamed(AppRoutes.otp);
@@ -100,7 +100,7 @@ class _CredentialsFormFieldState extends State<CredentialsFormField> {
                   context: context,
                   title: 'Oops, you missed the checkbox',
                   description:'Agree with our terms and conditions before proceeding..',
-                  iconColor: AppPalette.redClr,icon: CupertinoIcons.checkmark_square);
+                  titleClr: AppPalette.redClr,);
                 }
               }else{
                  if(!context.mounted) return;
@@ -108,8 +108,7 @@ class _CredentialsFormFieldState extends State<CredentialsFormField> {
                  context: context,
                  title: 'Submission Faild',
                  description:'Please fill in all the required fields before proceeding..',
-                 iconColor: AppPalette.redClr,
-                icon: CupertinoIcons.clear_circled);
+                 titleClr: AppPalette.redClr,);
               }
            } ),
           )

@@ -1,11 +1,10 @@
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barberdata_repo.dart';
-import 'package:barber_pannel/cavlog/app/data/repositories/image_picker_repo.dart';
-import 'package:barber_pannel/cavlog/app/domain/usecases/image_picker_usecase.dart';
+import 'package:barber_pannel/cavlog/app/data/repositories/fetch_servicedata_repo.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/barber_service_bloc/barber_service_bloc.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetch_service_bloc/fetch_service_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchbarber/fetch_barber_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/logout/logout_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/buttomnav/buttom_nav_cubit.dart';
-import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/profiletab/profiletab_cubit.dart';
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/image_picker/image_picker_bloc.dart';
 import 'package:barber_pannel/core/cloudinary/cloudinary_config.dart';
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:barber_pannel/core/themes/theme_manager.dart';
@@ -24,8 +23,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:image_picker/image_picker.dart';
-
+import 'cavlog/app/presentation/provider/cubit/profiletab/profiletab_cubit.dart';
 import 'cavlog/auth/presentation/provider/cubit/icon/icon_cubit.dart';
 
 void main() async{
@@ -52,16 +50,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginBloc(AuthRepositoryImpl())),
         //Appcore Bloc
         BlocProvider(create: (context) => FetchBarberBloc(FetchBarberRepositoryImpl())..add(FetchCurrentBarber())),
-        BlocProvider(create: (context) => ImagePickerBloc(PickImageUseCase(ImagePickerRepositoryImpl(ImagePicker())))),
         //Cubit section
         BlocProvider(create: (context) => IconCubit()),
         BlocProvider(create: (context) => CheckboxCubit()),
         BlocProvider(create: (context) => ButtonProgressCubit()),
         BlocProvider(create: (context) => TimerCubitCubit()),
-        //Appcore cubit
+        //Appcore Bloc
         BlocProvider(create: (context) => ButtomNavCubit()),
         BlocProvider(create: (context) => ProfiletabCubit()),
         BlocProvider(create: (context) => LogoutBloc(context.read<ButtomNavCubit>())),
+        BlocProvider(create: (context) => FetchServiceBloc(ServiceRepositoryImpl())..add(FetchServiceRequst())),
+        BlocProvider(create: (context) => BarberServiceBloc()),
       ],
       child: MaterialApp(
           title: 'Cavlog-Business',
@@ -73,3 +72,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+

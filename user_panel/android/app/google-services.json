@@ -12,7 +12,12 @@
           "package_name": "com.example.admin"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "76576135686-8oql9s6e8tmp3ge59criiccg101mn138.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDVlTisIpz_RpkrLcpAIvwaKbwv6Ed3fp4"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76576135686-8oql9s6e8tmp3ge59criiccg101mn138.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "76576135686-ji4c2dsh53t5i37hudo6t8gg352i5m99.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.barberPannel"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,7 +48,12 @@
           "package_name": "com.example.barber_pannel"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "76576135686-8oql9s6e8tmp3ge59criiccg101mn138.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDVlTisIpz_RpkrLcpAIvwaKbwv6Ed3fp4"
@@ -39,7 +61,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76576135686-8oql9s6e8tmp3ge59criiccg101mn138.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "76576135686-ji4c2dsh53t5i37hudo6t8gg352i5m99.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.barberPannel"
+              }
+            }
+          ]
         }
       }
     },
@@ -50,7 +84,20 @@
           "package_name": "com.example.user_panel"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "76576135686-caqk4hrv0hv153rbmruccds0l7c0ph4r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user_panel",
+            "certificate_hash": "6563f3912016e10e2e4cb8a3187afc0ad313eff3"
+          }
+        },
+        {
+          "client_id": "76576135686-8oql9s6e8tmp3ge59criiccg101mn138.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDVlTisIpz_RpkrLcpAIvwaKbwv6Ed3fp4"
@@ -58,7 +105,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76576135686-8oql9s6e8tmp3ge59criiccg101mn138.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "76576135686-ji4c2dsh53t5i37hudo6t8gg352i5m99.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.barberPannel"
+              }
+            }
+          ]
         }
       }
     }
