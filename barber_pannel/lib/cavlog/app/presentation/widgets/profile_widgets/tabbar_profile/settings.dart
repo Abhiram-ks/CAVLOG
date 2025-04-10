@@ -27,23 +27,55 @@ class TabbarSettings extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ConstantWidgets.hight20(context),
-            Text('Settings & privacy',style: TextStyle(color: AppPalette.blackClr,)),
-            Text('Your account',style: TextStyle(color: AppPalette.greyClr,)),
-            settingsWidget(context: context,screenHeight: screenHeight, icon: CupertinoIcons.profile_circled,title: 'Profile details',
-                onTap: () { Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: false);}),
-            settingsWidget(context: context,screenHeight: screenHeight, icon: CupertinoIcons.square_pencil,title: 'Edit Profile',
-                onTap: () {Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: true);}),
-            settingsWidget(context: context, screenHeight: screenHeight,icon: CupertinoIcons.lock, title: 'Change Password',
-                onTap: () { Navigator.pushNamed(context, AppRoutes.resetPassword,arguments: false);}),
-            settingsWidget(context: context, screenHeight: screenHeight,icon:		CupertinoIcons.wrench,title: 'Service Management',
-                onTap: () {Navigator.pushNamed(context, AppRoutes.serviceManageScreen);}),
+            Text('Settings & privacy',
+                style: TextStyle(
+                  color: AppPalette.blackClr,
+                )),
+            Text('Your account',
+                style: TextStyle(
+                  color: AppPalette.greyClr,
+                )),
+            settingsWidget(
+                context: context,
+                screenHeight: screenHeight,
+                icon: CupertinoIcons.profile_circled,
+                title: 'Profile details',
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.accountScreen,
+                      arguments: false);
+                }),
+            settingsWidget(
+                context: context,
+                screenHeight: screenHeight,
+                icon: CupertinoIcons.square_pencil,
+                title: 'Edit Profile',
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.accountScreen,
+                      arguments: true);
+                }),
+            settingsWidget(
+                context: context,
+                screenHeight: screenHeight,
+                icon: CupertinoIcons.lock,
+                title: 'Change Password',
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.resetPassword,
+                      arguments: false);
+                }),
+            settingsWidget(
+                context: context,
+                screenHeight: screenHeight,
+                icon: CupertinoIcons.wrench,
+                title: 'Service Management',
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.serviceManageScreen);
+                }),
             settingsWidget(
                 context: context,
                 screenHeight: screenHeight,
                 icon: CupertinoIcons.clock,
                 title: 'Time We Serve You',
-                onTap: () {
-                }),
+                onTap: () {}),
             Divider(
               color: AppPalette.hintClr,
             ),
@@ -116,14 +148,15 @@ class TabbarSettings extends StatelessWidget {
                 handleLogOutState(context, state);
               },
               child: InkWell(
-                onTap: () {
-                   BlocProvider.of<LogoutBloc>(context).add(LogoutActionEvent());
-                },
                 splashColor: AppPalette.trasprentClr,
                 child: Text(
                   'Log out',
                   style: TextStyle(color: AppPalette.logoutClr, fontSize: 17),
                 ),
+                onTap: () {
+                  BlocProvider.of<LogoutBloc>(context)
+                      .add(LogoutActionEvent());
+                },
               ),
             ),
             ConstantWidgets.hight50(context)

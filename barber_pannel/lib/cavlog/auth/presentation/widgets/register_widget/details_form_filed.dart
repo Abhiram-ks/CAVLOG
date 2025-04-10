@@ -62,7 +62,7 @@ class _DetilsFormFieldState extends State<DetilsFormField> {
             validator: ValidatorHelper.validatePhoneNumber,
           ),
           TextFormFieldWidget(
-            label: 'Owner Address',
+            label: 'Venture Address',
             hintText: 'Your Answer',
             prefixIcon: CupertinoIcons.location_solid,
             controller: addressController,

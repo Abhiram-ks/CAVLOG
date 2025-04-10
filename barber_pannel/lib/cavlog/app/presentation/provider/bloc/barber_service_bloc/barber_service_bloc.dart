@@ -1,14 +1,10 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../data/datasources/firestore_barber_service.dart';
-import '../../../../data/models/barberservice_model.dart';
 part 'barber_service_event.dart';
 part 'barber_service_state.dart';
 
 class BarberServiceBloc extends Bloc<BarberServiceEvent, BarberServiceState> {
-  final List<BarberServiceModel> _serviceList = [];
   String _serviceName = '';
   double _amount = 0.0;
 
@@ -32,16 +28,10 @@ class BarberServiceBloc extends Bloc<BarberServiceEvent, BarberServiceState> {
       final prefs = await SharedPreferences.getInstance();
       final String? barberId = prefs.getString('barberUid');
       if (barberId == null || barberId.isEmpty) {
-         log('message: unexpected error occured: Barber Id not found');
-        emit(BarberServiceFailure('Barber ID not found.'));
         return;
       }
-
-      _serviceList.add(
-        BarberServiceModel(serviceName: _serviceName, amount: _amount,)
-      );
-
-      final success = await _firestoreService.uploadNewBarberService(barberID: barberId, services: _serviceList);
+      
+      final success = await _firestoreService.uploadNewBarberService(barberID: barberId, services: _serviceName,serviceRate: _amount);
 
       if (success == null) {
          emit(BarberServiceSuccess());
@@ -51,6 +41,5 @@ class BarberServiceBloc extends Bloc<BarberServiceEvent, BarberServiceState> {
     } catch (e) {
       emit(BarberServiceFailure('Unexpected error occurred. $e'));
     }
-
     }
 }

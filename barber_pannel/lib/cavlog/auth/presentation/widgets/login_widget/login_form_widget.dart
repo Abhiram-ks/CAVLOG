@@ -54,7 +54,8 @@ class _LoginFormState extends State<LoginForm> {
           ),
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, AppRoutes.resetPassword, arguments: true);
+              Navigator.pushNamed(context, AppRoutes.resetPassword,
+                  arguments: true);
             },
             child: Align(
               alignment: Alignment.bottomRight,
@@ -73,16 +74,21 @@ class _LoginFormState extends State<LoginForm> {
               screenHight: widget.screenHight,
               screenWidth: widget.screenWidth,
               label: 'Sign In',
-              onTap: () async{
-                if (!mounted) return;
-               final loginBloc = context.read<LoginBloc>();
-
-                if(widget.formKey.currentState!.validate()){
-                loginBloc.add(LoginActionEvent(email: emailController.text.trim(), password: passwordController.text.trim(), context ));
-                }else {
-                  CustomeSnackBar.show(context: context, title: 'Submission Faild',
-                 description:'Please fill in all the required fields before proceeding..',
-                 titleClr: AppPalette.redClr,);
+              onTap: () async {
+                final loginBloc = context.read<LoginBloc>();
+                if (widget.formKey.currentState!.validate()) {
+                  loginBloc.add(LoginActionEvent(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
+                      context));
+                } else {
+                  CustomeSnackBar.show(
+                    context: context,
+                    title: 'Submission Faild',
+                    description:
+                        'Please fill in all the required fields before proceeding..',
+                    titleClr: AppPalette.redClr,
+                  );
                 }
               },
             ),

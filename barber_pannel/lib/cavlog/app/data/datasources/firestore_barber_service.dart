@@ -1,15 +1,13 @@
-
 import 'dart:developer';
 
-import 'package:barber_pannel/cavlog/app/data/models/barberservice_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 class FirestoreBarberService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<String?> uploadNewBarberService({
     required String barberID,
-    required List<BarberServiceModel> services,
+    required String services,  
+    required double serviceRate,  
   }) async {
     try {
       final DocumentReference barberDoc = _firestore
@@ -20,22 +18,18 @@ class FirestoreBarberService {
 
       Map<String, dynamic> existingServices = {};
       if (docSnapshot.exists) {
-        existingServices = (docSnapshot.data() as Map<String, dynamic>?)?['services'] ?? {};
+        existingServices = ((docSnapshot.data() as Map<String, dynamic>?)?['services'] ?? {}) as Map<String, dynamic>;
       }
 
-      for (BarberServiceModel service in services) {
-        if (existingServices.containsKey(service.serviceName)) {
-          log('Duplicate service: ${service.serviceName}');
-          return 'Duplicate service found: ${service.serviceName}';
-        }
+      if (existingServices.containsKey(services)) {
+        log('Duplicate service: $services');
+        return 'Duplicate service found: $services';
       }
-
-      Map<String, dynamic> newServices = {
-        for (var service in services) service.serviceName: service.amount
-      };
-
+      
       await barberDoc.set({
-        'services': {...existingServices, ...newServices}
+        'services': {
+          services: serviceRate,
+        }
       }, SetOptions(merge: true));
 
       return null;

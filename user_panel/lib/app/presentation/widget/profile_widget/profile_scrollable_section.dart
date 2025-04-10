@@ -3,9 +3,9 @@ import '../../../../core/themes/colors.dart';
 import '../../../../core/utils/constant/constant.dart';
 
 SizedBox profileviewWidget(double screenWidth, BuildContext context,
-      IconData icons, String heading, Color iconclr, {Color? textColor}) {
+      IconData icons, String heading, Color iconclr, {Color? textColor, int ? maxline, double? widget}) {
     return SizedBox(
-      width: screenWidth * 0.55,
+      width:widget ?? screenWidth * 0.55,
       child: Row(children: [
         Icon(
           icons,
@@ -18,7 +18,7 @@ SizedBox profileviewWidget(double screenWidth, BuildContext context,
             style: TextStyle(
               color: textColor ?? AppPalette.whiteClr,
             ),
-            maxLines: 1,
+            maxLines:maxline ?? 1,
             overflow: TextOverflow.ellipsis,
           ),
         ),

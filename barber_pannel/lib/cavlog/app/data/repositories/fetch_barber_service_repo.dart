@@ -23,9 +23,12 @@ class FetchBarberServiceRepositoryImpl implements FetchBarberServiceRepository {
 
       final servicesMap = Map<String, dynamic>.from(data['services']);
 
-      return servicesMap.entries.map((entry) {
-        return BarberServiceModel.fromMap(entry.key, entry.value);
-      }).toList();
+       return servicesMap.entries.map((entry) {
+         return BarberServiceModel.fromMap(
+          barberID: barberId, 
+          key: entry.key, 
+          value:  entry.value);
+       }).toList();
     });
     } catch (e) {
       log('message: Error occured $e');

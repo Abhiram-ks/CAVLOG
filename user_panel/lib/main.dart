@@ -1,12 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:user_panel/app/data/repositories/fetch_allbarbers_repo.dart';
 import 'package:user_panel/app/data/repositories/fetch_userdata_repo.dart';
 import 'package:user_panel/app/domain/usecases/update_user_profile.dart';
+import 'package:user_panel/app/presentation/provider/bloc/fetch_allbarber_bloc/fetch_allbarber_bloc.dart';
 import 'package:user_panel/app/presentation/provider/bloc/fetchuser_bloc/fetch_user_bloc.dart';
 import 'package:user_panel/app/presentation/provider/bloc/logout_bloc/logout_bloc.dart';
 import 'package:user_panel/app/presentation/provider/bloc/updateprofile_bloc/update_profile_bloc.dart';
-import 'package:user_panel/app/presentation/provider/cubit/cubit/buttom_nav_cubit.dart';
+import 'package:user_panel/app/presentation/provider/cubit/buttom_nav_cubit/buttom_nav_cubit.dart';
 import 'package:user_panel/auth/data/repositories/authlogin_impl_repo.dart';
 import 'package:user_panel/auth/data/repositories/reset_password_repo.dart';
 import 'package:user_panel/auth/domain/usecases/get_location_usecase.dart';
@@ -62,7 +64,8 @@ class MyApp extends StatelessWidget {
         //Appcore Bloc
         BlocProvider(create: (context) => LogoutBloc(context.read<ButtomNavCubit>())),
         BlocProvider(create: (context) => FetchUserBloc(FetchUserRepositoryImpl())..add(FetchCurrentUserRequst())),
-        BlocProvider(create: (context) => UpdateProfileBloc(CloudinaryService(), UpdateUserProfileUseCase()))
+        BlocProvider(create: (context) => UpdateProfileBloc(CloudinaryService(), UpdateUserProfileUseCase())),
+        BlocProvider(create: (context) => FetchAllbarberBloc(FetchBarberRepositoryImpl())..add(FetchAllBarbersRequested()))
       ],
     child: MaterialApp(
      title: 'Cavlog',

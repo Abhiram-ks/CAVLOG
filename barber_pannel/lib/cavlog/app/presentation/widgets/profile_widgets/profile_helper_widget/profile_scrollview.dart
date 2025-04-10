@@ -1,8 +1,8 @@
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchbarber/fetch_barber_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/widgets/profile_widgets/profile_helper_widget/profile_tabbar_widget.dart';
 import 'package:barber_pannel/cavlog/app/presentation/widgets/profile_widgets/tabbar_profile/posts.dart';
 import 'package:barber_pannel/cavlog/app/presentation/widgets/profile_widgets/tabbar_profile/post_upload.dart';
 import 'package:barber_pannel/cavlog/app/presentation/widgets/profile_widgets/tabbar_profile/settings.dart';
+import 'package:barber_pannel/cavlog/app/data/models/barber_model.dart';
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,12 +15,14 @@ import '../../../provider/cubit/profiletab/profiletab_cubit.dart';
 class ProfileScrollView extends StatelessWidget {
   final double screenHeight;
   final double screenWidth;
+  final BarberModel barber;
   final ScrollController _scrollController = ScrollController();
 
   ProfileScrollView({
     super.key,
     required this.screenHeight,
     required this.screenWidth,
+    required this.barber,
   });
 
   @override
@@ -36,10 +38,6 @@ class ProfileScrollView extends StatelessWidget {
           flexibleSpace: LayoutBuilder(builder: (context, constraints) {
             bool isCollapsed = constraints.biggest.height <=
                 kToolbarHeight + MediaQuery.of(context).padding.top;
-            return BlocBuilder<FetchBarberBloc, FetchBarberState>(
-              builder: (context, state) {
-                if (state is FetchBarberLoaded) {
-                  final barber = state.barber;
                   return FlexibleSpaceBar(
                     collapseMode: CollapseMode.parallax,
                     title: isCollapsed
@@ -171,10 +169,6 @@ class ProfileScrollView extends StatelessWidget {
                       ],
                     ),
                   );
-                }
-                return SizedBox.shrink();
-              },
-            );
           }),
         ),
         SliverPersistentHeader(

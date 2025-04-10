@@ -39,7 +39,7 @@ void handleLogOutState(BuildContext context, LogoutState state) {
       (route) => false,
     );
   } else if (state is LogoutErrorState) {
-     buttonCubit.bottomSheetStart();
+     buttonCubit.bottomSheetStop();
      CustomeSnackBar.show(
       context: context,
       title: 'Logout Request Failed',

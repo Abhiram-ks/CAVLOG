@@ -4,7 +4,7 @@ import '../../../../../../core/common/phone_textfield.dart';
 import '../../../../../../core/common/textfield_helper.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../../core/validation/input_validations.dart';
-import '../../../../../auth/data/models/barber_model.dart';
+import '../../../../data/models/barber_model.dart';
 
 class ProfileEditDetailsFormsWidget extends StatefulWidget {
   final double screenHeight;

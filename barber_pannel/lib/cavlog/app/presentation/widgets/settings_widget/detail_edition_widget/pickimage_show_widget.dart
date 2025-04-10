@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../../core/utils/image/app_images.dart';
 import '../../../../../../core/utils/constant/constant.dart';
-import '../../../../../auth/data/models/barber_model.dart';
+import '../../../../data/models/barber_model.dart';
 import '../../../provider/bloc/image_picker/image_picker_bloc.dart';
 
 class ProfileEditDetailsWidget extends StatelessWidget {

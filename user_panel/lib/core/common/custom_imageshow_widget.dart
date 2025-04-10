@@ -4,7 +4,9 @@ import '../themes/colors.dart';
 Image imageshow({required String imageUrl,required String imageAsset}) {
     return Image.network(
       imageUrl,
-      fit: BoxFit.contain,
+      fit: BoxFit.cover,
+      width: double.infinity,
+          height: double.infinity,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) return child;
         return Center(
@@ -21,6 +23,8 @@ Image imageshow({required String imageUrl,required String imageAsset}) {
         return Image.asset(
           imageAsset,
           fit: BoxFit.cover,
+          width: double.infinity,
+          height: double.infinity,
         );
       },
     );

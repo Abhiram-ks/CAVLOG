@@ -1,3 +1,4 @@
+import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barber_service_repo.dart';
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barberdata_repo.dart';
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_servicedata_repo.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/barber_service_bloc/barber_service_bloc.dart';
@@ -23,6 +24,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'cavlog/app/presentation/provider/bloc/fetch_barber_service_bloc/fetch_barber_service_bloc.dart';
 import 'cavlog/app/presentation/provider/cubit/profiletab/profiletab_cubit.dart';
 import 'cavlog/auth/presentation/provider/cubit/icon/icon_cubit.dart';
 
@@ -57,6 +59,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => TimerCubitCubit()),
         //Appcore Bloc
         BlocProvider(create: (context) => ButtomNavCubit()),
+        BlocProvider(create: (context) => FetchBarberServiceBloc(repository: FetchBarberServiceRepositoryImpl())),
         BlocProvider(create: (context) => ProfiletabCubit()),
         BlocProvider(create: (context) => LogoutBloc(context.read<ButtomNavCubit>())),
         BlocProvider(create: (context) => FetchServiceBloc(ServiceRepositoryImpl())..add(FetchServiceRequst())),

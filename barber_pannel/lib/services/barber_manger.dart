@@ -1,4 +1,4 @@
-import 'package:barber_pannel/cavlog/auth/data/models/barber_model.dart';
+import 'package:barber_pannel/cavlog/app/data/models/barber_model.dart';
 
 class BarberManger {
   static final BarberManger _instance = BarberManger._internal();
@@ -12,6 +12,9 @@ class BarberManger {
   BarberManger._internal();
 
   BarberModel? get currentBarber => _currentBarber;
+  
+  BarberModel? getUser() => _currentBarber;
+
 
   void setUser(BarberModel barber){
     _currentBarber = barber;

@@ -6,7 +6,7 @@ part 'logout_event.dart';
 part 'logout_state.dart';
 
 class LogoutBloc extends Bloc<LogoutEvent, LogoutState> {
-    final ButtomNavCubit bottomNavCubit;
+  final ButtomNavCubit bottomNavCubit;
   LogoutBloc(this.bottomNavCubit) : super(LogoutInitial()) {
     on<LogoutActionEvent>((event, emit) {
       emit(ShowLogoutAlertState());

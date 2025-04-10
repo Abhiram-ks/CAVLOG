@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:user_panel/app/presentation/provider/cubit/cubit/buttom_nav_cubit.dart';
+import 'package:user_panel/app/presentation/provider/cubit/buttom_nav_cubit/buttom_nav_cubit.dart';
 import 'package:user_panel/service/refresh.dart';
 part 'logout_event.dart';
 part 'logout_state.dart';

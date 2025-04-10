@@ -1,7 +1,7 @@
 
 import 'dart:developer';
 
-import 'package:barber_pannel/cavlog/auth/data/models/barber_model.dart';
+import 'package:barber_pannel/cavlog/app/data/models/barber_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/common/common_hashfunction_class.dart';

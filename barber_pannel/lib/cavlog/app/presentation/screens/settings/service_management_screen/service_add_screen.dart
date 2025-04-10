@@ -124,6 +124,7 @@ class _ServiceAddScreenState extends State<ServiceAddScreen> {
                         if (_formKey.currentState!.validate()) {
                           log('message: that was working');
                           if (selectedService.isNotEmpty) {
+                           log('Message: selected service is : = $selectedService');
                            log('message: that was  that was working');
                             String input = serviceRateController.text.trim();
                             double value = double.tryParse(input) ?? 0.0;

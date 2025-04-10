@@ -21,7 +21,6 @@ class RefreshHelper {
      await _auth.signOut();
      await _googleSignIn.signOut();
      UserManagement().clearUser();
-      await FirebaseFirestore.instance.clearPersistence();
      return true; 
     } catch (e) {
       return false;
@@ -38,7 +37,7 @@ To prevent this, the data must be refreshed when the user logs out and logs in a
   Future<bool> refreshUser(BuildContext context, UserModel user) async {
     try {
       //!Add new data in the session
-      final fetchUserBloc = context.read<FetchUserBloc>();
+       final fetchUserBloc = context.read<FetchUserBloc>();
       await SecureStorageService.saveUserCredentials(user.uid);
       UserManagement().setUser(user);
       fetchUserBloc.add(FetchCurrentUserRequst());

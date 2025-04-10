@@ -3,6 +3,7 @@ class AppImages {
   static const String loginImageBelow = 'assets/images/loginbgbelow.png';
   static const String loginImageAbove= 'assets/images/loginbgAbove.png'; 
   static const String googleImage= 'assets/images/googlelogoimage.png'; 
+  static const String barberEmpty ='assets/images/barberemptyimage.webp';
 }
 
 class LottieImages {

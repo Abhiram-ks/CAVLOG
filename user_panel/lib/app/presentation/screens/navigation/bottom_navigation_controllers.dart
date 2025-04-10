@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:user_panel/app/presentation/provider/cubit/cubit/buttom_nav_cubit.dart';
+import 'package:user_panel/app/presentation/provider/cubit/buttom_nav_cubit/buttom_nav_cubit.dart';
 import 'package:user_panel/app/presentation/screens/pages/chat/chat_screen.dart';
 import 'package:user_panel/app/presentation/screens/pages/home/home_screen.dart';
 import 'package:user_panel/app/presentation/screens/pages/post/post_screen.dart';
