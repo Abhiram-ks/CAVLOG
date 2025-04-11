@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/constant/constant.dart';
+import '../../../data/repositories/reset_password_repo.dart';
 import '../../provider/bloc/ResetPasswordBloc/reset_password_bloc.dart';
 
 class ResetPasswordWIdget extends StatefulWidget {
@@ -41,13 +42,14 @@ class _ResetPasswordWIdgetState extends State<ResetPasswordWIdget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.isWhat ? 'Forgot password?' : 'Change password?' ,
+            widget.isWhat ? 'Forgot password?' : 'Change password?',
             style: GoogleFonts.plusJakartaSans(
                 fontSize: 28, fontWeight: FontWeight.bold),
           ),
           ConstantWidgets.hight10(context),
-          Text(
-            widget.isWhat ?  "Enter your registered email address to receive a password reset link. Make sure to check your email for further instructions." : "Enter your registered email address to receive a password-changing link. Make sure to check your email for further instructions. After the process, your password will be updated."),
+          Text(widget.isWhat
+              ? "Enter your registered email address to receive a password reset link. Make sure to check your email for further instructions."
+              : "Enter your registered email address to receive a password-changing link. Make sure to check your email for further instructions. After the process, your password will be updated."),
           ConstantWidgets.hight50(context),
           Form(
             key: widget.formKey,
@@ -59,23 +61,39 @@ class _ResetPasswordWIdgetState extends State<ResetPasswordWIdget> {
                 validate: ValidatorHelper.validateEmailId),
           ),
           ConstantWidgets.hight30(context),
-          BlocListener<ResetPasswordBloc, ResetPasswordState>(
-            listener: (context, state) {
-             handResetPasswordState(context, state);
-             },
-            child: ActionButton(
-                screenWidth: widget.screenWidth,
-                onTap: ()async {
-                 final resetPasswordBloc = context.read<ResetPasswordBloc>();
-
-                 if (widget.formKey.currentState!.validate()) {
-                   resetPasswordBloc.add(ResetPasswordRequested(email: emailController.text.trim()));
-                 }else{
-                  CustomeSnackBar.show(context: context, title: 'Submission Faild', description: 'Please fill in all the required fields before proceeding..', titleClr: AppPalette.redClr);
-                 }
+          BlocProvider(
+            create: (context) => ResetPasswordBloc(ResetPasswordRepository()),
+            child: BlocListener<ResetPasswordBloc, ResetPasswordState>(
+              listener: (context, state) {
+                handResetPasswordState(context, state);
+              },  child: Builder(
+                builder: (context) {
+                  final resetPasswordBloc = context.read<ResetPasswordBloc>();
+                  return ActionButton(
+                    screenWidth: widget.screenWidth,
+                    screenHight: widget.screenHight,
+                    label: 'Send',
+                    onTap: () async {
+                      if (widget.formKey.currentState!.validate()) {
+                        resetPasswordBloc.add(
+                          ResetPasswordRequested(
+                            email: emailController.text.trim(),
+                          ),
+                        );
+                      } else {
+                        CustomeSnackBar.show(
+                          context: context,
+                          title: 'Submission Failed',
+                          description:
+                              'Please fill in all the required fields before proceeding..',
+                          titleClr: AppPalette.redClr,
+                        );
+                      }
+                    },
+                  );
                 },
-                label: 'Send',
-                screenHight: widget.screenHight),
+              ),
+            ),
           )
         ],
       ),

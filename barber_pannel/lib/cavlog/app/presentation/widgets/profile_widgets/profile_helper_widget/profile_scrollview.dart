@@ -16,9 +16,8 @@ class ProfileScrollView extends StatelessWidget {
   final double screenHeight;
   final double screenWidth;
   final BarberModel barber;
-  final ScrollController _scrollController = ScrollController();
 
-  ProfileScrollView({
+  const ProfileScrollView({
     super.key,
     required this.screenHeight,
     required this.screenWidth,
@@ -27,17 +26,23 @@ class ProfileScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      controller: _scrollController,
-      physics: const BouncingScrollPhysics(),
-      slivers: [
-        SliverAppBar(
-          backgroundColor: AppPalette.blackClr,
-          expandedHeight: screenHeight * 0.35,
-          pinned: true,
-          flexibleSpace: LayoutBuilder(builder: (context, constraints) {
-            bool isCollapsed = constraints.biggest.height <=
-                kToolbarHeight + MediaQuery.of(context).padding.top;
+    return BlocProvider(
+      create: (_) => ProfiletabCubit(),
+      child: Builder(
+        builder: (context) {
+        final ScrollController scrollController = ScrollController();
+
+          return CustomScrollView(
+            controller: scrollController,
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverAppBar(
+                backgroundColor: AppPalette.blackClr,
+                expandedHeight: screenHeight * 0.35,
+                pinned: true,
+                flexibleSpace: LayoutBuilder(builder: (context, constraints) {
+                  bool isCollapsed = constraints.biggest.height <=
+                      kToolbarHeight + MediaQuery.of(context).padding.top;
                   return FlexibleSpaceBar(
                     collapseMode: CollapseMode.parallax,
                     title: isCollapsed
@@ -59,8 +64,7 @@ class ProfileScrollView extends StatelessWidget {
                         Positioned.fill(
                           child: ColorFiltered(
                             colorFilter: ColorFilter.mode(
-                              AppPalette.greyClr
-                                  .withAlpha((0.19 * 270).toInt()),
+                              AppPalette.greyClr.withAlpha((0.19 * 270).toInt()),
                               BlendMode.modulate,
                             ),
                             child: Image.asset(
@@ -84,8 +88,7 @@ class ProfileScrollView extends StatelessWidget {
                                   Row(
                                     children: [
                                       ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
+                                        borderRadius: BorderRadius.circular(100),
                                         child: Container(
                                             color: AppPalette.greyClr,
                                             width: 60,
@@ -93,8 +96,14 @@ class ProfileScrollView extends StatelessWidget {
                                             child: (barber.image != null &&
                                                     barber.image!
                                                         .startsWith('http'))
-                                                ? imageshow(imageUrl: barber.image!,imageAsset:AppImages.loginImageAbove)
-                                                : Image.asset(AppImages.loginImageAbove,fit: BoxFit.cover,)),
+                                                ? imageshow(
+                                                    imageUrl: barber.image!,
+                                                    imageAsset:
+                                                        AppImages.loginImageAbove)
+                                                : Image.asset(
+                                                    AppImages.loginImageAbove,
+                                                    fit: BoxFit.cover,
+                                                  )),
                                       ),
                                       ConstantWidgets.width40(context),
                                       Column(
@@ -110,16 +119,14 @@ class ProfileScrollView extends StatelessWidget {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              Navigator.pushNamed(context,
-                                                  AppRoutes.accountScreen,
+                                              Navigator.pushNamed(
+                                                  context, AppRoutes.accountScreen,
                                                   arguments: true);
                                             },
                                             style: TextButton.styleFrom(
-                                              backgroundColor:
-                                                  AppPalette.orengeClr,
+                                              backgroundColor: AppPalette.orengeClr,
                                               minimumSize: const Size(0, 0),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
+                                              padding: const EdgeInsets.symmetric(
                                                 horizontal: 6.0,
                                                 vertical: 2.0,
                                               ),
@@ -128,11 +135,7 @@ class ProfileScrollView extends StatelessWidget {
                                                     BorderRadius.circular(15.0),
                                               ),
                                             ),
-                                            child: const Text(
-                                              "Edit Profile",
-                                              style: TextStyle(
-                                                color: AppPalette.whiteClr,
-                                              ),
+                                            child: const Text( "Edit Profile",style: TextStyle(  color: AppPalette.whiteClr, ),
                                             ),
                                           ),
                                         ],
@@ -140,13 +143,7 @@ class ProfileScrollView extends StatelessWidget {
                                     ],
                                   ),
                                   ConstantWidgets.hight30(context),
-                                  profileviewWidget(
-                                    screenWidth,
-                                    context,
-                                    Icons.add_business_rounded,
-                                    barber.ventureName,
-                                    AppPalette.whiteClr,
-                                  ),
+                                  profileviewWidget( screenWidth,context, Icons.add_business_rounded, barber.ventureName,AppPalette.whiteClr, ),
                                   profileviewWidget(
                                     screenWidth,
                                     context,
@@ -169,38 +166,40 @@ class ProfileScrollView extends StatelessWidget {
                       ],
                     ),
                   );
-          }),
-        ),
-        SliverPersistentHeader(
-          pinned: true,
-          delegate: TabBarDelegate(
-            TabBar(
-              automaticIndicatorColorAdjustment: true,
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicatorColor: AppPalette.orengeClr,
-              labelColor: AppPalette.orengeClr,
-              unselectedLabelColor: AppPalette.greyClr,
-              tabs: const [
-                Tab(icon: Icon(Icons.grid_view_sharp)),
-                Tab(icon: Icon(Icons.photo_size_select_large_sharp)),
-                Tab(icon: Icon(Icons.settings)),
-              ],
-              onTap: (index) {
-                context.read<ProfiletabCubit>().switchTab(index);
-              },
-            ),
-          ),
-        ),
-        SliverFillRemaining(
-          hasScrollBody: true,
-          child: BlocBuilder<ProfiletabCubit, int>(
-            builder: (context, selectedTab) {
-              return _buildTabContent(selectedTab, screenHeight, screenWidth,
-                  context, _scrollController);
-            },
-          ),
-        ),
-      ],
+                }),
+              ),
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: TabBarDelegate(
+                  TabBar(
+                    automaticIndicatorColorAdjustment: true,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicatorColor: AppPalette.orengeClr,
+                    labelColor: AppPalette.orengeClr,
+                    unselectedLabelColor: AppPalette.greyClr,
+                    tabs: const [
+                      Tab(icon: Icon(Icons.grid_view_sharp)),
+                      Tab(icon: Icon(Icons.photo_size_select_large_sharp)),
+                      Tab(icon: Icon(Icons.settings)),
+                    ],
+                    onTap: (index) {
+                      context.read<ProfiletabCubit>().switchTab(index);
+                    },
+                  ),
+                ),
+              ),
+              SliverFillRemaining(
+                hasScrollBody: true,
+                child: BlocBuilder<ProfiletabCubit, int>(
+                  builder: (context, selectedTab) {
+                    return _buildTabContent(selectedTab, screenHeight, screenWidth, context, scrollController);
+                  },
+                ),
+              ),
+            ],
+          );
+        }
+      ),
     );
   }
 }

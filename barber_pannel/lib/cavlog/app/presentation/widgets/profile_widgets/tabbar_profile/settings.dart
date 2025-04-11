@@ -143,22 +143,35 @@ class TabbarSettings extends StatelessWidget {
                   color: AppPalette.greyClr,
                 )),
             ConstantWidgets.hight20(context),
-            BlocListener<LogoutBloc, LogoutState>(
-              listener: (context, state) {
-                handleLogOutState(context, state);
-              },
-              child: InkWell(
-                splashColor: AppPalette.trasprentClr,
-                child: Text(
-                  'Log out',
-                  style: TextStyle(color: AppPalette.logoutClr, fontSize: 17),
-                ),
-                onTap: () {
-                  BlocProvider.of<LogoutBloc>(context)
-                      .add(LogoutActionEvent());
-                },
+          Builder(
+  builder: (context) {
+    return BlocProvider(
+      create: (context) => LogoutBloc(),
+      child: BlocListener<LogoutBloc, LogoutState>(
+        listener: (context, state) {
+          handleLogOutState(context, state);
+        },
+        child: Builder(
+          builder: (innerContext) {
+            return InkWell(
+              splashColor: AppPalette.trasprentClr,
+              child: Text(
+                'Log out',
+                style:
+                    TextStyle(color: AppPalette.logoutClr, fontSize: 17),
               ),
-            ),
+              onTap: () {
+                BlocProvider.of<LogoutBloc>(innerContext)
+                    .add(LogoutActionEvent());
+              },
+            );
+          },
+        ),
+      ),
+    );
+  },
+),
+
             ConstantWidgets.hight50(context)
           ],
         ),

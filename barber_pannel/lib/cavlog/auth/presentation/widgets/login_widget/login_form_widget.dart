@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/common/common_action_button.dart';
 import '../../../../../core/common/textfield_helper.dart';
 import '../../../../../core/utils/constant/constant.dart';
+import '../../../data/repositories/auth_repository_impl.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -66,31 +67,40 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           ConstantWidgets.hight20(context),
-          BlocListener<LoginBloc, LoginState>(
-            listener: (context, state) {
-              handleLoginState(context, state);
-            },
-            child: ActionButton(
-              screenHight: widget.screenHight,
-              screenWidth: widget.screenWidth,
-              label: 'Sign In',
-              onTap: () async {
-                final loginBloc = context.read<LoginBloc>();
-                if (widget.formKey.currentState!.validate()) {
-                  loginBloc.add(LoginActionEvent(
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                      context));
-                } else {
-                  CustomeSnackBar.show(
-                    context: context,
-                    title: 'Submission Faild',
-                    description:
-                        'Please fill in all the required fields before proceeding..',
-                    titleClr: AppPalette.redClr,
-                  );
-                }
+          BlocProvider(
+            create: (context) => LoginBloc(AuthRepositoryImpl()),
+            child: BlocListener<LoginBloc, LoginState>(
+              listener: (context, state) {
+                handleLoginState(context, state);
               },
+              child: Builder(
+                builder: (context) {
+                  final loginBloc = context.read<LoginBloc>();
+
+                  return ActionButton(
+                    screenHight: widget.screenHight,
+                    screenWidth: widget.screenWidth,
+                    label: 'Sign In',
+                    onTap: () async {
+                      if (widget.formKey.currentState!.validate()) {
+                        loginBloc.add(LoginActionEvent(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                          context,
+                        ));
+                      } else {
+                        CustomeSnackBar.show(
+                          context: context,
+                          title: 'Submission Faild',
+                          description:
+                              'Please fill in all the required fields before proceeding..',
+                          titleClr: AppPalette.redClr,
+                        );
+                      }
+                    },
+                  );
+                },
+              ),
             ),
           ),
           ConstantWidgets.hight10(context),

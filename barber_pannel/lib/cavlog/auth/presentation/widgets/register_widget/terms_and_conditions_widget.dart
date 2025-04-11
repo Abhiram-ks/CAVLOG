@@ -3,51 +3,61 @@ import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/Checkbox/c
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 class TermsAndConditionsWidget extends StatelessWidget {
-  const TermsAndConditionsWidget({
-    super.key,
-  });
+  const TermsAndConditionsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        BlocBuilder<CheckboxCubit, CheckboxState>(
-          builder: (context, state) {
-            bool isCheked = state is CheckboxChecked;
+    return BlocProvider(
+      create: (context) => CheckboxCubit(),
+      child: BlocBuilder<CheckboxCubit, CheckboxState>(
+        builder: (context, state) {
+          bool isChecked = state is CheckboxChecked;
 
-            return Checkbox(
-              value: isCheked,
-              onChanged: (bool? value) {
-                context.read<CheckboxCubit>().toggleCheckbox();
-              },
-              checkColor: AppPalette.whiteClr,
-              fillColor: WidgetStateProperty.all(isCheked ? Colors.green : const Color.fromARGB(255, 209, 205, 205)),
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              visualDensity: VisualDensity.compact,
-            );
-          },
-        ),
-        RichText(
-          text: TextSpan(
-            text: "I Agree with all of your ",
-            style: TextStyle(
-              color: AppPalette.blackClr,
-              fontSize: 12,
-            ),
+          return Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              TextSpan(
-                text: "Terms & Conditions",
-                style: TextStyle(
-                  color: AppPalette.blueClr,
+              Checkbox(
+                value: isChecked,
+                onChanged: (bool? value) {
+                  context.read<CheckboxCubit>().toggleCheckbox();
+                },
+                checkColor: AppPalette.whiteClr,
+                fillColor: WidgetStateProperty.all(
+                  isChecked
+                      ? Colors.green
+                      : const Color.fromARGB(255, 209, 205, 205),
                 ),
-                recognizer: TapGestureRecognizer()..onTap = () {},
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                visualDensity: VisualDensity.compact,
+              ),
+              Flexible(
+                child: RichText(
+                  text: TextSpan(
+                    text: "I Agree with all of your ",
+                    style: TextStyle(
+                      color: AppPalette.blackClr,
+                      fontSize: 12,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: "Terms & Conditions",
+                        style: TextStyle(
+                          color: AppPalette.blueClr,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        recognizer: TapGestureRecognizer()..onTap = () {
+
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
-          ),
-        ),
-      ],
+          );
+        },
+      ),
     );
   }
 }
