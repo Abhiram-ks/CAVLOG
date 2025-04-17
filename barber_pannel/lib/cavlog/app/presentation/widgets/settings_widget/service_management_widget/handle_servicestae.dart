@@ -9,40 +9,44 @@ import '../../../../../auth/presentation/provider/cubit/buttonProgress/button_pr
 import '../../../provider/bloc/barber_service_bloc/barber_service_bloc.dart';
 
 void handleBarberServiceState(BuildContext context, BarberServiceState state) {
- final buttonCubit = context.read<ButtonProgressCubit>();
+  final buttonCubit = context.read<ButtonProgressCubit>();
   if (state is ConfirmationAlertState) {
     BottomSheetHelper().showBottomSheet(
         context: context,
         title: 'Session Confirmation!',
-        description:'Are you sure you want to proceed with this service? Service Name: ${state.text} & Charge: ₹${state.amount.toStringAsFixed(2)}Tap Allow to continue.',
+        description:
+            'Are you sure you want to proceed with this service? Service Name: ${state.text} & Charge: ₹${state.amount.toStringAsFixed(2)}Tap Allow to continue.',
         firstButtonText: 'Allow',
-        firstButtonAction: (){
-          context.read<BarberServiceBloc>().add(ConfirmationBarberServiceEvent());
-          Navigator.pop(context);
+        firstButtonAction: () {
+          context  .read<BarberServiceBloc>().add(ConfirmationBarberServiceEvent());
+         // Navigator.pop(context);
         },
         firstButtonColor: AppPalette.blueClr,
         secondButtonText: "Maybe Later",
-        secondButtonAction: (){
+        secondButtonAction: () {
           Navigator.pop(context);
         },
         secondButtonColor: AppPalette.blackClr);
-  }
-
-  else if (state is BarberServiceLoading) {
+  } else if (state is BarberServiceLoading) {
     buttonCubit.startLoading();
-  }
-
-  else if (state is BarberServiceSuccess) {
+  } else if (state is BarberServiceSuccess) {
+    Navigator.pop(context);
     buttonCubit.stopLoading();
     CustomeSnackBar.show(
-  context: context,
-  title: 'Service Uploaded',
-  description: 'Your new service has been added successfully and is now available for clients.',
-  titleClr: AppPalette.greenClr,
-);
-
-  } else if (state is BarberServiceFailure){
+      context: context,
+      title: 'Service Uploaded',
+      description:
+          'Your new service has been added successfully and is now available for clients.',
+      titleClr: AppPalette.greenClr,
+    );
+  } else if (state is BarberServiceFailure) {
+    Navigator.pop(context);
     buttonCubit.stopLoading();
-    CustomeSnackBar.show(context: context, title: "Upload Failed", description:  "Oops! The service could not be uploaded due to an error: ${state.error}. Please try again.", titleClr: AppPalette.redClr);
+    CustomeSnackBar.show(
+        context: context,
+        title: "Upload Failed",
+        description:
+            "Oops! The service could not be uploaded due to an error: ${state.error}. Please try again.",
+        titleClr: AppPalette.redClr);
   }
 }

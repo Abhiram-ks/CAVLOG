@@ -94,7 +94,7 @@ class _RegisterDetailsFormWidgetState extends State<RegisterDetailsFormWidget>
                         context: context,
                           title: 'Submission Failed',
                           description:'Please fill in all the required fields before proceeding.',
-                          iconColor: AppPalette.redClr,icon: CupertinoIcons.clear_circled);
+                          titleClr: AppPalette.redClr,);
                     }
 
                   });

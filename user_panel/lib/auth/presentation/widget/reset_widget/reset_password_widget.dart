@@ -72,7 +72,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                   if(widget.formKey.currentState!.validate()){
                     resetPassword.add(ResetPasswordRequestEvent(email: emailController.text.trim()));
                   }else{
-                     CustomeSnackBar.show(context: context, title: 'Submission Faild', description: 'Please fill in all the required fields before proceeding..', iconColor: AppPalette.redClr, icon: CupertinoIcons.mail_solid);
+                     CustomeSnackBar.show(context: context, title: 'Submission Faild', description: 'Please fill in all the required fields before proceeding..', titleClr: AppPalette.redClr);
                   }
                 }),
           ),

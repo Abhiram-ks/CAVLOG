@@ -4,6 +4,9 @@ sealed class FetchBarberServiceState {}
 
 final class FetchBarberServiceInitial extends FetchBarberServiceState {}
 
+//---------------------------------------------------------------------\\
+//! Fetch Barber All service.
+
 final class FetchBarberServiceLoading extends FetchBarberServiceState {}
 
 final class FetchBarberServiceSuccess extends FetchBarberServiceState {
@@ -19,3 +22,5 @@ final class FetchBarberServiceError extends FetchBarberServiceState {
 
   FetchBarberServiceError({required this.error});
 }
+
+

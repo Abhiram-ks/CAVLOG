@@ -5,9 +5,11 @@ import 'package:barber_pannel/cavlog/app/presentation/screens/pages/profile/prof
 import 'package:barber_pannel/cavlog/app/presentation/screens/pages/revenue/revenue_screen.dart';
 import 'package:barber_pannel/cavlog/app/presentation/screens/pages/service/service_screen.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+const double bottomNavBarHeight = 70.0;
 class BottomNavigationControllers extends StatelessWidget {
   final List<Widget> _screens = [
     HomeScreen(),
@@ -49,8 +51,8 @@ Widget build(BuildContext context) {
             ),
             bottomNavigationBar: BlocBuilder<ButtomNavCubit, BottomNavItem>(
               builder: (context, state) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
+                return SizedBox(
+                  height: bottomNavBarHeight,
                   child: BottomNavigationBar(
                     enableFeedback: true,
                     useLegacyColorScheme: true,
@@ -88,13 +90,13 @@ Widget build(BuildContext context) {
                           label: 'Service',
                           activeIcon: Icon(Icons.add_box)),
                       BottomNavigationBarItem(
-                          icon: Icon(Icons.chat_outlined),
+                          icon: Icon(CupertinoIcons.chat_bubble),
                           label: 'Chats',
-                          activeIcon: Icon(Icons.chat)),
+                          activeIcon: Icon(CupertinoIcons.chat_bubble_fill)),
                       BottomNavigationBarItem(
-                          icon: Icon(Icons.person_outline_rounded),
+                          icon: Icon(CupertinoIcons.person),
                           label: 'Account',
-                          activeIcon: Icon(Icons.person)),
+                          activeIcon:Icon(CupertinoIcons.person_fill)),
                     ],
                   ),
                 );

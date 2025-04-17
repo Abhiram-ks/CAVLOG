@@ -123,21 +123,19 @@ class ValidatorHelper {
     return null;
   }
 
-  static String? validateAge(String? age) {
-    if (age == null || age.isEmpty) {
+  static String? validateYear(String? year) {
+    if (year == null || year.isEmpty) {
       return 'Enter your Answer';
     }
-    if (!RegExp(r'^\d+$').hasMatch(age)) {
-      return 'Age must contain only numbers.';
+    if (!RegExp(r'^\d{4}$').hasMatch(year)) {
+      return '$year Invalid Enter.';
     }
 
-    int ageValue = int.parse(age);
+    int yearValue  = int.parse(year);
+    int currentYear = DateTime.now().year;
 
-    if (ageValue < 18) {
-      return 'Age must be at least 18.';
-    }
-    if (ageValue > 149) {
-      return 'Age must not exceed 149.';
+    if (yearValue < 1900 || yearValue > currentYear ) {
+     return 'Invalid Year! Please enter a valid year between 1900 and $currentYear.';
     }
 
     return null;

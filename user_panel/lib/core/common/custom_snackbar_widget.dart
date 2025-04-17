@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import '../themes/colors.dart';
-import '../utils/constant/constant.dart';
 
 class CustomeSnackBar {
   static void show({
     required BuildContext context,
     required String title,
     required String description,
-    required Color iconColor,
-    required IconData icon,
+    required Color titleClr,
   }){
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-  
+    
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: TweenAnimationBuilder<double>(tween: Tween(begin: 0.0, end: 1.0), duration: const Duration(milliseconds: 500),
@@ -27,17 +25,12 @@ class CustomeSnackBar {
            children: [
              Row(
               children: [
-                Icon(icon, color: iconColor.withAlpha(138), size: 28),
-                ConstantWidgets.width20(context),
                 Expanded(child: Column(
                    crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                          title,
-                          style: TextStyle(
-                            color: AppPalette.blackClr,
-                            fontSize: 16,
+                    Text(title,style: TextStyle(
+                            color:titleClr, fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -45,7 +38,7 @@ class CustomeSnackBar {
                         Text(
                           description,
                           style: TextStyle(
-                           color: AppPalette.hintClr,
+                           color: AppPalette.greyClr,
                           ),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
@@ -72,7 +65,6 @@ class CustomeSnackBar {
           behavior: SnackBarBehavior.floating,
           elevation: 3,
            dismissDirection:  DismissDirection.down,
-
           backgroundColor: AppPalette.whiteClr,
            shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

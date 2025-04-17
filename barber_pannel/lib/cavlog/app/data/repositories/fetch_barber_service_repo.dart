@@ -5,6 +5,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class FetchBarberServiceRepository {
   Stream <List<BarberServiceModel>> fetchBarberServicesData(String barberId);
+  Future<bool> deleteBarberService({
+    required String barberUid,
+    required String serviceKey,
+  });
+  Future<bool> updateBarberService({
+    required String barberUid,
+    required String serviceKey,
+    required double serviceValue,
+  });
+
 }
 
 
@@ -13,7 +23,7 @@ class FetchBarberServiceRepositoryImpl implements FetchBarberServiceRepository {
 
   @override
   Stream<List<BarberServiceModel>> fetchBarberServicesData(String barberId) {
-    final docRef = _firestore.collection('individual_barber_services').doc(barberId);
+      final docRef = _firestore.collection('individual_barber_services').doc(barberId);
     try {
       return docRef.snapshots().map((docSnapshot) {
       if (!docSnapshot.exists) return [];
@@ -33,6 +43,42 @@ class FetchBarberServiceRepositoryImpl implements FetchBarberServiceRepository {
     } catch (e) {
       log('message: Error occured $e');
       return Stream.value([]);
+    }
+  }
+
+
+  @override
+  Future<bool> deleteBarberService({
+    required String barberUid,
+    required String serviceKey,
+  }) async {
+    final docRef = _firestore.collection('individual_barber_services').doc(barberUid);
+
+    try {
+      await docRef.update({'services.$serviceKey': FieldValue.delete()});
+      return true;
+    } catch (e) {
+       log('❌ Error deleting service barber: $e');
+      return false;
+    }
+  }
+
+
+  @override
+  Future<bool> updateBarberService({
+     required String barberUid,
+     required String serviceKey,
+     required double serviceValue,
+  }) async {
+    final docRef = _firestore.collection('individual_barber_services').doc(barberUid);
+
+    try {
+      await docRef.update({
+        'services.$serviceKey': serviceValue,
+      });
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 }

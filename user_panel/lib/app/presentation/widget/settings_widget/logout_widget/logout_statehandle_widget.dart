@@ -44,8 +44,7 @@ void handleLogOutState(BuildContext context, LogoutState state) {
       context: context,
       title: 'Logout Request Failed',
       description: 'Oops! Your logout request failed. ${state.errorMessage}',
-      iconColor: AppPalette.lightOrengeclr,
-      icon: CupertinoIcons.clear_circled,
+      titleClr: AppPalette.lightOrengeclr,
     );
   }
 }

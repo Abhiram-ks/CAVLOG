@@ -141,6 +141,10 @@ class ValidatorHelper {
     return null;
   }
 
+  static String? serching(String? text){
+    return null;
+  }
+
   static String? validateLocation(String? text){
     if (text == null || text.isEmpty) {
       return 'Plase fill the field';

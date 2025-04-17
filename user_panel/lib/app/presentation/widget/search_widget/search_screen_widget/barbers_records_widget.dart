@@ -35,15 +35,22 @@ class BarberListBuilder extends StatelessWidget {
           );
         } else if (state is FetchAllbarberEmpty) {
           return SliverToBoxAdapter(
-            child: Center(
-                child: LottieFilesCommon.load(
-                    assetPath: LottieImages.emptyData,
-                    width: screenWidth * .15,
-                    height: screenWidth * .15)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                    child: LottieFilesCommon.load(
+                        assetPath: LottieImages.emptyData,
+                        width: screenWidth * .5,
+                        height: screenWidth * .5)),
+                  Text('No matching shops found.')
+              ],
+            ),
           );
         } else if (state is FetchAllbarberSuccess) {
           final List<BarberModel> barbers = state.barbers;
-
+    
           return SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
@@ -61,6 +68,7 @@ class BarberListBuilder extends StatelessWidget {
                         rating: '4.5',
                         shopName: barber.ventureName,
                         shopAddress: barber.address,
+                        isBlocked: barber.isblok,
                       ),
                     if (index < barbers.length - 1)
                       ConstantWidgets.hight10(context),

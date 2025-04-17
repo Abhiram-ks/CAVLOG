@@ -22,6 +22,7 @@ mixin FormFieldMixin {
     bool enabled = true,
     Color? borderClr,
     Color? fillClr,
+    ValueChanged<String>? onChanged,
   }) {
     return BlocProvider(
       create: (context) => IconCubit(),
@@ -56,6 +57,7 @@ mixin FormFieldMixin {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   enabled: enabled,
                   stylusHandwritingEnabled: true,
+                  onChanged: onChanged,
 
                   decoration: InputDecoration(
                    filled: fillClr != null,

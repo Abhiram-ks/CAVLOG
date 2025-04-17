@@ -17,20 +17,15 @@ void handleGoogleVarificationState(
      buttonCubit.googleSingInStop();
   } else if (state is GoogleSignfailure) {
     buttonCubit.googleSingInStop();
-    IconData errorIcon = CupertinoIcons.clear_fill;
     String errorMessage = 'Login failed';
 
     if (state.error.contains("Incorrect Email or Password")) {
-      errorIcon = CupertinoIcons.exclamationmark_triangle_fill;
       errorMessage = 'Incorrect Email or Password';
     } else if (state.error.contains("Too many requests")) {
-      errorIcon = CupertinoIcons.timer_fill;
       errorMessage = 'Too many requests';
     } else if (state.error.contains("Network Error")) {
-      errorIcon = CupertinoIcons.wifi_exclamationmark;
       errorMessage = 'Connection failed';
     } else if (state.error.contains("Email already in use")){
-      errorIcon = CupertinoIcons.exclamationmark_circle_fill;
       errorMessage = 'Email already in use';
     }
 
@@ -38,8 +33,7 @@ void handleGoogleVarificationState(
       context: context,
       title: errorMessage,
       description: 'Oops! Login failed. Error: ${state.error}',
-      iconColor: AppPalette.redClr,
-      icon: errorIcon,
+      titleClr: AppPalette.redClr,
     );
   }
 }

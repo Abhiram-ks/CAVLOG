@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../models/barber_model.dart' show BarberModel;
 
 abstract class FetchBarberRepository {
   Stream<List<BarberModel>> streamAllBarbers();
+ 
 }
 
 class FetchBarberRepositoryImpl implements FetchBarberRepository {
@@ -30,4 +30,5 @@ class FetchBarberRepositoryImpl implements FetchBarberRepository {
           log('Error fetching all barbers: $e');
         });
   }
+
 }

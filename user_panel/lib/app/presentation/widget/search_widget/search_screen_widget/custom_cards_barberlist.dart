@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../core/common/custom_imageshow_widget.dart';
+import '../../../../../core/common/custom_snackbar_widget.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/constant/constant.dart';
 import '../../../../../core/utils/image/app_images.dart';
@@ -17,6 +18,7 @@ class ListForBarbers extends StatelessWidget {
     required this.shopAddress,
     required this.rating,
     required this.ontap,
+    required this.isBlocked,
   });
 
   final double screenHeight;
@@ -26,11 +28,23 @@ class ListForBarbers extends StatelessWidget {
   final String shopAddress;
   final String rating;
   final VoidCallback ontap;
+  final bool isBlocked;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ontap,
+      onTap: (){
+        if(isBlocked){
+            CustomeSnackBar.show(
+        context: context,
+       title: 'Account Suspended!',
+      description: 'This shop account has been suspended due to unauthorized activity detected.',
+      titleClr: AppPalette.redClr,
+    );
+        } else {
+          ontap();
+        }
+      },
       child: SizedBox(
         height: screenHeight * 0.12,
         child: Row(
@@ -93,11 +107,11 @@ class ListForBarbers extends StatelessWidget {
                     bottom: 5,
                     right: 20,
                     child: Text(
-                      "Open",
+                      isBlocked ? "Suspended" : "Open",
                       style: GoogleFonts.plusJakartaSans(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
-                        color: AppPalette.greenClr,
+                        color:isBlocked ? AppPalette.redClr : AppPalette.greenClr,
                       ),
                     ),
                   ),

@@ -96,7 +96,8 @@ class ProfileEditDetails extends StatelessWidget {
                             ConstantWidgets.hight50(context),
                             user.google
                                 ? Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
@@ -138,13 +139,19 @@ class ProfileEditDetails extends StatelessWidget {
                   padding: EdgeInsets.only(left: screenWidth * 0.09),
                   child: BlocListener<UpdateProfileBloc, UpdateProfileState>(
                     listener: (context, state) {
-                     handleProfileUpdateState(context, state);
+                      handleProfileUpdateState(context, state);
                     },
                     child: ButtonComponents.actionButton(
                       screenWidth: screenWidth,
                       onTap: () {
-                         selectImagePath ??= _imagePathClr.text;
-                         context.read<UpdateProfileBloc>().add(UpdateProfileRequest(image: selectImagePath ?? '', userName: _nameController.text, phoneNumber: _phoneController.text, address: _addressController.text, age: int.tryParse(_ageController.text) ?? 0));
+                        selectImagePath ??= _imagePathClr.text;
+                        context.read<UpdateProfileBloc>().add(
+                            UpdateProfileRequest(
+                                image: selectImagePath ?? '',
+                                userName: _nameController.text,
+                                phoneNumber: _phoneController.text,
+                                address: _addressController.text,
+                                age: int.tryParse(_ageController.text) ?? 0));
                       },
                       label: 'Save Changes',
                       screenHeight: screenHeight,

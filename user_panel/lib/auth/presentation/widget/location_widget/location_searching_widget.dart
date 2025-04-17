@@ -232,8 +232,7 @@ class LocationMapWidget extends StatelessWidget {
                         title: 'Select Address!',
                         description:
                             "Oop's Make sure to update your address section before proceeding.",
-                        iconColor: AppPalette.orengeClr,
-                        icon: Icons.location_pin);
+                        titleClr: AppPalette.orengeClr,);
                   } else {
                     Navigator.pop(context);
                   }

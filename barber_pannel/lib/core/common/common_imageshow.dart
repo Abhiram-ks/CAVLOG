@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 Image imageshow({required String imageUrl,required String imageAsset}) {
     return Image.network(
       imageUrl,
-      fit: BoxFit.contain,
+      fit: BoxFit.cover,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) return child;
         return Center(

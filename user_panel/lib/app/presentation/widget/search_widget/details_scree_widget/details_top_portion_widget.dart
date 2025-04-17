@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:user_panel/app/presentation/widget/search_widget/details_scree_widget/details_call_helper_function.dart';
 import 'package:user_panel/app/presentation/widget/search_widget/details_scree_widget/details_screen_actionbuttos.dart';
 
 import '../../../../../core/themes/colors.dart';
@@ -96,7 +97,9 @@ class DetailTopPortionWidget extends StatelessWidget {
                     context: context,
                     screenWidth: screenWidth,
                     icon: Icons.phone_in_talk_rounded,
-                    onTap: () {},
+                    onTap: () {
+                      CallHelper.makeCall(widget.barber.phoneNumber, context);
+                    },
                     text: 'Call'),
                 detailsPageActions(
                     context: context,

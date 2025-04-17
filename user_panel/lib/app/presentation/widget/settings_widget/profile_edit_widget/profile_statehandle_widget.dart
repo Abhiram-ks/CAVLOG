@@ -37,15 +37,13 @@ void handleProfileUpdateState (
         context: context, 
         title: 'Successfully Updated!', 
         description: 'profile details have been updated and the previous data has been overwritten.', 
-        iconColor: AppPalette.greenClr, 
-        icon:CupertinoIcons.cloud_upload);
+        titleClr: AppPalette.greenClr, );
     }else if(state is UpdateProfileFailure){
       buttonCubit.stopLoading();
           CustomeSnackBar.show(
         context: context, 
         title: 'Update Failed!', 
         description: 'We couldn’t update your profile due to: ${state.errorMessage}. Please try again.', 
-        iconColor: AppPalette.redClr, 
-        icon: CupertinoIcons.cloud_upload);
+        titleClr: AppPalette.redClr, );
     }
   }

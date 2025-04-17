@@ -176,12 +176,13 @@ class ProfileScrollView extends StatelessWidget {
                     indicatorSize: TabBarIndicatorSize.tab,
                     indicatorColor: AppPalette.orengeClr,
                     labelColor: AppPalette.orengeClr,
-                    unselectedLabelColor: AppPalette.greyClr,
+                    unselectedLabelColor: const Color.fromARGB(255, 128, 128, 128),
                     tabs: const [
                       Tab(icon: Icon(Icons.grid_view_sharp)),
                       Tab(icon: Icon(Icons.photo_size_select_large_sharp)),
                       Tab(icon: Icon(Icons.settings)),
                     ],
+
                     onTap: (index) {
                       context.read<ProfiletabCubit>().switchTab(index);
                     },

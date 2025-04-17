@@ -57,6 +57,7 @@ dependencies:
   crypto: ^3.0.6
   shimmer: ^3.0.0
   smooth_page_indicator: ^1.2.1
+  flutter_phone_direct_caller: ^2.2.1
   #for streat map
   flutter_map: ^8.1.1
   geolocator: ^13.0.4

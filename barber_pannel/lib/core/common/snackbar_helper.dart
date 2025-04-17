@@ -30,11 +30,8 @@ class CustomeSnackBar {
                    crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                          title,
-                          style: TextStyle(
-                            color:titleClr,
-                            fontSize: 16,
+                    Text(title,style: TextStyle(
+                            color:titleClr, fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

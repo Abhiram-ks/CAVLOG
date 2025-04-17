@@ -82,8 +82,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> with FormFieldMixin {
                  } else {
                     CustomeSnackBar.show(context: context, title: 'Submission Faild',
                    description:'Please fill in all the required fields before  proceeding..',
-                   iconColor: AppPalette.redClr,
-                   icon: CupertinoIcons.clear_circled);
+                  titleClr: AppPalette.redClr,);
                  }
                   }),
             ),

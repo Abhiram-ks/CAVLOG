@@ -1,6 +1,7 @@
 
 import 'dart:io';
 import 'package:barber_pannel/cavlog/app/presentation/widgets/profile_widgets/profile_helper_widget/profile_tabbar_widget.dart';
+import 'package:barber_pannel/core/common/common_imageshow.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,60 +30,28 @@ class ProfileEditDetailsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(isShow 
-         ? "Refine your profile" 
-         : 'Personal details',
+        Text(isShow  ? "Refine your profile"  : 'Personal details',
           style: GoogleFonts.plusJakartaSans(fontSize: 28, fontWeight: FontWeight.bold),
         ),
         ConstantWidgets.hight10(context),
-        Text(isShow
-            ? "Update your personal details to keep your profile fresh and up to date. A better profile means a better experience!"
-            : "The informations to verify your identity and to keep our community safe"),
+        Text(isShow  ? "Update your personal details to keep your profile fresh and up to date. A better profile means a better experience!" : "The informations to verify your identity and to keep our community safe"),
         ConstantWidgets.hight30(context),
         Row(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(100),
               child: InkWell(
-                onTap: () {
-                  if (isShow) {
-                    context.read<ImagePickerBloc>().add(PickImageAction());
-                  }
+                onTap: () {  if (isShow) {  context.read<ImagePickerBloc>().add(PickImageAction()); }
                 },
                 child: Container(
                     color: AppPalette.greyClr,
-                    width: 60,
-                    height: 60,
+                    width: 60,  height: 60,
                     child: isShow ?  BlocBuilder<ImagePickerBloc, ImagePickerState>(
                       builder: (context, state) {
                         if (state is ImagePickerInitial) {
                           (barber.image != null && barber.image!.startsWith('http'))
-                              ? Image.network(
-                                  barber.image!,
-                                  fit: BoxFit.contain,
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        color: AppPalette.buttonClr,
-                                        value: loadingProgress.expectedTotalBytes !=null
-                                            ? loadingProgress.cumulativeBytesLoaded /(loadingProgress.expectedTotalBytes ?? 1)
-                                            : null,
-                                      ),
-                                    );
-                                  },
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Image.asset(
-                                      AppImages.loginImageAbove,
-                                      fit: BoxFit.cover,
-                                    );
-                                  },
-                                )
-                              : Image.asset(
-                                  AppImages.loginImageAbove,
-                                  fit: BoxFit.cover,
-                                );
+                              ?  imageshow(imageUrl: barber.image!, imageAsset: AppImages.loginImageAbove)
+                              : Image.asset(  AppImages.loginImageAbove,  fit: BoxFit.cover  );
                         } else if (state is ImagePickerLoading) {
                           return SpinKitFadingFour(
                             color: AppPalette.whiteClr,
@@ -93,8 +62,7 @@ class ProfileEditDetailsWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                             child: Image.file(
                               File(state.imagePath),
-                              width: 60,
-                              height: 60,
+                              width: 60, height: 60,
                               fit: BoxFit.cover,
                             ),
                           );
@@ -102,69 +70,19 @@ class ProfileEditDetailsWidget extends StatelessWidget {
                           return Center(
                             child: Icon(
                               CupertinoIcons.photo_fill_on_rectangle_fill,
-                              size: 35,
-                              color: AppPalette.whiteClr,
+                              size: 35,  color: AppPalette.whiteClr,
                             ),
                           );
                         } return (barber.image != null &&  barber.image!.startsWith('http'))
-                            ? Image.network(
-                              barber.image!,
-                                fit: BoxFit.contain,
-                                loadingBuilder:
-                                    (context, child, loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      color: AppPalette.buttonClr,
-                                      value:loadingProgress.expectedTotalBytes != null
-                                              ? loadingProgress.cumulativeBytesLoaded /(loadingProgress.expectedTotalBytes ?? 1)
-                                              : null,
-                                    ),
-                                  );
-                                },
-                                errorBuilder: (context, error, stackTrace) {
-                                  return Image.asset(
-                                    AppImages.loginImageAbove,
-                                    fit: BoxFit.cover,
-                                  );
-                                },
-                              )
-                            : Image.asset(
-                                AppImages.loginImageAbove,
-                                fit: BoxFit.cover,
-                              );
+                            ? imageshow(imageUrl: barber.image!, imageAsset: AppImages.loginImageAbove)
+                            : Image.asset( AppImages.loginImageAbove, fit: BoxFit.cover);
                       },
                     ) : (barber.image != null && barber.image!.startsWith('http'))
-                              ? Image.network(
-                                  barber.image!,
-                                  fit: BoxFit.contain,
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        color: AppPalette.buttonClr,
-                                        value: loadingProgress.expectedTotalBytes !=null
-                                            ? loadingProgress.cumulativeBytesLoaded /(loadingProgress.expectedTotalBytes ?? 1)
-                                            : null,
-                                      ),
-                                    );
-                                  },
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Image.asset(
-                                      AppImages.loginImageAbove,
-                                      fit: BoxFit.cover,
-                                    );
-                                  },
-                                )
-                              : Image.asset(
-                                  AppImages.loginImageAbove,
-                                  fit: BoxFit.cover,
-                                )
+                              ? imageshow(imageUrl: barber.image!, imageAsset: AppImages.loginImageAbove)
+                              : Image.asset(  AppImages.loginImageAbove, fit: BoxFit.cover )
                 )
               ),
-            ),
-            ConstantWidgets.width20(context),
+            ),  ConstantWidgets.width20(context),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

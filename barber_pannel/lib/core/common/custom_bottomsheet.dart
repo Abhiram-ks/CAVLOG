@@ -1,7 +1,11 @@
 import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:barber_pannel/core/utils/constant/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../cavlog/auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
 
 class BottomSheetHelper {
   void showBottomSheet({
@@ -14,6 +18,7 @@ class BottomSheetHelper {
     required String secondButtonText,
     required VoidCallback secondButtonAction,
     required Color secondButtonColor,
+     Color progressClr = AppPalette.blackClr,
   }) {
     showModalBottomSheet(
       context: context,
@@ -82,19 +87,29 @@ class BottomSheetHelper {
                         color:AppPalette.greyClr,
                       ),
                     ),
-                    Expanded(
+                     Expanded(
                       child: SizedBox(
                         height: double.infinity,
                         child: TextButton(
                           onPressed: firstButtonAction,
-                           child: Text(
-                      firstButtonText,
-                      style: GoogleFonts.inter(
-                        fontSize: 17,
-                        color: firstButtonColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                          child: BlocBuilder<ButtonProgressCubit, ButtonProgressState>(
+                            builder: (context, state) {
+                              if (state is BottomSheetButtonLoading) {
+                                return  SpinKitFadingFour(
+                                color:progressClr,
+                                   size: 23.0,
+                                );
+                              }
+                              return Text(
+                                firstButtonText,
+                                style: GoogleFonts.inter(
+                                  fontSize: 17,
+                                  color: firstButtonColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     )

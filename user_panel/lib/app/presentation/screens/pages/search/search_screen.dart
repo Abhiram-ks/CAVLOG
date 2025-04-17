@@ -1,10 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_panel/core/themes/colors.dart';
+import 'package:user_panel/core/utils/debouncer/debouncer.dart';
 import 'package:user_panel/core/validation/input_validation.dart';
 import '../../../../../core/common/custom_formfield_widget.dart';
 import '../../../../../core/utils/constant/constant.dart';
 import '../../../../../core/utils/image/app_images.dart';
+import '../../../provider/bloc/fetch_allbarber_bloc/fetch_allbarber_bloc.dart';
 import '../../../widget/search_widget/search_screen_widget/barbers_records_widget.dart';
 
 
@@ -16,8 +20,19 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> with FormFieldMixin {
+  final TextEditingController searchController = TextEditingController();
+  final Debouncer debouncer = Debouncer(milliseconds: 100);
+  String searchTerm = '';
+
+    void _onSearchChanged(String searchTerm) {
+    debouncer.run(() {
+      context.read<FetchAllbarberBloc>().add(SearchBarbersRequested(searchTerm));
+    });
+  }
+   
 @override
 Widget build(BuildContext context) {
+
   final screenHeight = MediaQuery.of(context).size.height;
   final screenWidth = MediaQuery.of(context).size.width;
 
@@ -65,12 +80,14 @@ Widget build(BuildContext context) {
                               hintText: 'Search shop...',
                               prefixIcon: Icons.search,
                               context: context,
-                              controller: TextEditingController(),
-                              validate: ValidatorHelper.validateText,
+                              controller: searchController,
+                              validate: ValidatorHelper.serching,
                               borderClr: AppPalette.lightgreyclr,
                               fillClr: AppPalette.whiteClr,
                               isfilterFiled: true,
                               fillterAction: () {},
+                               onChanged: _onSearchChanged,
+                              
                             ),
                           ),
                         ),
@@ -85,7 +102,8 @@ Widget build(BuildContext context) {
                   ),
                 ),
                 SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03,
+                  ),
                   sliver: BarberListBuilder(screenHeight: screenHeight, screenWidth: screenWidth),
                 ),
               ],

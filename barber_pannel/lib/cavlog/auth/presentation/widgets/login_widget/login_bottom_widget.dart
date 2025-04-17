@@ -27,7 +27,7 @@ class LotinBottomSection extends StatelessWidget {
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
-        color: AppPalette.whiteClr,
+        color: AppPalette.scafoldClr,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(

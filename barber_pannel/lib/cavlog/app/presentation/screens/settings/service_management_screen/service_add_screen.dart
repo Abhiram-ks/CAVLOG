@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/service_select_cubit/service_select_cubit.dart';
 import 'package:barber_pannel/core/common/common_action_button.dart';
 import 'package:barber_pannel/core/common/custom_app_bar.dart';
@@ -32,7 +30,7 @@ class _ServiceAddScreenState extends State<ServiceAddScreen> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
+    providers: [
       BlocProvider(create: (context) => ServiceSelectCubit()),
       BlocProvider(create: (context) => BarberServiceBloc()),
     ],
@@ -40,7 +38,7 @@ class _ServiceAddScreenState extends State<ServiceAddScreen> {
         double screenHeight = constraints.maxHeight;
         double screenWidth = constraints.maxWidth;
         return ColoredBox(
-          color: AppPalette.whiteClr,
+          color: AppPalette.scafoldClr ?? AppPalette.whiteClr,
           child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
               child: SafeArea(
@@ -49,15 +47,11 @@ class _ServiceAddScreenState extends State<ServiceAddScreen> {
                   appBar: CustomAppBar(),
                   body: BlocBuilder<FetchServiceBloc, FetchServiceState>(
                     builder: (context, state) {
-                      if (state is FetchServiceLoading ||
-                          state is FetchServiceError) {
-                        return LoadingScreen(
-                            screenHeight: screenHeight,
-                            screenWidth: screenWidth);
+                      if (state is FetchServiceLoading ||state is FetchServiceError) {
+                        return LoadingScreen( screenHeight: screenHeight,screenWidth: screenWidth);
                       }
                       return Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: screenWidth * 0.08),
+                        padding: EdgeInsets.symmetric( horizontal: screenWidth * 0.08),
                         child: SingleChildScrollView(
                           physics: BouncingScrollPhysics(),
                           child: Form(
@@ -65,19 +59,12 @@ class _ServiceAddScreenState extends State<ServiceAddScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Service Deployment',
-                                  style: GoogleFonts.plusJakartaSans(
-                                      fontSize: 28,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                ConstantWidgets.hight10(context),
-                                Text(
-                                  'Set up and showcase your perfect service lineup. Craft a professional presentation and deploy it with ease.',
-                                ),
-                                ConstantWidgets.hight20(context),
-                                BlocBuilder<ServiceSelectCubit,
-                                    ServiceSelectState>(
+                                Text( 'Service Deployment',
+                                  style: GoogleFonts.plusJakartaSans(  fontSize: 28,fontWeight: FontWeight.bold),
+                                ),ConstantWidgets.hight10(context),
+                                Text(  'Set up and showcase your perfect service lineup. Craft a professional presentation and deploy it with ease.',
+                                ),  ConstantWidgets.hight20(context),
+                                BlocBuilder<ServiceSelectCubit,ServiceSelectState>(
                                   builder: (context, state) {
                                     selectedService = state.selectedServiceName;
                                     return TextFormFieldWidget(
@@ -89,49 +76,32 @@ class _ServiceAddScreenState extends State<ServiceAddScreen> {
                                       enabled: state.isEnabled,
                                     );
                                   },
-                                ),
-                                ConstantWidgets.hight20(context),
-                                BlocBuilder<FetchServiceBloc,
-                                    FetchServiceState>(
+                                ), ConstantWidgets.hight20(context),
+                                BlocBuilder<FetchServiceBloc, FetchServiceState>(
                                   builder: (context, state) {
                                     if (state is FetchServiceLoaded) {
                                       final services = state.service;
                                       return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 20),
+                                        padding: const EdgeInsets.only(bottom: 20),
                                         child: Wrap(
                                           spacing: 10,
                                           runSpacing: 10,
                                           children: List.generate(
                                             services.length,
                                             (index) {
-                                              final serviceName =
-                                                  services[index].name;
-                                              final isSelected = context
-                                                      .watch<
-                                                          ServiceSelectCubit>()
-                                                      .state
-                                                      .selectedServiceName ==
-                                                  serviceName;
+                                              final serviceName =  services[index].name;
+                                              final isSelected = context.watch<ServiceSelectCubit>().state.selectedServiceName == serviceName;
                                               return serviceTags(
                                                 onTap: () {
-                                                  context
-                                                      .read<
-                                                          ServiceSelectCubit>()
-                                                      .selectService(
-                                                          serviceName);
-                                                },
-                                                text: serviceName,
-                                                isSelected: isSelected,
+                                                  context.read<ServiceSelectCubit>().selectService( serviceName); },
+                                                text: serviceName,isSelected: isSelected,
                                               );
                                             },
                                           ),
                                         ),
                                       );
                                     }
-                                    return LoadingScreen(
-                                        screenHeight: screenHeight,
-                                        screenWidth: screenWidth);
+                                    return LoadingScreen(  screenHeight: screenHeight, screenWidth: screenWidth);
                                   },
                                 )
                               ],
@@ -141,8 +111,7 @@ class _ServiceAddScreenState extends State<ServiceAddScreen> {
                       );
                     },
                   ),
-                  floatingActionButtonLocation:
-                      FloatingActionButtonLocation.centerFloat,
+                  floatingActionButtonLocation:   FloatingActionButtonLocation.centerFloat,
                   floatingActionButton: SizedBox(
                     width: screenWidth * .9,
                     child: BlocListener<BarberServiceBloc, BarberServiceState>(
@@ -155,24 +124,16 @@ class _ServiceAddScreenState extends State<ServiceAddScreen> {
                           screenHight: screenHeight,
                           onTap: () {
                             if (_formKey.currentState!.validate()) {
-                              log('message: that was working');
                               if (selectedService.isNotEmpty) {
-                                log('Message: selected service is : = $selectedService');
-                                log('message: that was  that was working');
-                                String input =
-                                    serviceRateController.text.trim();
+                                String input =  serviceRateController.text.trim();
                                 double value = double.tryParse(input) ?? 0.0;
-                                context.read<BarberServiceBloc>().add(
-                                    AddSingleBarberServiceEvent(
-                                        serviceName: selectedService,
-                                        amount: value));
+                                context.read<BarberServiceBloc>().add( AddSingleBarberServiceEvent(serviceName: selectedService,amount: value));
                               }
                             } else {
                               CustomeSnackBar.show(
                                 context: context,
                                 title: 'Complete Required Fields!',
-                                description:
-                                    'Oops! You missed a required field. Please fill it out to proceed to the next step.',
+                                description:'Oops! You missed a required field. Please fill it out to proceed to the next step.',
                                 titleClr: AppPalette.redClr,
                               );
                             }

@@ -1,11 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_panel/app/data/models/barber_model.dart';
+import 'package:user_panel/app/presentation/provider/bloc/fetch_barber_details_bloc/fetch_barber_details_bloc.dart';
 import 'package:user_panel/core/utils/image/app_images.dart';
 import '../../../../../../core/common/custom_actionbutton_widget.dart';
+import '../../../../../../core/common/custom_lottie_widget.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../../core/utils/constant/constant.dart';
-
 import '../../../../provider/cubit/tab_cubit/tab_cubit.dart';
 import '../../../../widget/search_widget/details_scree_widget/details_imagescroll_widget.dart';
 import '../../../../widget/search_widget/details_scree_widget/details_top_portion_widget.dart';
@@ -24,8 +26,9 @@ class _DetailBarberScreenState extends State<DetailBarberScreen> {
   @override
   void initState() {
     super.initState();
-    imageList = widget.imageList ??
-        [widget.barber.image ?? AppImages.barberEmpty, AppImages.splashImage];
+    imageList = widget.imageList ?? [widget.barber.image ?? AppImages.barberEmpty, AppImages.splashImage];
+
+    context.read<FetchBarberDetailsBloc>().add(FetchBarberServicesRequested(widget.barber.uid));
   }
 
   @override
@@ -80,7 +83,7 @@ class _DetailBarberScreenState extends State<DetailBarberScreen> {
                                 children: [
                                  DetailPostWidget(screenWidth: screenWidth,),
                                  DetilServiceWidget(screenWidth: screenWidth,),
-                                DetailSchedleWidet(screenWidth: screenWidth,)
+                                 DetailSchedleWidet(screenWidth: screenWidth,)
                                 ],
                               );
                             },
@@ -136,6 +139,8 @@ class DetailSchedleWidet extends StatelessWidget {
     );
   }
 }
+
+
 class SheduleTagsWidget extends StatelessWidget { 
   final String text;
   const SheduleTagsWidget({super.key, required this.text,});
@@ -184,55 +189,84 @@ class DetilServiceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> services = [
-      {'title': 'Hair Cut', 'price': 'Rs. 100'},
-      {'title': 'Beard Trim', 'price': 'Rs. 80'},
-      {'title': 'Hair Wash', 'price': 'Rs. 50'},
-      {'title': 'Facial', 'price': 'Rs. 120'},
-      {'title': 'Massage', 'price': 'Rs. 150'},
-      {'title': 'Coloring', 'price': 'Rs. 200'},
-    ];
+    return BlocBuilder<FetchBarberDetailsBloc, FetchBarberDetailsState>
+    (builder: (context, state) {
+      if (state is FetchBarberServicesLoading || state is FetchBarberServicesFailure) {
+        Center(
+          child: CupertinoActivityIndicator(
+            
+              radius: 16.0, 
+              animating: true,
+            ),
+        );
+      } else if (state is FetchBarberServiceSuccess) {
+       final services = state.barberServices;
 
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          Padding(
-            padding:  EdgeInsets.symmetric(horizontal: screenWidth * .08),
-            child: ListView.separated(
-              itemCount: services.length,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              separatorBuilder: (context, index) => ConstantWidgets.hight10(context),
-              itemBuilder: (context, index) {
-                final item = services[index];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Row(
+       return SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Padding(
+          padding:  EdgeInsets.symmetric(horizontal: screenWidth * .08),
+          child: Column(
+            children: [
+              ListView.separated(
+                itemCount: services.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  final service = services[index];
+                  return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        item['title']!,
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        item['price']!,
-                        style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                      ),
+                      Text( service.serviceName,
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            children: [
+                               Text( "₹ ",
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: AppPalette.greenClr),
+                          ),
+                           Text( "${service.amount} ",
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                          )
+                            ],
+                          )
+                          
                     ],
-                  ),
-                );
-              },
-            ),
+                  );
+                }, 
+                separatorBuilder: (context, index) => ConstantWidgets.hight10(context), 
+                )
+            ],
           ),
-          ConstantWidgets.hight50(context)
-        ],
-      ),
-    );
+          ),
+          
+       );
+      }else if (state is FetchBarberServicesEmpty) {
+        return Center(
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              LottieFilesCommon.load(
+                        assetPath: LottieImages.emptyData,
+                        width: screenWidth * .25,
+                        height: screenWidth * .25),
+              Text('No services available'),
+            ],
+          ),
+        );
+      }
+       return    Center(
+         child: CupertinoActivityIndicator(
+              radius: 16.0, 
+              animating: true,
+            ),
+       );
+    },);
   }
 }
 
-
+ 
 
 class DetailPostWidget extends StatelessWidget {
   final double screenWidth;

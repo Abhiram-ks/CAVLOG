@@ -16,12 +16,11 @@ void handResetPasswordState(BuildContext context, ResetPasswordState state){
     context: context,
     title: "Success",
     description: "Done! Open your inbox and follow the instructions to reset your password.",
-    iconColor: AppPalette.greenClr,
-    icon: CupertinoIcons.check_mark_circled_solid,
+    titleClr: AppPalette.greenClr,
     );
   } else if (state is ResetPasswordFailure){
     butttonCubit.stopLoading();
     CustomeSnackBar.show(context: context, title: "Password Reset Mail Failed",
-    description: "Oops! Something went wrong: ${state.errorMessage}", iconColor: AppPalette.redClr, icon: CupertinoIcons.clear_circled);
+    description: "Oops! Something went wrong: ${state.errorMessage}", titleClr: AppPalette.redClr,);
   }
 }

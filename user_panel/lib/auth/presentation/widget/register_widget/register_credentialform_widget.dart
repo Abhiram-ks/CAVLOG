@@ -91,7 +91,7 @@ class _RegisterCredentialformWidgetState
                         if (error != null && error.isNotEmpty) {
                           if (!context.mounted) return;
                          CustomeSnackBar.show(context: context,title: "Oops, Error Occured",
-                                description: '$error. Occured. Please try again!.', iconColor: AppPalette.redClr, icon:CupertinoIcons.mail_solid);
+                                description: '$error. Occured. Please try again!.', titleClr: AppPalette.redClr,);
                            return;
                         }
                          buttonCubit.startLoading();
@@ -110,7 +110,7 @@ class _RegisterCredentialformWidgetState
                          context: context,
                          title: 'Oops, you missed the checkbox',
                          description:'Agree with our terms and conditions before proceeding..',
-                         iconColor: AppPalette.redClr,icon: CupertinoIcons.checkmark_square);
+                         titleClr: AppPalette.redClr,);
                        }
                      }else{
                    if(!context.mounted) return;
@@ -118,8 +118,7 @@ class _RegisterCredentialformWidgetState
                      context: context,
                      title: 'Submission Faild',
                      description:'Please fill in all the required fields before proceeding..',
-                     iconColor: AppPalette.redClr,
-                     icon: CupertinoIcons.clear_circled);
+                     titleClr: AppPalette.redClr,);
                      }
                    
                   }),

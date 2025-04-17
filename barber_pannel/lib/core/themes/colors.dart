@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppPalette  {
+   static var   scafoldClr= Colors.grey[100];
   static const buttonClr = Color.fromARGB(255, 255, 196, 95); //button colors
   static const orengeClr = Color(0xFFF99417); //orenge colors
   static const blackClr  = Colors.black;

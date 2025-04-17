@@ -10,13 +10,13 @@ ClipRRect settingsWidget({required double screenHeight,required BuildContext con
             width:  double.infinity,
             height: screenHeight * 0.055,
              child: Material(
-              color: AppPalette.whiteClr,
+              color: AppPalette.scafoldClr,
                child: InkWell(
                 hoverColor: AppPalette.blueClr.withValues(alpha: 0.40),
                 splashColor: AppPalette.hintClr.withValues(alpha: 0.19 ),
                 onTap:onTap,
                 child: Ink(
-                  color: AppPalette.whiteClr,
+                  color: AppPalette.scafoldClr,
                   child: Row(
                     children: [
                       ConstantWidgets.width20(context),

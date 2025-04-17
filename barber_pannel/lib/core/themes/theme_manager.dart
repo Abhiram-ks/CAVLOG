@@ -6,7 +6,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     primaryColor: AppPalette.blueClr,
     brightness: Brightness.light,
-    scaffoldBackgroundColor: AppPalette.whiteClr,
+    scaffoldBackgroundColor: AppPalette.scafoldClr,
     fontFamily: GoogleFonts.roboto().fontFamily,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
      backgroundColor: AppPalette.whiteClr,

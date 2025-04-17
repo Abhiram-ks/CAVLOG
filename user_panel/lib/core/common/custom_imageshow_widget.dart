@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import '../themes/colors.dart';
+import 'package:flutter/cupertino.dart';
 
 Image imageshow({required String imageUrl,required String imageAsset}) {
     return Image.network(
@@ -8,17 +7,16 @@ Image imageshow({required String imageUrl,required String imageAsset}) {
       width: double.infinity,
           height: double.infinity,
       loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return Center(
-          child: CircularProgressIndicator(
-            color: AppPalette.buttonClr,
-            value: loadingProgress.expectedTotalBytes != null
-                ? loadingProgress.cumulativeBytesLoaded /
-                    (loadingProgress.expectedTotalBytes ?? 1)
-                : null,
+       if (loadingProgress != null) {
+        return const Center(
+          child: CupertinoActivityIndicator(
+            radius: 16.0, 
+            animating: true,
           ),
         );
-      },
+      }
+      return child;
+    },
       errorBuilder: (context, error, stackTrace) {
         return Image.asset(
           imageAsset,
