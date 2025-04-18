@@ -1,8 +1,8 @@
 import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/service_management_widget/service_editandupdate_state_handle.dart';
 import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/service_management_widget/service_management_filed_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:barber_pannel/core/utils/constant/constant.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../../../../../core/common/lottie_widget.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../../core/utils/image/app_images.dart';
@@ -14,12 +14,20 @@ BlocBuilder<FetchBarberServiceBloc, FetchBarberServiceState> barberServiceBuilde
                         builder: (context, state) {
                           if (state is FetchBarberServiceLoading || state is FetchBarberServiceError) {
                             return Center(
-                              child: SpinKitFadingFour(
-                                color: AppPalette.orengeClr,
-                                size: 23.0,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  CupertinoActivityIndicator(
+                                    radius: 16.0, 
+                                  ),ConstantWidgets.hight10(context),
+                                  Text('Loading services...',style: TextStyle(color: AppPalette.greyClr),)
+                                ],
                               ),
                             );
-                          } else if (state is FetchBarberServiceSuccess) {
+                          }
+                           else if (state is FetchBarberServiceSuccess) {
+                           
                             return BlocListener<BarberServiceModeificationBloc, BarberServiceModeificationState>(
                               listener: (context, state) {
                                 handleServiceEditAndUpdaTeState( context, state);
@@ -58,12 +66,18 @@ BlocBuilder<FetchBarberServiceBloc, FetchBarberServiceState> barberServiceBuilde
                                 ],
                               ),
                             );
-                          }return Center(
-                            child: SpinKitFadingFour(
-                              color: AppPalette.orengeClr,
-                              size: 23.0,
-                            ),
-                          );
+                          }           return Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  CupertinoActivityIndicator(
+                                    radius: 16.0, 
+                                  ),ConstantWidgets.hight10(context),
+                                  Text('Loading services...',style: TextStyle(color: AppPalette.greyClr),)
+                                ],
+                              ),
+                            );
                         },
                       );
   }
