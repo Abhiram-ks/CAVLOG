@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 class FirestoreBarberService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -22,7 +23,6 @@ class FirestoreBarberService {
       }
 
       if (existingServices.containsKey(services)) {
-        log('Duplicate service: $services');
         return 'Duplicate service found: $services';
       }
       
@@ -34,8 +34,26 @@ class FirestoreBarberService {
 
       return null;
     } catch (e) {
-      log('Error uploading service: $e');
       return 'Error uploading service: $e';
+    }
+  }
+
+
+  Future<bool> uploadNewFirebaseBarberFileds({
+    required String barberID,
+    required String imageUrl,
+    required String gender,
+  }) async {
+    try {
+      final barberRef = _firestore.collection('barbers').doc(barberID);
+      await barberRef.update({
+        'DetailImage': imageUrl,
+        'gender': gender,
+      });
+      return true;
+    } catch (e) {
+      log('Error updating barber fields: $e');
+      return false;
     }
   }
 }

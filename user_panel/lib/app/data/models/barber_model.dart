@@ -9,6 +9,8 @@ class BarberModel {
   final String email;
   final bool isVerified;
   final bool isblok;
+  String? gender;
+  String? detailImage;
   String? image;
   int? age;
   final Timestamp? createdAt;
@@ -24,6 +26,8 @@ class BarberModel {
     required this.isblok,
     this.image,
     this.age,
+    this.detailImage,
+    this.gender,
     this.createdAt,
   });
 
@@ -39,7 +43,9 @@ class BarberModel {
       isblok: map['isBlok'] ?? false,
       image: map['image'],
       age: map['age'],
-      createdAt: map['createdAt'], 
+      createdAt: map['createdAt'],
+      detailImage: map['DetailImage'] ?? '',
+      gender: map['gender'] ?? '',
     );
   }
 }

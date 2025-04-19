@@ -17,13 +17,13 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
    Future<void> _onStartSplash(StartSplashEvent event, Emitter<SplashState> emit) async {
       try {
-    const duration =  Duration(milliseconds: 3000);
+    const duration =  Duration(milliseconds: 1000);
     final stopwatch = Stopwatch()..start();
 
     while (stopwatch.elapsed < duration) {
-    for (double progress = 0.0; progress <= 1.0; progress += 0.03) {
+    for (double progress = 0.0; progress <= 1.0; progress += 0.02) {
         emit(SplashAnimating(progress));
-        await Future.delayed(const Duration(milliseconds: 30));
+        await Future.delayed(const Duration(milliseconds: 20));
       }
    }
  

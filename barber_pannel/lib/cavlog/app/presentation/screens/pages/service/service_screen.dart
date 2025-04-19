@@ -1,21 +1,24 @@
-import 'dart:io';
-
 import 'package:barber_pannel/cavlog/app/data/repositories/image_picker_repo.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/image_picker/image_picker_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/upload_service_data_bloc/upload_service_data_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/current_service_cubit/current_service_cubit.dart';
-import 'package:barber_pannel/cavlog/app/presentation/widgets/service_widget/service_states_handle.dart';
+import 'package:barber_pannel/cavlog/app/presentation/widgets/service_widget/service_widget_upload_datas.dart';
 import 'package:barber_pannel/core/common/common_action_button.dart';
+import 'package:barber_pannel/core/common/custom_app_bar.dart';
 import 'package:barber_pannel/core/common/snackbar_helper.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
-import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:barber_pannel/core/utils/constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../../../../core/utils/constant/constant.dart';
+import '../../../../../../core/cloudinary/cloudinary_service.dart';
+import '../../../../../../core/common/common_loading_widget.dart';
+import '../../../../data/datasources/firestore_barber_service.dart';
 import '../../../../domain/usecases/image_picker_usecase.dart';
+import '../../../provider/bloc/fetchbarber/fetch_barber_bloc.dart';
 import '../../../provider/cubit/gender_cubit/gender_option_cubit.dart';
+import '../../../widgets/service_widget/pdf_maker_widget.dart';
 
 class ServiceScreen extends StatelessWidget {
   const ServiceScreen({super.key});
@@ -25,11 +28,9 @@ class ServiceScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ServicePageCubit()),
-        BlocProvider(create: (context) => GenderOptionCubit()),
-        BlocProvider(
-            create: (context) => ImagePickerBloc(
-                PickImageUseCase(ImagePickerRepositoryImpl(ImagePicker())))),
-        BlocProvider(create: (context) => UploadServiceDataBloc()),
+        BlocProvider(create: (context) => ImagePickerBloc(PickImageUseCase(ImagePickerRepositoryImpl(ImagePicker())))),
+        BlocProvider(create: (context) => UploadServiceDataBloc(FirestoreBarberService(), CloudinaryService())),
+        BlocProvider(create: (context) => GenderOptionCubit(initialGender: getGenderOptionFromString(null))),
       ],
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -60,6 +61,10 @@ class ServiceScreen extends StatelessWidget {
                       builder: (context, state) {
                         final isPageOne = state == CurrentServicePage.pageOne;
                         return ActionButton(
+                            hasBorder:  true,
+                            textColor: AppPalette.buttonClr,
+                            borderColor: AppPalette.buttonClr,
+                            color: AppPalette.trasprentClr,
                             screenWidth: screenWidth,
                             onTap: () {
                               if (isPageOne) {
@@ -91,204 +96,75 @@ class ViewServiceDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: screenWidth * .04),
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: UploadingServiceDatas(
-            screenWidth: screenWidth, screenHeight: screenHeight),
-      ),
-    );
-  }
-}
-
-class UploadingServiceDatas extends StatelessWidget {
-  const UploadingServiceDatas({
-    super.key,
-    required this.screenWidth,
-    required this.screenHeight,
-  });
-
-  final double screenWidth;
-  final double screenHeight;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ConstantWidgets.hight30(context),
-        InkWell(
-          onTap: () {
-            context.read<ImagePickerBloc>().add(PickImageAction());
-          },
-          child: DottedBorder(
-            color: AppPalette.greyClr,
-            strokeWidth: 1,
-            dashPattern: [4, 4],
-            borderType: BorderType.RRect,
-            radius: const Radius.circular(12),
-            child: SizedBox(
-              width: screenWidth * 0.9,
-              height: screenHeight * 0.23,
-              child: BlocBuilder<ImagePickerBloc, ImagePickerState>(
-                builder: (context, state) {
-                  if (state is ImagePickerInitial) {
-                    return SizedBox(
-                        width: screenWidth * 0.89,
-                        height: screenHeight * 0.22,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              CupertinoIcons.cloud_upload,
-                              size: 35,
-                              color: AppPalette.buttonClr,
-                            ),
-                            Text('Upload an Image')
-                          ],
-                        ));
-                  } else if (state is ImagePickerLoading) {
-                    return const CupertinoActivityIndicator(
-                      radius: 16.0,
-                    );
-                  } else if (state is ImagePickerSuccess) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.file(
-                        File(state.imagePath),
-                        width: screenWidth * 0.89,
-                        height: screenHeight * 0.22,
-                        fit: BoxFit.cover,
-                      ),
-                    );
-                  } else if (state is ImagePickerError) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          CupertinoIcons.photo,
-                          size: 35,
-                          color: AppPalette.redClr,
-                        ),
-                        Text(state.errorMessage)
-                      ],
-                    );
-                  }
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        CupertinoIcons.cloud_upload,
-                        size: 35,
-                        color: AppPalette.buttonClr,
-                      ),
-                      Text('Upload an Image')
-                    ],
-                  );
-                },
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<FetchBarberBloc>().add(FetchCurrentBarber());
+    });
+    return BlocBuilder<FetchBarberBloc, FetchBarberState>(
+      builder: (context, state) {
+        if (state is FetchBarbeLoading || state is FetchBarberError) {
+          return LoadingScreen(
+              screenHeight: screenHeight, screenWidth: screenWidth);
+        } else if (state is FetchBarberLoaded) {
+          return Scaffold(
+            appBar: CustomAppBar(),
+            body: Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * .04),
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Barber Details',
+                      style: GoogleFonts.plusJakartaSans(
+                          fontSize: 28, fontWeight: FontWeight.bold),
+                    ),
+                    ConstantWidgets.hight10(context),
+                    Text(
+                        "Please provide complete details of your barber shop. The generated BarberDocs will compile all submitted information, serving as an official reference for service management and business documentation."),
+                    ConstantWidgets.hight20(context),
+                    UploadingServiceDatas(
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                        barber: state.barber),
+                    ConstantWidgets.hight10(context),
+                    ActionButton(
+                      color: AppPalette.redClr,
+                      screenWidth: screenWidth,
+                      screenHight: screenHeight,
+                      label: 'BarberDocs',
+                      onTap: () async {
+                        final success = await PdfMakerWidget.generateDetails(
+                            barberName: state.barber.barberName,
+                            ventureName: state.barber.ventureName,
+                            phoneNumber: state.barber.phoneNumber,
+                            address: state.barber.address,
+                            email: state.barber.email,
+                            establishedYear: state.barber.age,
+                            gender: state.barber.gender,
+                            status: state.barber.isblok ? 'Blocked' : 'Active');
+            
+                        if (success == false) {
+                          CustomeSnackBar.show(
+                            // ignore: use_build_context_synchronously
+                            context: context,
+                            title: 'Unable to Open Docs',
+                            description:
+                                'Oops! Unable to open the Barber Data doc. Please try again later.',
+                            titleClr: AppPalette.redClr,
+                          );
+                        }
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        ),
-        ConstantWidgets.hight20(context),
-        const Text(
-          "Select Gender",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 10),
-        BlocBuilder<GenderOptionCubit, GenderOption>(
-          builder: (context, selectedGender) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Radio<GenderOption>(
-                      value: GenderOption.male,
-                      groupValue: selectedGender,
-                      activeColor: AppPalette.blueClr,
-                      onChanged: (value) {
-                        if (value != null) {
-                          context
-                              .read<GenderOptionCubit>()
-                              .selectGenderOption(value);
-                        }
-                      },
-                    ),
-                    const Text("Male"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Radio<GenderOption>(
-                      value: GenderOption.female,
-                      groupValue: selectedGender,
-                      activeColor: Colors.pink,
-                      onChanged: (value) {
-                        if (value != null) {
-                          context
-                              .read<GenderOptionCubit>()
-                              .selectGenderOption(value);
-                        }
-                      },
-                    ),
-                    const Text("Female"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Radio<GenderOption>(
-                      value: GenderOption.unisex,
-                      groupValue: selectedGender,
-                      activeColor: AppPalette.orengeClr,
-                      onChanged: (value) {
-                        if (value != null) {
-                          context
-                              .read<GenderOptionCubit>()
-                              .selectGenderOption(value);
-                        }
-                      },
-                    ),
-                    const Text("Unisex"),
-                  ],
-                ),
-              ],
-            );
-          },
-        ),
-        ConstantWidgets.hight20(context),
-        BlocListener<UploadServiceDataBloc, UploadServiceDataState>(
-          listener: (context, state) {
-            handleServiceWidgetState(context, state);
-          },
-          child: ActionButton(
-              screenWidth: screenWidth,
-              onTap: () {
-                final imageState = context.read<ImagePickerBloc>().state;
-                final genderState = context.read<GenderOptionCubit>().state;
-
-                if (imageState is ImagePickerSuccess) {
-                  context.read<UploadServiceDataBloc>().add(
-                      UploadServiceDataRequest(
-                          imagePath: imageState.imagePath,
-                          genderOption: genderState));
-                } else {
-                  CustomeSnackBar.show(
-                      context: context,
-                      title: 'Image Not Found!',
-                      description:
-                          'Unable to proceed. Image not found. Please make sure an image is selected.',
-                      titleClr: AppPalette.redClr);
-                }
-              },
-              label: 'Upload',
-              screenHight: screenHeight),
-        )
-      ],
+          );
+        }
+        return LoadingScreen(
+            screenHeight: screenHeight, screenWidth: screenWidth);
+      },
     );
   }
 }

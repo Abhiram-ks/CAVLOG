@@ -9,12 +9,21 @@ class ActionButton extends StatelessWidget {
   final String label;
   final double screenWidth;
   final double screenHight;
+  final Color? color;
+  final bool hasBorder;
+  final Color? textColor;
+  final Color? borderColor;
 
   const ActionButton({
     super.key,
     required this.screenWidth,
     required this.onTap,
-    required this.label, required this.screenHight,
+    required this.label, 
+    required this.screenHight,
+    this.hasBorder = false,
+    this.borderColor,
+    this.textColor,
+    this.color,
   });
 
   @override
@@ -23,30 +32,39 @@ class ActionButton extends StatelessWidget {
       height: screenHight * 0.06 ,
       width: screenWidth,
       child: Material(
-        color: AppPalette.buttonClr,
+        color:color ?? AppPalette.buttonClr,
         borderRadius: BorderRadius.circular(10),
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(10),
           splashColor: Colors.white.withAlpha(77),
-          child: Center(
-            child: BlocBuilder<ButtonProgressCubit, ButtonProgressState>
-            (builder: (context, state) {
-              if (state is ButtonProgressLoading) {
-                return SpinKitFadingFour(
-                  color: AppPalette.whiteClr,
-                  size: 23.0,
-                ); 
-              }return Text(
-              label,
-              style: TextStyle(
-                fontSize: 18,
-                color: AppPalette.whiteClr,
-                fontWeight: FontWeight.bold,
+          child: Container(
+            decoration:  hasBorder ? BoxDecoration(
+              border: Border.all(
+                color:  borderColor ?? AppPalette.trasprentClr,
+                width: 1.5
               ),
-            );
-            },
-            )
+               borderRadius: BorderRadius.circular(10),
+            ) : null,
+            child: Center(
+              child: BlocBuilder<ButtonProgressCubit, ButtonProgressState>
+              (builder: (context, state) {
+                if (state is ButtonProgressLoading) {
+                  return SpinKitFadingFour(
+                    color: AppPalette.whiteClr,
+                    size: 23.0,
+                  ); 
+                }return Text(
+                label,
+                style: TextStyle(
+                  fontSize: 18,
+                  color:textColor ?? AppPalette.whiteClr,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+              },
+              )
+            ),
           ),
         ),
       ),

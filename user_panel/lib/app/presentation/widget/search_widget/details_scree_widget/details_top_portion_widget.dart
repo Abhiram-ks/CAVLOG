@@ -11,6 +11,7 @@ import '../../../../../core/utils/constant/constant.dart';
 import '../../../screens/pages/search/detail_screen/detail_screen.dart';
 import '../../profile_widget/profile_scrollable_section.dart';
 
+
 class DetailTopPortionWidget extends StatelessWidget {
   const DetailTopPortionWidget({
     super.key,
@@ -64,11 +65,22 @@ class DetailTopPortionWidget extends StatelessWidget {
                 textColor: AppPalette.greyClr,
               ),
               Text(
-                "Male",
+                () {
+                  final gender = widget.barber.gender?.toLowerCase();
+                  if(gender == 'male') return 'Male';
+                  if(gender == 'female') return 'Female';
+                  return 'Unisex';
+                } (),
                 style: GoogleFonts.plusJakartaSans(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: AppPalette.blueClr),
+                    color: (() {
+                      final gender = widget.barber.gender?.toLowerCase();
+                      if (gender == 'male') return AppPalette.blueClr;
+                      if (gender == 'female') return Colors.pink;
+                      return AppPalette.orengeClr;
+                    })(),
+                    ),
               ),
               Text(
                 "Open",

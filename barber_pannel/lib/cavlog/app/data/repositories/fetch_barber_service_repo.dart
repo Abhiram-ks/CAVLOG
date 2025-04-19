@@ -11,10 +11,9 @@ abstract class FetchBarberServiceRepository {
   });
   Future<bool> updateBarberService({
     required String barberUid,
-    required String serviceKey,
+    required String serviceKey,                        
     required double serviceValue,
   });
-
 }
 
 

@@ -60,7 +60,7 @@ class BarberListBuilder extends StatelessWidget {
                        ListForBarbers(
                         ontap: () {
                           FocusScope.of(context).unfocus();
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailBarberScreen(barber:barber, imageList: [barber.image ?? AppImages.barberEmpty, AppImages.barberEmpty],),));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailBarberScreen(barber:barber, imageList: [barber.image ?? AppImages.barberEmpty, barber.detailImage ?? AppImages.barberEmpty],),));
                         },
                         screenHeight: screenHeight,
                         screenWidth: screenWidth,
