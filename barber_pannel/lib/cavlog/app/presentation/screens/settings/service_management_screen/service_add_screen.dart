@@ -12,8 +12,8 @@ import '../../../../../../core/common/common_loading_widget.dart';
 import '../../../../../../core/utils/constant/constant.dart';
 import '../../../provider/bloc/barber_service_bloc/barber_service_bloc.dart';
 import '../../../provider/bloc/fetch_service_bloc/fetch_service_bloc.dart';
-import '../../../widgets/settings_widget/service_management_widget/handle_servicestae.dart';
-import '../../../widgets/settings_widget/service_management_widget/service_tags_widget.dart';
+import '../../../widgets/settings_widget/settings_service_management/handle_servicestae.dart';
+import '../../../widgets/settings_widget/settings_service_management/service_tags_widget.dart';
 
 class ServiceAddScreen extends StatefulWidget {
   const ServiceAddScreen({super.key});

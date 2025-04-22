@@ -13,6 +13,7 @@ class BarberModel {
   String? detailImage;
   String? image;
   int? age;
+  double? rating;
   final Timestamp? createdAt;
 
   BarberModel({
@@ -29,11 +30,13 @@ class BarberModel {
     this.detailImage,
     this.gender,
     this.createdAt,
+    this.rating
   });
 
-  factory BarberModel.fromMap(String uid, Map<String, dynamic> map){
+  factory BarberModel.fromMap(String uid,double rating, Map<String, dynamic> map){
     return BarberModel(
       uid: uid,
+      rating: rating,
       barberName: map['barberName'] ?? '',
       ventureName: map['ventureName'] ?? '',
       phoneNumber: map['phoneNumber'] ?? '',

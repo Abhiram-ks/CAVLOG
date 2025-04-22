@@ -48,7 +48,6 @@ mixin FormFieldMixin {
                 return TextFormField(
                   controller: controller,
                   autocorrect: true,
-                  
                   autofillHints: isPasswordField ? [AutofillHints.password] : [AutofillHints.username],
                   canRequestFocus: true,
                   validator: validate,
@@ -71,10 +70,8 @@ mixin FormFieldMixin {
                     suffixIcon: isPasswordField || isfilterFiled
                         ? GestureDetector(
                             onTap: () {
-                              if (isPasswordField) {
-                                  context.read<IconCubit>().togglePasswordVisibility(isVisible);
-                              }else {
-                                fillterAction?.call();
+                              if (isPasswordField) {context.read<IconCubit>().togglePasswordVisibility(isVisible);
+                              }else { fillterAction?.call();
                               }
                             
                             },

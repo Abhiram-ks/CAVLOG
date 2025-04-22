@@ -1,5 +1,5 @@
-import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/service_management_widget/service_editandupdate_state_handle.dart';
-import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/service_management_widget/service_management_filed_widget.dart';
+import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/settings_service_management/service_editandupdate_state_handle.dart';
+import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/settings_service_management/service_management_filed_widget.dart';
 import 'package:barber_pannel/core/utils/constant/constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

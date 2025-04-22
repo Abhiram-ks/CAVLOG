@@ -1,5 +1,7 @@
+import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barber_post_repo.dart';
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barberdata_repo.dart';
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_servicedata_repo.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetch_service_bloc/fetch_service_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchbarber/fetch_barber_bloc.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
@@ -15,6 +17,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'cavlog/auth/presentation/provider/cubit/Checkbox/checkbox_cubit.dart';
 import 'cavlog/auth/presentation/provider/cubit/icon_cubit/icon_cubit.dart';
 
 void main() async{
@@ -40,6 +43,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => IconCubit()),
         BlocProvider(create: (context) => ButtonProgressCubit()),
         BlocProvider(create: (context) => TimerCubitCubit()),
+        BlocProvider(create: (context) => CheckboxCubit()),
         BlocProvider(create: (context) => FetchServiceBloc(ServiceRepositoryImpl())..add(FetchServiceRequst())),
       ],
       child: MaterialApp(
@@ -48,7 +52,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           initialRoute: AppRoutes.splash,
           onGenerateRoute: AppRoutes.generateRoute,
-          ),
+          ), 
     );
   }
 }

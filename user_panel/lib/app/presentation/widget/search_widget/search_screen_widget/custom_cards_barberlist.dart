@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../core/common/custom_imageshow_widget.dart';
@@ -26,21 +27,22 @@ class ListForBarbers extends StatelessWidget {
   final String imageURl;
   final String shopName;
   final String shopAddress;
-  final String rating;
+  final double rating;
   final VoidCallback ontap;
   final bool isBlocked;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        if(isBlocked){
-            CustomeSnackBar.show(
-        context: context,
-       title: 'Account Suspended!',
-      description: 'This shop account has been suspended due to unauthorized activity detected.',
-      titleClr: AppPalette.redClr,
-    );
+      onTap: () {
+        if (isBlocked) {
+          CustomeSnackBar.show(
+            context: context,
+            title: 'Account Suspended!',
+            description:
+                'This shop account has been suspended due to unauthorized activity detected.',
+            titleClr: AppPalette.redClr,
+          );
         } else {
           ontap();
         }
@@ -92,14 +94,16 @@ class ListForBarbers extends StatelessWidget {
                         maxline: 1,
                         textColor: AppPalette.greyClr,
                       ),
-                      profileviewWidget(
-                        screenWidth,
-                        context,
-                        Icons.star_half_sharp,
-                        rating,
-                        AppPalette.buttonClr,
-                        maxline: 1,
-                        textColor: AppPalette.greyClr,
+                      RatingBarIndicator(
+                        rating: rating,
+                        unratedColor: AppPalette.hintClr,
+                        itemBuilder: (context, index) => Icon(
+                          Icons.star,
+                          color: AppPalette.buttonClr,
+                        ),
+                        itemCount: 5,
+                        itemSize: 18.0,
+                        direction: Axis.horizontal,
                       ),
                     ],
                   ),
@@ -111,7 +115,8 @@ class ListForBarbers extends StatelessWidget {
                       style: GoogleFonts.plusJakartaSans(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
-                        color:isBlocked ? AppPalette.redClr : AppPalette.greenClr,
+                        color:
+                            isBlocked ? AppPalette.redClr : AppPalette.greenClr,
                       ),
                     ),
                   ),

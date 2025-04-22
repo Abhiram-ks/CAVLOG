@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:user_panel/app/presentation/widget/search_widget/details_scree_widget/details_screen_actionbuttos.dart';
+import 'package:user_panel/app/presentation/widget/search_widget/details_screen_widget/details_screen_actionbuttos.dart';
 import '../../../../../core/common/custom_imageshow_widget.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/image/app_images.dart';

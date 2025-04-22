@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_panel/app/presentation/screens/pages/search/detail_screen/detail_screen.dart';
@@ -60,12 +62,12 @@ class BarberListBuilder extends StatelessWidget {
                        ListForBarbers(
                         ontap: () {
                           FocusScope.of(context).unfocus();
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailBarberScreen(barber:barber, imageList: [barber.image ?? AppImages.barberEmpty, barber.detailImage ?? AppImages.barberEmpty],),));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailBarberScreen(barberId: barber.uid,)));
                         },
                         screenHeight: screenHeight,
                         screenWidth: screenWidth,
                         imageURl: barber.image ?? AppImages.barberEmpty,
-                        rating: '4.5',
+                        rating: barber.rating ?? 0.0,
                         shopName: barber.ventureName,
                         shopAddress: barber.address,
                         isBlocked: barber.isblok,

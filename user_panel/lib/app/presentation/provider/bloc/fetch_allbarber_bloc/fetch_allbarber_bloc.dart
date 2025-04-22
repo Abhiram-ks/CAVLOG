@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:user_panel/app/data/models/barber_model.dart';
-import '../../../../data/repositories/fetch_allbarbers_repo.dart';
+import '../../../../data/repositories/fetch_barber_repo.dart';
 part 'fetch_allbarber_event.dart';
 part 'fetch_allbarber_state.dart';
 
@@ -19,6 +19,7 @@ class FetchAllbarberBloc extends Bloc<FetchAllbarberEvent, FetchAllbarberState> 
     FetchAllBarbersRequested event, 
     Emitter<FetchAllbarberState> emit
   ) async {
+    await _barberSubscription?.cancel();
     emit(FetchAllbarberLoading());
 
     await _barberSubscription?.cancel();

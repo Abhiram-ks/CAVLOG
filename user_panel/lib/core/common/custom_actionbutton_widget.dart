@@ -9,13 +9,15 @@ class ButtonComponents{
     required double screenHeight,
     required double screenWidth,
     required String label,
-    required VoidCallback onTap
+    required VoidCallback onTap,
+    Color? buttonColor,
+    Color? textColor,
   }){
     return SizedBox(
       height: screenHeight * 0.06 ,
       width: screenWidth,
       child: Material(
-        color: AppPalette.buttonClr,
+        color:buttonColor ?? AppPalette.buttonClr,
         borderRadius: BorderRadius.circular(10),
         child: InkWell(
           onTap: onTap,
@@ -33,7 +35,7 @@ class ButtonComponents{
               label,
               style: TextStyle(
                 fontSize: 18,
-                color: AppPalette.whiteClr,
+                color:textColor ?? AppPalette.whiteClr,
                 fontWeight: FontWeight.bold,
               ),
             );

@@ -10,7 +10,7 @@ import '../../../../data/repositories/fetch_barber_service_repo.dart';
 import '../../../provider/bloc/barber_service_modification_bloc/barber_service_modeification_bloc.dart';
 import '../../../provider/bloc/fetch_barber_service_bloc/fetch_barber_service_bloc.dart';
 import '../../../provider/cubit/edit_mode/edit_mode_cubit.dart';
-import '../../../widgets/settings_widget/service_management_widget/barber_service_builder_widget.dart';
+import '../../../widgets/settings_widget/settings_service_management/barber_service_builder_widget.dart';
 
 class ServiceManageScreen extends StatelessWidget {
   const ServiceManageScreen({super.key});

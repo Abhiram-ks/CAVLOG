@@ -15,3 +15,6 @@ class FetchBarberServicesFailure extends FetchBarberDetailsState {
   final String error;
   FetchBarberServicesFailure(this.error);
 }
+
+
+

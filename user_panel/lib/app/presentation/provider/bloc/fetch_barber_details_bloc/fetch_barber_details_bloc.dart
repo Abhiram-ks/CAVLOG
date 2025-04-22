@@ -5,12 +5,15 @@ import 'package:user_panel/app/data/repositories/fetch_barber_details_repo.dart'
 part 'fetch_barber_details_event.dart';
 part 'fetch_barber_details_state.dart';
 
-class FetchBarberDetailsBloc extends Bloc<FetchBarberDetailsEvent, FetchBarberDetailsState> {
+class FetchBarberDetailsBloc
+    extends Bloc<FetchBarberDetailsEvent, FetchBarberDetailsState> {
   final FetchBarberDetailsRepository repository;
   StreamSubscription<List<BarberServiceModel>>? _subscription;
 
-  FetchBarberDetailsBloc({required this.repository}) : super(FetchBarberDetailsInitial()) {
+  FetchBarberDetailsBloc(this.repository)
+      : super(FetchBarberDetailsInitial()) {
     on<FetchBarberServicesRequested>(_onFetchBarberServicesRequested);
+  
   }
 
   Future<void> _onFetchBarberServicesRequested(

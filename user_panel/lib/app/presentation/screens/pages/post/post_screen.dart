@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/common/custom_loadingscreen_widget.dart';
+import 'package:user_panel/core/common/custom_appbar_widget.dart';
+import 'package:user_panel/core/themes/colors.dart';
+
 class PostScreen extends StatelessWidget {
   const PostScreen({super.key});
 
@@ -10,9 +12,13 @@ class PostScreen extends StatelessWidget {
         double screenHeight = constraints.maxHeight;
         double screenWidth = constraints.maxWidth;
 
-        return SafeArea(
-          child: Scaffold(
-            body: LoadingScreen(screenHeight: screenHeight, screenWidth: screenWidth),
+        return ColoredBox(
+          color: AppPalette.blackClr,
+          child: SafeArea(
+            child: Scaffold(
+              appBar: CustomAppBar(isTitle: true, backgroundColor: AppPalette.blackClr,title: 'POSTS ˅',)
+            
+            ),
           ),
         );
       },

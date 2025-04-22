@@ -19,7 +19,7 @@ class PostUploadingRepo {
             'image': imageUrl,
             'description': description,
             'likes': [],
-            'comments': [],
+            'comments': {},
             'createdAt': FieldValue.serverTimestamp(),
           });
         return true;

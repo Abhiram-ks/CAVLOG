@@ -1,6 +1,6 @@
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/logout/logout_bloc.dart';
-import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/logout_widget/logout_state_handle.dart';
-import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/settings_filed_widget/settings_custom_widget.dart';
+import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/settings_logout_handle/logout_state_handle.dart';
+import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/settings_custom_fileds_widget/settings_custom_widget.dart';
 import 'package:barber_pannel/core/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,50 +36,18 @@ class TabbarSettings extends StatelessWidget {
                   color: AppPalette.greyClr,
                 )),
             settingsWidget(
-                context: context,
-                screenHeight: screenHeight,
-                icon: CupertinoIcons.profile_circled,
-                title: 'Profile details',
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.accountScreen,
-                      arguments: false);
-                }),
+                context: context,screenHeight: screenHeight,icon: CupertinoIcons.profile_circled, title: 'Profile details',
+                onTap: () {Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: false);}),
             settingsWidget(
-                context: context,
-                screenHeight: screenHeight,
-                icon: CupertinoIcons.square_pencil,
-                title: 'Edit Profile',
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.accountScreen,
-                      arguments: true);
-                }),
-            settingsWidget(
-                context: context,
-                screenHeight: screenHeight,
-                icon: CupertinoIcons.lock,
-                title: 'Change Password',
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.resetPassword,
-                      arguments: false);
-                }),
-            settingsWidget(
-                context: context,
-                screenHeight: screenHeight,
-                icon: CupertinoIcons.wrench,
-                title: 'Service Management',
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.serviceManageScreen);
-                }),
-            settingsWidget(
-                context: context,
-                screenHeight: screenHeight,
-                icon: CupertinoIcons.clock,
-                title: 'Time We Serve You',
-                onTap: () {}),
-            Divider(
-              color: AppPalette.hintClr,
-            ),
-            ConstantWidgets.hight10(context),
+                context: context,screenHeight: screenHeight,icon: CupertinoIcons.square_pencil,title: 'Edit Profile',
+                onTap: () {Navigator.pushNamed(context, AppRoutes.accountScreen,arguments: true);}),
+            settingsWidget(context: context,screenHeight: screenHeight,icon: CupertinoIcons.lock,title: 'Change Password',
+                onTap: () {Navigator.pushNamed(context, AppRoutes.resetPassword,arguments: false);}),
+            settingsWidget(context: context,screenHeight: screenHeight,icon: CupertinoIcons.wrench,title: 'Service Management',
+                onTap: () { Navigator.pushNamed(context, AppRoutes.serviceManageScreen);}),
+            settingsWidget(context: context,screenHeight: screenHeight,icon: CupertinoIcons.clock,title: 'Time Management',
+                onTap: () { Navigator.pushNamed(context, AppRoutes.timeManagementScreen);}),
+            Divider(color: AppPalette.hintClr),ConstantWidgets.hight10(context),
             Text('Community support',
                 style: TextStyle(
                   color: AppPalette.greyClr,

@@ -3,8 +3,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:user_panel/app/presentation/widget/search_widget/details_scree_widget/details_call_helper_function.dart';
-import 'package:user_panel/app/presentation/widget/search_widget/details_scree_widget/details_screen_actionbuttos.dart';
+import 'package:user_panel/app/data/models/barber_model.dart';
+import 'package:user_panel/app/presentation/widget/search_widget/details_screen_widget/details_call_helper_function.dart';
+import 'package:user_panel/app/presentation/widget/search_widget/details_screen_widget/details_screen_actionbuttos.dart';
 
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/constant/constant.dart';
@@ -16,11 +17,11 @@ class DetailTopPortionWidget extends StatelessWidget {
   const DetailTopPortionWidget({
     super.key,
     required this.screenWidth,
-    required this.widget,
+    required this.barber,
   });
 
   final double screenWidth;
-  final DetailBarberScreen widget;
+  final BarberModel barber;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class DetailTopPortionWidget extends StatelessWidget {
         children: [
           ConstantWidgets.hight20(context),
           Text(
-            widget.barber.ventureName,
+            barber.ventureName,
             style: GoogleFonts.plusJakartaSans(
               fontSize: 17,
               fontWeight: FontWeight.bold,
@@ -45,7 +46,7 @@ class DetailTopPortionWidget extends StatelessWidget {
             screenWidth,
             context,
             Icons.location_on,
-            widget.barber.address,
+            barber.address,
             AppPalette.greyClr,
             maxline: 2,
             widget: double.infinity,
@@ -66,7 +67,7 @@ class DetailTopPortionWidget extends StatelessWidget {
               ),
               Text(
                 () {
-                  final gender = widget.barber.gender?.toLowerCase();
+                  final gender = barber.gender?.toLowerCase();
                   if(gender == 'male') return 'Male';
                   if(gender == 'female') return 'Female';
                   return 'Unisex';
@@ -75,7 +76,7 @@ class DetailTopPortionWidget extends StatelessWidget {
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
                     color: (() {
-                      final gender = widget.barber.gender?.toLowerCase();
+                      final gender = barber.gender?.toLowerCase();
                       if (gender == 'male') return AppPalette.blueClr;
                       if (gender == 'female') return Colors.pink;
                       return AppPalette.orengeClr;
@@ -110,7 +111,7 @@ class DetailTopPortionWidget extends StatelessWidget {
                     screenWidth: screenWidth,
                     icon: Icons.phone_in_talk_rounded,
                     onTap: () {
-                      CallHelper.makeCall(widget.barber.phoneNumber, context);
+                      CallHelper.makeCall(barber.phoneNumber, context);
                     },
                     text: 'Call'),
                 detailsPageActions(

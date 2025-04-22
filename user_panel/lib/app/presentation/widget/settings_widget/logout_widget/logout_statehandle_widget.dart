@@ -44,7 +44,7 @@ void handleLogOutState(BuildContext context, LogoutState state) {
       context: context,
       title: 'Logout Request Failed',
       description: 'Oops! Your logout request failed. ${state.errorMessage}',
-      titleClr: AppPalette.lightOrengeclr,
+      titleClr: AppPalette.buttonClr,
     );
   }
 }

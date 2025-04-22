@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barberdata_repo.dart';
 import 'package:barber_pannel/cavlog/app/data/models/barber_model.dart';
@@ -20,7 +19,6 @@ class FetchBarberBloc extends Bloc<FetchBarberEvent, FetchBarberState> {
       try {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         final String? barberUid = prefs.getString('barberUid');
-        log('Fetching barber uid: $barberUid ');
 
       if (barberUid != null) {
           await emit.forEach(

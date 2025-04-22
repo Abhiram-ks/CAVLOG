@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:barber_pannel/cavlog/app/domain/usecases/update_user_profile.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/image_picker/image_picker_bloc.dart';
-import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/detail_edition_widget/pickimage_show_widget.dart';
+import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/settings_detail_edition_widget/pickimage_show_widget.dart';
 import 'package:barber_pannel/core/cloudinary/cloudinary_service.dart';
 import 'package:barber_pannel/core/common/common_action_button.dart';
 import 'package:barber_pannel/core/common/common_loading_widget.dart';
@@ -16,9 +16,9 @@ import '../../../../data/repositories/image_picker_repo.dart';
 import '../../../../domain/usecases/image_picker_usecase.dart';
 import '../../../provider/bloc/fetchbarber/fetch_barber_bloc.dart';
 import '../../../provider/bloc/update_profile_bloc/update_profile_bloc.dart';
-import '../../../widgets/settings_widget/detail_edition_widget/details_fileds_widget.dart'
+import '../../../widgets/settings_widget/settings_detail_edition_widget/details_fileds_widget.dart'
     show ProfileEditDetailsFormsWidget;
-import '../../../widgets/settings_widget/detail_edition_widget/profile_statehandle_widget.dart';
+import '../../../widgets/settings_widget/settings_detail_edition_widget/profile_statehandle_widget.dart';
 
 class ProfileEditDetails extends StatelessWidget {
   final bool isShow;

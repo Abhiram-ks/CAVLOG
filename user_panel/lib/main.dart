@@ -1,14 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:user_panel/app/data/repositories/fetch_allbarbers_repo.dart';
+import 'package:user_panel/app/data/repositories/fetch_barber_repo.dart';
 import 'package:user_panel/app/data/repositories/fetch_barber_details_repo.dart';
+import 'package:user_panel/app/data/repositories/fetch_barber_post.dart';
 import 'package:user_panel/app/data/repositories/fetch_userdata_repo.dart';
+import 'package:user_panel/app/data/repositories/review_upload_repository.dart';
 import 'package:user_panel/app/domain/usecases/update_user_profile.dart';
 import 'package:user_panel/app/presentation/provider/bloc/fetch_allbarber_bloc/fetch_allbarber_bloc.dart';
+import 'package:user_panel/app/presentation/provider/bloc/fetch_barber_bloc/fetch_barber_id_bloc.dart';
 import 'package:user_panel/app/presentation/provider/bloc/fetch_barber_details_bloc/fetch_barber_details_bloc.dart';
+import 'package:user_panel/app/presentation/provider/bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
 import 'package:user_panel/app/presentation/provider/bloc/fetchuser_bloc/fetch_user_bloc.dart';
 import 'package:user_panel/app/presentation/provider/bloc/logout_bloc/logout_bloc.dart';
+import 'package:user_panel/app/presentation/provider/bloc/rating_review_bloc/rating_review_bloc.dart';
 import 'package:user_panel/app/presentation/provider/bloc/updateprofile_bloc/update_profile_bloc.dart';
 import 'package:user_panel/app/presentation/provider/cubit/buttom_nav_cubit/buttom_nav_cubit.dart';
 import 'package:user_panel/auth/data/repositories/authlogin_impl_repo.dart';
@@ -67,8 +72,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LogoutBloc(context.read<ButtomNavCubit>())),
         BlocProvider(create: (context) => FetchUserBloc(FetchUserRepositoryImpl())..add(FetchCurrentUserRequst())),
         BlocProvider(create: (context) => UpdateProfileBloc(CloudinaryService(), UpdateUserProfileUseCase())),
-        BlocProvider(create: (context) => FetchAllbarberBloc(FetchBarberRepositoryImpl())..add(FetchAllBarbersRequested())),
-        BlocProvider(create: (context) => FetchBarberDetailsBloc(repository: FetchBarberDetailsRepositoryImpl())),
+       BlocProvider(create: (context) => FetchAllbarberBloc(FetchBarberRepositoryImpl())..add(FetchAllBarbersRequested())),
+        BlocProvider(create: (context) => FetchBarberDetailsBloc(FetchBarberDetailsRepositoryImpl())),
+        BlocProvider(create: (context) => FetchBarberIdBloc( FetchBarberRepositoryImpl())),
+        BlocProvider(create: (context) => RatingReviewBloc(ReviewUploadRepositoryImpl())),
+        BlocProvider(create: (context) => FetchPostsBloc(FetchBarberPostRepositoryImpl()))
       ],
     child: MaterialApp(
      title: 'Cavlog',

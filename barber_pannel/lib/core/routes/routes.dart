@@ -2,6 +2,7 @@ import 'package:barber_pannel/cavlog/app/presentation/screens/navigation/bottom_
 import 'package:barber_pannel/cavlog/app/presentation/screens/settings/edit_details_screen/profile_edit_details.dart';
 import 'package:barber_pannel/cavlog/app/presentation/screens/settings/service_management_screen/service_add_screen.dart';
 import 'package:barber_pannel/cavlog/app/presentation/screens/settings/service_management_screen/service_manage_screen.dart';
+import 'package:barber_pannel/cavlog/app/presentation/screens/settings/time_management_screen/time_management_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/adminRequst/admin_request.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/blocked/blocked_screen.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/screens/login/login_screen.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String accountScreen = '/profile_edit_details';
   static const String serviceManageScreen = '/service_manage_screen';
   static const String serviceAddscreen = '/service_add_screen';
+  static const String timeManagementScreen = '/time_management_screen';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings){
@@ -58,6 +60,8 @@ class AppRoutes {
         return CupertinoPageRoute(builder: (_) => ServiceAddScreen());
       case serviceManageScreen:
         return CupertinoPageRoute(builder: (_) => ServiceManageScreen());
+      case timeManagementScreen: 
+        return CupertinoPageRoute(builder: (_) => TimeManagementScreen());
       default:
        return MaterialPageRoute(
           builder: (_) =>  Scaffold(
