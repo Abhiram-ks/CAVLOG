@@ -14,8 +14,8 @@ import '../../../../../../core/common/custom_app_bar.dart';
 import '../../../../../../core/utils/constant/constant.dart';
 import '../../../../data/repositories/image_picker_repo.dart';
 import '../../../../domain/usecases/image_picker_usecase.dart';
-import '../../../provider/bloc/fetchbarber/fetch_barber_bloc.dart';
-import '../../../provider/bloc/update_profile_bloc/update_profile_bloc.dart';
+import '../../../provider/bloc/fetchings/fetchbarber/fetch_barber_bloc.dart';
+import '../../../provider/bloc/modifications/update_profile_bloc/update_profile_bloc.dart';
 import '../../../widgets/settings_widget/settings_detail_edition_widget/details_fileds_widget.dart'
     show ProfileEditDetailsFormsWidget;
 import '../../../widgets/settings_widget/settings_detail_edition_widget/profile_statehandle_widget.dart';

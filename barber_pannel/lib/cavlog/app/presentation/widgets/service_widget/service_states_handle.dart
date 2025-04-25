@@ -1,4 +1,4 @@
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/upload_service_data_bloc/upload_service_data_bloc.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/modifications/upload_service_data_bloc/upload_service_data_bloc.dart';
 import 'package:barber_pannel/core/common/snackbar_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

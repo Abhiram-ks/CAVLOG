@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 
-import '../../../../../../core/cloudinary/cloudinary_service.dart';
-import '../../../../domain/usecases/upload_post_usecase.dart';
+import '../../../../../../../core/cloudinary/cloudinary_service.dart';
+import '../../../../../domain/usecases/upload_post_usecase.dart';
 part 'upload_post_event.dart';
 part 'upload_post_state.dart';
 

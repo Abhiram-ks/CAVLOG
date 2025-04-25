@@ -12,7 +12,7 @@ import '../../../../../core/common/common_action_button.dart';
 import '../../../../../core/utils/constant/constant.dart';
 import '../../../data/models/barber_model.dart';
 import '../../provider/bloc/image_picker/image_picker_bloc.dart';
-import '../../provider/bloc/upload_service_data_bloc/upload_service_data_bloc.dart';
+import '../../provider/bloc/modifications/upload_service_data_bloc/upload_service_data_bloc.dart';
 import '../../provider/cubit/gender_cubit/gender_option_cubit.dart';
 
 class UploadingServiceDatas extends StatelessWidget {

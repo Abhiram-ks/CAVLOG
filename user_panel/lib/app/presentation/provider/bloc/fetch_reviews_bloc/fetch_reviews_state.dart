@@ -6,5 +6,13 @@ final class FetchReviewsInitial extends FetchReviewsState {}
 
 final class FetchReviewsLoadingState extends FetchReviewsState {}
 final class FetchReviewsEmptyState extends FetchReviewsState {}
-final class FetchReviewsSuccesState extends FetchReviewsState {}
-final class FetchReviewFailureState extends FetchReviewsState {}
+final class FetchReviewsSuccesState extends FetchReviewsState {
+  final List<ReviewModel> reviews;
+
+  FetchReviewsSuccesState(this.reviews);
+}
+final class FetchReviewFailureState extends FetchReviewsState {
+  final String error;
+
+  FetchReviewFailureState(this.error);
+}

@@ -21,12 +21,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
           if(curretuser != null){
             emit(GoToHomePage());
           }
-          // final credentials = await SecureStorageService.getUserCredentials();
-          // final isLogged = credentials['isUserLogged'];
-          // final isUserId = credentials['userId'];
-          // if (isLogged == 'true' && isUserId != null && isUserId.isNotEmpty){
-          //   emit(GoToHomePage());
-          // }
           else{
           emit(GoToLoginPage());
           }
@@ -44,13 +38,13 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
 
 void _runAnimation(SendPort sendPort) async{
-  const Duration duration = Duration(milliseconds: 3000);
+  const Duration duration = Duration(milliseconds: 1200);
   final Stopwatch stopwatch = Stopwatch()..start();
 
   while (stopwatch.elapsed < duration) {
-     for (double progress = 0.0; progress <= 1.0; progress += 0.03) {
+     for (double progress = 0.0; progress <= 1.0; progress += 0.02) {
       sendPort.send(progress);
-      await Future.delayed(const Duration(milliseconds: 30));
+      await Future.delayed(const Duration(milliseconds: 20));
     }
   }
    sendPort.send(1.0);

@@ -6,7 +6,7 @@ import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/gender_cubi
 import 'package:bloc/bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../../../core/cloudinary/cloudinary_service.dart';
+import '../../../../../../../core/cloudinary/cloudinary_service.dart';
 part 'upload_service_data_event.dart';
 part 'upload_service_data_state.dart';
 

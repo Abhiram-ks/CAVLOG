@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../data/datasources/firestore_barber_service.dart';
+import '../../../../../data/datasources/firestore_barber_service.dart';
 part 'barber_service_event.dart';
 part 'barber_service_state.dart';
 

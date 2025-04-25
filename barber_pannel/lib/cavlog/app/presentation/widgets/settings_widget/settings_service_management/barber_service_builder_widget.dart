@@ -2,12 +2,13 @@ import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/se
 import 'package:barber_pannel/cavlog/app/presentation/widgets/settings_widget/settings_service_management/service_management_filed_widget.dart';
 import 'package:barber_pannel/core/utils/constant/constant.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/common/lottie_widget.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../../core/utils/image/app_images.dart';
-import '../../../provider/bloc/barber_service_modification_bloc/barber_service_modeification_bloc.dart';
-import '../../../provider/bloc/fetch_barber_service_bloc/fetch_barber_service_bloc.dart';
+import '../../../provider/bloc/modifications/barber_service_modification_bloc/barber_service_modeification_bloc.dart';
+import '../../../provider/bloc/fetchings/fetch_barber_service_bloc/fetch_barber_service_bloc.dart';
 
 BlocBuilder<FetchBarberServiceBloc, FetchBarberServiceState> barberServiceBuilder(double screenWidth, double screenHeight) {
     return BlocBuilder<FetchBarberServiceBloc, FetchBarberServiceState>(
@@ -39,6 +40,7 @@ BlocBuilder<FetchBarberServiceBloc, FetchBarberServiceState> barberServiceBuilde
                                     return ServiceManagementFiled(
                                       context: context,
                                       screenWidth: screenWidth,
+                                      icon: Icons.currency_rupee_sharp,
                                       label: service.serviceName,
                                       serviceRate:service.amount.toStringAsFixed(0),
                                       deleteAction: () {

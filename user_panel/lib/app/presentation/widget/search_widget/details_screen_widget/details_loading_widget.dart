@@ -5,13 +5,12 @@ import 'package:user_panel/app/presentation/widget/search_widget/details_screen_
 import 'package:user_panel/app/presentation/widget/search_widget/details_screen_widget/details_post_widget.dart';
 import 'package:user_panel/app/presentation/widget/search_widget/details_screen_widget/details_services_buld_widget.dart';
 import 'package:user_panel/app/presentation/widget/search_widget/details_screen_widget/details_top_portion_widget.dart';
-
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/constant/constant.dart';
 import '../../../../../core/utils/image/app_images.dart';
 import '../../../../data/models/barber_model.dart';
 import '../../../provider/cubit/tab_cubit/tab_cubit.dart';
-import '../../../screens/pages/search/detail_screen/detail_screen.dart';
+import '../rating_review_widget/reviews_rating_widget.dart';
 
 Shimmer detailshowWidgetLoading(BarberModel barber, double screenHeight, double screenWidth, BuildContext context) {
     return Shimmer.fromColors(

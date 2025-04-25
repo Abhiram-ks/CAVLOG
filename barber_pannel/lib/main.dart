@@ -1,9 +1,9 @@
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barber_post_repo.dart';
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_barberdata_repo.dart';
 import 'package:barber_pannel/cavlog/app/data/repositories/fetch_servicedata_repo.dart';
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetch_service_bloc/fetch_service_bloc.dart';
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchbarber/fetch_barber_bloc.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchings/fetch_posts_bloc/fetch_posts_bloc.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchings/fetch_service_bloc/fetch_service_bloc.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchings/fetchbarber/fetch_barber_bloc.dart';
 import 'package:barber_pannel/cavlog/auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
 import 'package:barber_pannel/core/cloudinary/cloudinary_config.dart';
 import 'package:barber_pannel/core/routes/routes.dart';

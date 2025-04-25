@@ -2,7 +2,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../../core/common/textfield_helper.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../../core/utils/constant/constant.dart';
@@ -10,11 +9,12 @@ import '../../../../../../core/validation/input_validations.dart';
 import '../../../provider/cubit/edit_mode/edit_mode_cubit.dart';
 
 class ServiceManagementFiled extends StatefulWidget {
-  const ServiceManagementFiled(
+   const ServiceManagementFiled(
       {super.key,
       required this.context,
       required this.screenWidth,
       required this.label,
+      required this.icon,
       required this.serviceRate,
       required this.deleteAction,
        required this.updateAction});
@@ -24,6 +24,7 @@ class ServiceManagementFiled extends StatefulWidget {
   final String label;
   final String serviceRate;
   final VoidCallback deleteAction;
+  final IconData icon;
   final void Function(double value) updateAction; 
   @override
   State<ServiceManagementFiled> createState() => _ServiceManagementFiledState();
@@ -49,7 +50,7 @@ class _ServiceManagementFiledState extends State<ServiceManagementFiled> {
                 enabled: isEditable,
                 label: widget.label,
                 hintText: 'Enter your charge',
-                prefixIcon: Icons.currency_rupee,
+                prefixIcon: widget.icon,
                 controller: serviceRateController,
                 validate: ValidatorHelper.validateAmount,
               );

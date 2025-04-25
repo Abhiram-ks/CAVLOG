@@ -1,12 +1,12 @@
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/fetchings/fetch_posts_bloc/fetch_posts_bloc.dart';
 import 'package:barber_pannel/core/common/common_loading_widget.dart';
 import 'package:barber_pannel/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/repositories/fetch_barber_post_repo.dart';
 import '../../../../data/repositories/fetch_servicedata_repo.dart';
-import '../../../provider/bloc/fetch_service_bloc/fetch_service_bloc.dart';
-import '../../../provider/bloc/fetchbarber/fetch_barber_bloc.dart';
+import '../../../provider/bloc/fetchings/fetch_service_bloc/fetch_service_bloc.dart';
+import '../../../provider/bloc/fetchings/fetchbarber/fetch_barber_bloc.dart';
 import '../../../widgets/profile_widgets/profile_helper_widget/profile_scrollview.dart';
 
 class ProfileScreen extends StatelessWidget {

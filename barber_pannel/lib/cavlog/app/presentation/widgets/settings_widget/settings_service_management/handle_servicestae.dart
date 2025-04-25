@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
-import '../../../provider/bloc/barber_service_bloc/barber_service_bloc.dart';
+import '../../../provider/bloc/modifications/barber_service_bloc/barber_service_bloc.dart';
 
 void handleBarberServiceState(BuildContext context, BarberServiceState state) {
   final buttonCubit = context.read<ButtonProgressCubit>();

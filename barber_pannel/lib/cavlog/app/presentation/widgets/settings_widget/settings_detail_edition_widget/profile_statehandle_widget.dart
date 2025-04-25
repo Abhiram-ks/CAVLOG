@@ -4,7 +4,7 @@ import '../../../../../../core/common/custom_bottomsheet.dart';
 import '../../../../../../core/common/snackbar_helper.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
-import '../../../provider/bloc/update_profile_bloc/update_profile_bloc.dart';
+import '../../../provider/bloc/modifications/update_profile_bloc/update_profile_bloc.dart';
 
 void handleProfileUpdateState (
   BuildContext context, UpdateProfileState state) {

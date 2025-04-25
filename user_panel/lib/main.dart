@@ -35,6 +35,7 @@ import 'package:user_panel/core/routes/routes.dart';
 import 'package:user_panel/core/themes/theme_manager.dart';
 import 'package:user_panel/firebase_options.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'app/presentation/provider/cubit/voice_search_cubit/voice_search_cubit.dart' show VoiceSearchCubit;
 import 'auth/presentation/provider/bloc/reset_password/reset_password_bloc.dart';
 
 void main() async {
@@ -69,10 +70,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => TimerCubit()),
         BlocProvider(create: (context) => ButtomNavCubit()),
         //Appcore Bloc
+        
+        BlocProvider(create: (context) => VoiceSearchCubit()),
         BlocProvider(create: (context) => LogoutBloc(context.read<ButtomNavCubit>())),
         BlocProvider(create: (context) => FetchUserBloc(FetchUserRepositoryImpl())..add(FetchCurrentUserRequst())),
         BlocProvider(create: (context) => UpdateProfileBloc(CloudinaryService(), UpdateUserProfileUseCase())),
        BlocProvider(create: (context) => FetchAllbarberBloc(FetchBarberRepositoryImpl())..add(FetchAllBarbersRequested())),
+      
         BlocProvider(create: (context) => FetchBarberDetailsBloc(FetchBarberDetailsRepositoryImpl())),
         BlocProvider(create: (context) => FetchBarberIdBloc( FetchBarberRepositoryImpl())),
         BlocProvider(create: (context) => RatingReviewBloc(ReviewUploadRepositoryImpl())),

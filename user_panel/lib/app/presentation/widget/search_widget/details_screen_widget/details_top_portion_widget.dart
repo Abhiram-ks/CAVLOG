@@ -1,15 +1,11 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:user_panel/app/data/models/barber_model.dart';
 import 'package:user_panel/app/presentation/widget/search_widget/details_screen_widget/details_call_helper_function.dart';
 import 'package:user_panel/app/presentation/widget/search_widget/details_screen_widget/details_screen_actionbuttos.dart';
-
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/constant/constant.dart';
-import '../../../screens/pages/search/detail_screen/detail_screen.dart';
 import '../../profile_widget/profile_scrollable_section.dart';
 
 
@@ -60,7 +56,7 @@ class DetailTopPortionWidget extends StatelessWidget {
                 screenWidth,
                 context,
                 Icons.star,
-                '5 (3,279 reviews)',
+                '${barber.rating?.toStringAsFixed(1) ?? '0.0'} (Customer Reviews)',
                 AppPalette.buttonClr,
                 maxline: 1,
                 textColor: AppPalette.greyClr,

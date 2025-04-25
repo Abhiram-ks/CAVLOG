@@ -13,7 +13,7 @@ import '../../../../../../../core/themes/colors.dart';
 import '../../../../../../../core/utils/constant/constant.dart';
 import '../../../../../../../core/validation/input_validations.dart';
 import '../../../../provider/bloc/image_picker/image_picker_bloc.dart';
-import '../../../../provider/bloc/upload_post_bloc/upload_post_bloc.dart';
+import '../../../../provider/bloc/modifications/upload_post_bloc/upload_post_bloc.dart';
 
 class TabbarAddPost extends StatefulWidget {
   final double screenHeight;

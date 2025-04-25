@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import '../../../../data/repositories/fetch_barber_service_repo.dart';
+import '../../../../../data/repositories/fetch_barber_service_repo.dart';
 part 'barber_service_modeification_event.dart';
 part 'barber_service_modeification_state.dart';
 

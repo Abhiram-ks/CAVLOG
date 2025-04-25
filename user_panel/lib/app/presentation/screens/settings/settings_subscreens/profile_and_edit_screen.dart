@@ -38,12 +38,10 @@ class ProfileEditDetails extends StatelessWidget {
           body: BlocBuilder<FetchUserBloc, FetchUserState>(
             builder: (context, state) {
               if (state is FetchUserLoading) {
-                return LoadingScreen(
-                    screenHeight: screenHeight, screenWidth: screenWidth);
+                return LoadingScreen( screenHeight: screenHeight, screenWidth: screenWidth);
               }
               if (state is FetchUserError) {
-                LoadingScreen(
-                    screenHeight: screenHeight, screenWidth: screenWidth);
+                LoadingScreen(screenHeight: screenHeight, screenWidth: screenWidth);
               }
               if (state is FetchUserLoaded) {
                 final user = state.user;

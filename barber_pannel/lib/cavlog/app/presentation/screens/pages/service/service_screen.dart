@@ -1,6 +1,6 @@
 import 'package:barber_pannel/cavlog/app/data/repositories/image_picker_repo.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/image_picker/image_picker_bloc.dart';
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/upload_service_data_bloc/upload_service_data_bloc.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/modifications/upload_service_data_bloc/upload_service_data_bloc.dart';
 import 'package:barber_pannel/cavlog/app/presentation/provider/cubit/current_service_cubit/current_service_cubit.dart';
 import 'package:barber_pannel/cavlog/app/presentation/widgets/service_widget/service_widget_upload_datas.dart';
 import 'package:barber_pannel/core/common/common_action_button.dart';
@@ -16,7 +16,7 @@ import '../../../../../../core/cloudinary/cloudinary_service.dart';
 import '../../../../../../core/common/common_loading_widget.dart';
 import '../../../../data/datasources/firestore_barber_service.dart';
 import '../../../../domain/usecases/image_picker_usecase.dart';
-import '../../../provider/bloc/fetchbarber/fetch_barber_bloc.dart';
+import '../../../provider/bloc/fetchings/fetchbarber/fetch_barber_bloc.dart';
 import '../../../provider/cubit/gender_cubit/gender_option_cubit.dart';
 import '../../../widgets/service_widget/pdf_maker_widget.dart';
 
@@ -79,7 +79,8 @@ class ServiceScreen extends StatelessWidget {
                             screenHight: screenHeight);
                       },
                     ),
-                  )),
+                  )
+                  ),
             ),
           );
         },

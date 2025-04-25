@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../../core/themes/colors.dart';
-import '../../../provider/bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
+import '../../../provider/bloc/fetchings/fetch_posts_bloc/fetch_posts_bloc.dart';
 class TabbarImageShow extends StatelessWidget {
   const TabbarImageShow({super.key});
 

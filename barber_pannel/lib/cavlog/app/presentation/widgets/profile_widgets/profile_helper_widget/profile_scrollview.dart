@@ -17,7 +17,7 @@ import '../../../../../../core/utils/constant/constant.dart';
 import '../../../../data/repositories/image_picker_repo.dart';
 import '../../../../domain/usecases/image_picker_usecase.dart';
 import '../../../provider/bloc/image_picker/image_picker_bloc.dart';
-import '../../../provider/bloc/upload_post_bloc/upload_post_bloc.dart';
+import '../../../provider/bloc/modifications/upload_post_bloc/upload_post_bloc.dart';
 import '../../../provider/cubit/profiletab/profiletab_cubit.dart';
 
 class ProfileScrollView extends StatelessWidget {

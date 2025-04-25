@@ -1,4 +1,4 @@
-import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/upload_post_bloc/upload_post_bloc.dart';
+import 'package:barber_pannel/cavlog/app/presentation/provider/bloc/modifications/upload_post_bloc/upload_post_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

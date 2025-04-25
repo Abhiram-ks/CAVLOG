@@ -6,7 +6,7 @@ import '../../../../../../core/common/custom_bottomsheet.dart';
 import '../../../../../../core/common/snackbar_helper.dart';
 import '../../../../../../core/themes/colors.dart';
 import '../../../../../auth/presentation/provider/cubit/buttonProgress/button_progress_cubit.dart';
-import '../../../provider/bloc/barber_service_modification_bloc/barber_service_modeification_bloc.dart';
+import '../../../provider/bloc/modifications/barber_service_modification_bloc/barber_service_modeification_bloc.dart';
 
 void handleServiceEditAndUpdaTeState(BuildContext context, BarberServiceModeificationState state) {
  final buttonCubit = context.read<ButtonProgressCubit>();
