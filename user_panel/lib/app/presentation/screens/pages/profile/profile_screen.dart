@@ -8,7 +8,7 @@ import 'package:user_panel/auth/data/models/user_model.dart';
 import 'package:user_panel/core/themes/colors.dart';
 import 'package:user_panel/core/utils/image/app_images.dart';
 
-import '../../../provider/bloc/fetchuser_bloc/fetch_user_bloc.dart';
+import '../../../provider/bloc/fetching_bloc/fetch_user_bloc/fetch_user_bloc.dart';
 
 
 class ProfileScreen extends StatelessWidget {

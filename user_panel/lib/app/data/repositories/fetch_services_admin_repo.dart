@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:user_panel/app/data/models/admin_service.dart';
+import 'package:user_panel/app/data/models/admin_service_model.dart';
 
 abstract class FetchServiceRepository {
   Stream<List<AdminServiceModel>> streamAllServices();

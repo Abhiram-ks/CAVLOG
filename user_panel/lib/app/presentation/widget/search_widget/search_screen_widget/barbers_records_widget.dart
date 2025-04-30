@@ -7,7 +7,7 @@ import '../../../../../core/common/custom_lottie_widget.dart';
 import '../../../../../core/utils/constant/constant.dart';
 import '../../../../../core/utils/image/app_images.dart';
 import '../../../../data/models/barber_model.dart';
-import '../../../provider/bloc/fetch_allbarber_bloc/fetch_allbarber_bloc.dart';
+import '../../../provider/bloc/fetching_bloc/fetch_allbarber_bloc/fetch_allbarber_bloc.dart';
 
 class BarberListBuilder extends StatelessWidget {
   const BarberListBuilder({

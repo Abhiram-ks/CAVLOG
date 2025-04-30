@@ -7,7 +7,7 @@ import '../../../../../core/common/custom_imageshow_widget.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/constant/constant.dart';
 import '../../../../../core/utils/image/app_images.dart';
-import '../../../provider/bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
+import '../../../provider/bloc/fetching_bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
 
 class DetailPostWidget extends StatelessWidget {
   const DetailPostWidget({super.key});

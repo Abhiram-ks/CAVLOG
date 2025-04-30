@@ -8,11 +8,10 @@ class FirestoreBarberService {
   Future<String?> uploadNewBarberService({
     required String barberID,
     required String services,  
-    required double serviceRate,  
+    required double serviceRate, 
   }) async {
     try {
-      final DocumentReference barberDoc = _firestore
-          .collection('individual_barber_services')
+      final DocumentReference barberDoc = _firestore.collection('individual_barber_services')
           .doc(barberID);
 
       final docSnapshot = await barberDoc.get();

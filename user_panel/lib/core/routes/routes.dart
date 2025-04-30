@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:user_panel/app/presentation/screens/navigation/bottom_navigation_controllers.dart';
+import 'package:user_panel/app/presentation/screens/pages/search/detail_screen/booking_screen/booking_screen.dart';
 import 'package:user_panel/app/presentation/screens/settings/settings_subscreens/profile_and_edit_screen.dart';
 import 'package:user_panel/auth/presentation/screen/location_screen/location_screen.dart';
 import 'package:user_panel/auth/presentation/screen/login_screen/login_screen.dart';
@@ -22,6 +23,7 @@ class AppRoutes {
   static const String otp = '/otp_screen';
   static const String home = '/bottom_navigation_controllers';
   static const String account = '/profile_and_edit_screen';
+  static const String booking = '/booking_screen';
 
   static Route<dynamic> generateRoute(RouteSettings settings){
     switch (settings.name) {
@@ -46,6 +48,9 @@ class AppRoutes {
       case account:
         final args = settings.arguments as bool;
         return CupertinoPageRoute(builder:(_) => ProfileEditDetails(isShow: args));
+      case booking:
+        final args = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => BookingScreen(shopId:args));
       default: 
         return MaterialPageRoute(
           builder: (_) => Scaffold(

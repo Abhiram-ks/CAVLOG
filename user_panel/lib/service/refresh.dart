@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:user_panel/auth/data/datasources/auth_local_datasource.dart';
 import 'package:user_panel/auth/data/models/user_model.dart';
-import '../app/presentation/provider/bloc/fetchuser_bloc/fetch_user_bloc.dart' show FetchCurrentUserRequst, FetchUserBloc;
+import '../app/presentation/provider/bloc/fetching_bloc/fetch_user_bloc/fetch_user_bloc.dart' show FetchCurrentUserRequst, FetchUserBloc;
 import 'user_management.dart';
 
 class RefreshHelper {

@@ -61,6 +61,7 @@ dependencies:
   pinch_to_zoom_scrollable: ^0.1.2
   flutter_rating_bar: ^4.0.1
   speech_to_text: ^7.0.0
+  table_calendar: ^3.2.0
   #for streat map
   flutter_map: ^8.1.1
   geolocator: ^13.0.4

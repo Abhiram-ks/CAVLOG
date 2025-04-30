@@ -8,7 +8,7 @@ import 'package:user_panel/core/utils/constant/constant.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/image/app_images.dart';
 import '../../../../data/repositories/fetch_reviews_details_repo.dart';
-import '../../../provider/bloc/fetch_reviews_bloc/fetch_reviews_bloc.dart';
+import '../../../provider/bloc/fetching_bloc/fetch_reviews_bloc/fetch_reviews_bloc.dart';
 import 'reviews_rating_builder.dart';
 
 void showReviewDetisSheet(BuildContext context, double screenHeight,

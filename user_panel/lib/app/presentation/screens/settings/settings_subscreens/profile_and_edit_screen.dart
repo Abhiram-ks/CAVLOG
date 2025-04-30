@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:user_panel/app/domain/usecases/image_picker_usecase.dart';
-import 'package:user_panel/app/presentation/provider/bloc/fetchuser_bloc/fetch_user_bloc.dart';
+import 'package:user_panel/app/presentation/provider/bloc/fetching_bloc/fetch_user_bloc/fetch_user_bloc.dart';
 import 'package:user_panel/app/presentation/widget/settings_widget/profile_edit_widget/profile_statehandle_widget.dart';
 import 'package:user_panel/core/common/custom_actionbutton_widget.dart';
 import '../../../../../core/common/custom_appbar_widget.dart';

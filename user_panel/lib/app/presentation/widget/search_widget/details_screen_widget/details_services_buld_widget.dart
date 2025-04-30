@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/constant/constant.dart';
-import '../../../provider/bloc/fetch_barber_details_bloc/fetch_barber_details_bloc.dart';
+import '../../../provider/bloc/fetching_bloc/fetch_barber_details_bloc/fetch_barber_details_bloc.dart';
 
 class DetilServiceWidget extends StatelessWidget {
   final double screenWidth;

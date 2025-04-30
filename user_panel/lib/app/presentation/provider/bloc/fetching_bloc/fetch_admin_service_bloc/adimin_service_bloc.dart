@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:user_panel/app/data/models/admin_service.dart';
+import 'package:user_panel/app/data/models/admin_service_model.dart';
 
-import '../../../../data/repositories/fetch_services_admin_repo.dart';
+import '../../../../../data/repositories/fetch_services_admin_repo.dart';
 
 part 'adimin_service_event.dart';
 part 'adimin_service_state.dart';

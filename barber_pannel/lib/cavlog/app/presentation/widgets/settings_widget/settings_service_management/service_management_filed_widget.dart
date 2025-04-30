@@ -9,15 +9,22 @@ import '../../../../../../core/validation/input_validations.dart';
 import '../../../provider/cubit/edit_mode/edit_mode_cubit.dart';
 
 class ServiceManagementFiled extends StatefulWidget {
-   const ServiceManagementFiled(
-      {super.key,
+    ServiceManagementFiled({
+      super.key,
       required this.context,
       required this.screenWidth,
       required this.label,
       required this.icon,
       required this.serviceRate,
       required this.deleteAction,
-       required this.updateAction});
+      required this.updateAction,
+      this.firstIconColor,
+      this.firstIconBgColor,
+      this.secoundIconColor,
+      this.secoundIconBgColor,
+      this.updateDeletIcon,
+      this.updateOntap,
+      this.updateIcon});
 
   final BuildContext context;
   final double screenWidth;
@@ -25,7 +32,15 @@ class ServiceManagementFiled extends StatefulWidget {
   final String serviceRate;
   final VoidCallback deleteAction;
   final IconData icon;
+  VoidCallback? updateOntap;
+  IconData? updateIcon;
+  Color? firstIconColor;
+  Color? firstIconBgColor;
+  Color? secoundIconColor;
+  Color? secoundIconBgColor;
+  IconData? updateDeletIcon;
   final void Function(double value) updateAction; 
+
   @override
   State<ServiceManagementFiled> createState() => _ServiceManagementFiledState();
 }
@@ -62,22 +77,25 @@ class _ServiceManagementFiledState extends State<ServiceManagementFiled> {
           height: widget.screenWidth * 0.12,
           width: widget.screenWidth * 0.12,
           decoration: BoxDecoration(
-            color: AppPalette.greyClr,
+            color: widget.firstIconBgColor ?? AppPalette.greyClr,
             borderRadius: BorderRadius.circular(14),
           ),
           child: IconButton(
             splashColor: Colors.white,
-            highlightColor: AppPalette.orengeClr,
+            highlightColor: AppPalette.hintClr.withAlpha(128),
             focusColor: AppPalette.greenClr,
             onPressed:(){
                final value = double.tryParse(serviceRateController.text.trim());
                if(value != null){
                 widget.updateAction(value);
                }
+                 if (widget.updateOntap != null) {
+                   widget.updateOntap!(); 
+                }
             },
             icon: Icon(
-              CupertinoIcons.floppy_disk,
-              color: AppPalette.whiteClr,
+              widget.updateIcon ?? CupertinoIcons.floppy_disk,
+              color: widget.firstIconColor ?? AppPalette.whiteClr,
             ),
           ),
         ),
@@ -86,17 +104,17 @@ class _ServiceManagementFiledState extends State<ServiceManagementFiled> {
           height: widget.screenWidth * 0.12,
           width: widget.screenWidth * 0.12,
           decoration: BoxDecoration(
-            color: AppPalette.redClr,
+            color:widget.secoundIconBgColor ?? AppPalette.redClr,
             borderRadius: BorderRadius.circular(14),
           ),
           child: IconButton(
             splashColor: Colors.white,
-            highlightColor: AppPalette.redClr,
+            highlightColor:AppPalette.hintClr.withAlpha(128),
             focusColor: AppPalette.greenClr,
             onPressed: widget.deleteAction,
             icon: Icon(
-              CupertinoIcons.delete_solid,
-              color: AppPalette.whiteClr,
+               widget.updateDeletIcon ?? CupertinoIcons.delete_solid,
+              color:widget.secoundIconColor ?? AppPalette.whiteClr,
             ),
           ),
         ),

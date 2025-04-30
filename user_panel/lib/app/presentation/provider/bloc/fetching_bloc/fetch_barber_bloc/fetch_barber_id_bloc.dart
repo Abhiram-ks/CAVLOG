@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 
-import '../../../../data/models/barber_model.dart';
-import '../../../../data/models/service_model.dart';
-import '../../../../data/repositories/fetch_barber_repo.dart';
+import '../../../../../data/models/barber_model.dart';
+import '../../../../../data/models/service_model.dart';
+import '../../../../../data/repositories/fetch_barber_repo.dart';
 
 part 'fetch_barber_id_event.dart';
 part 'fetch_barber_id_state.dart';

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
-import '../../../../data/models/post_model.dart';
-import '../../../../data/repositories/fetch_barber_post.dart';
+import '../../../../../data/models/post_model.dart';
+import '../../../../../data/repositories/fetch_barber_post.dart';
 part 'fetch_posts_event.dart';
 part 'fetch_posts_state.dart';
 

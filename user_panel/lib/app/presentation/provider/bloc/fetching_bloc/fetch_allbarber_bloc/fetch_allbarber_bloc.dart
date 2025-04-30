@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:user_panel/app/data/models/barber_model.dart';
-import '../../../../data/repositories/fetch_barber_repo.dart';
+import '../../../../../data/repositories/fetch_barber_repo.dart';
 part 'fetch_allbarber_event.dart';
 part 'fetch_allbarber_state.dart';
 

@@ -1,8 +1,10 @@
+
 import 'package:barber_pannel/cavlog/app/data/models/post_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class FetchBarberPostRepository {
   Stream <List<PostModel>> fetchBarberPostData(String barberId);
+
 }
 
 

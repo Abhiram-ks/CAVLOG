@@ -2,9 +2,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_panel/app/data/models/barber_model.dart';
-import 'package:user_panel/app/presentation/provider/bloc/fetch_barber_bloc/fetch_barber_id_bloc.dart';
-import 'package:user_panel/app/presentation/provider/bloc/fetch_barber_details_bloc/fetch_barber_details_bloc.dart';
-import 'package:user_panel/app/presentation/provider/bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
+import 'package:user_panel/app/presentation/provider/bloc/fetching_bloc/fetch_barber_bloc/fetch_barber_id_bloc.dart';
+import 'package:user_panel/app/presentation/provider/bloc/fetching_bloc/fetch_barber_details_bloc/fetch_barber_details_bloc.dart';
+import 'package:user_panel/app/presentation/provider/bloc/fetching_bloc/fetch_posts_bloc/fetch_posts_bloc.dart';
+import 'package:user_panel/core/routes/routes.dart';
 import 'package:user_panel/core/utils/image/app_images.dart';
 import '../../../../../../core/common/custom_actionbutton_widget.dart';
 import '../../../../../../core/utils/constant/constant.dart';
@@ -121,15 +122,14 @@ class _DetailBarberScreenState extends State<DetailBarberScreen> {
                   );
                 }
                 return detailshowWidgetLoading(
-                    BarberModel( uid: '', barberName: 'barberNamei',ventureName:'Cavlog - Executing smarter, Manaing better',
-                        phoneNumber: 'phoneNumber',address:'221B Baker street Santa clau 101 saint NIcholas Dive North Pole, Landon -  99705',email: 'cavlogenoia@gmail.com',isVerified: true, isblok: false), screenHeight,screenWidth,context);
+                    BarberModel( uid: '', barberName: 'barberNamei',ventureName:'Cavlog - Executing smarter, Manaing better',phoneNumber: 'phoneNumber',address:'221B Baker street Santa clau 101 saint NIcholas Dive North Pole, Landon -  99705',email: 'cavlogenoia@gmail.com',isVerified: true, isblok: false), screenHeight,screenWidth,context);
               },
             ),
             floatingActionButton: Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.09),
               child: ButtonComponents.actionButton(
                 screenWidth: screenWidth,
-                onTap: () {},
+                onTap: () => Navigator.pushNamed(context, AppRoutes.booking,arguments: widget.barberId),
                 label: 'Booking Now',
                 screenHeight: screenHeight,
               ),

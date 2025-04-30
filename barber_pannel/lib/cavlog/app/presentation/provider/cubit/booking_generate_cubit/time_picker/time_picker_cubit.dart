@@ -5,8 +5,8 @@ part 'time_picker_state.dart';
 
 class TimePickerCubit extends Cubit<TimePickerState> {
   TimePickerCubit() : super(TimePickerState(
-    startTime: TimeOfDay(hour: 9, minute: 0),
-    endTime: TimeOfDay(hour: 18, minute: 0),
+    startTime: TimeOfDay(hour: TimeOfDay.now().hour, minute: TimeOfDay.now().minute ),
+    endTime: TimeOfDay(hour: 19, minute: 0),
   ));
 
   void updateStartTime(TimeOfDay newTime) {
