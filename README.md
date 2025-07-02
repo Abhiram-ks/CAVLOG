@@ -1,9 +1,9 @@
 Cavlog – A Smart Barber Booking Application(✂️)
 
 - Project Overview:
-Cavlog is a feature-rich, intelligent barber booking platform developed to solve real-life frustrations in salon appointment management. It includes three dedicated panels—Admin, Barber, and User—each tailored to offer a seamless experience and precise control.
+Cavlog is a feature rich, intelligent barber booking platform developed to solve real-life frustrations in salon appointment management. It includes three dedicated panels Admin, Barber, and User each tailored to offer a seamless experience and precise control.
 The Admin Panel serves as the control center, enabling barbershop validation, activity tracking, report generation, service and wallet management, banner promotion, and blocking/unblocking of barbers based on policy violations.
-The Barber Panel functions like a mini social platform, allowing barbers to post before/after haircut media in real-time. It includes automated/manual slot generation, service pricing customization, and comprehensive revenue analytics by day, week, month, year, or custom date range—displayed with insightful visualizations.
+The Barber Panel functions like a mini social platform, allowing barbers to post before/after haircut media in real-time. It includes automated/manual slot generation, service pricing customization, and comprehensive revenue analytics by day, week, month, year, or custom date range displayed with insightful visualizations.
 The User Panel provides an intuitive and modern UI/UX for booking slots, making payments, and browsing nearby barbers using advanced features like voice search, filtering, and location-based discovery. Users can also interact socially with barber posts via likes, shares, and comments.
 Other highlights include real-time chat, notifications, secure payments via Stripe and wallet, and an integrated AI assistant (Gemini AI) for support and guidance.
 
