@@ -9,7 +9,7 @@ Other highlights include real-time chat, notifications, secure payments via Stri
 
 - Key Features:
 [Admin Panel]
-* Barber approval/rejection and activity tracking
+* Barber approval/rejection and activity tracking.
 * Block/unblock barbers or services
 * Service management & banner promotion
 * Wallet tracking and full platform oversight
