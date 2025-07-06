@@ -14,7 +14,7 @@ Other highlights include real-time chat, notifications, secure payments via Stri
 * Service management & banner promotion
 * Wallet tracking and full platform oversight
 
-[Barber Panel]
+[Barber Panel] 
 * Real-time post & reel sharing (before/after cuts)
 * Auto/manual slot generation
 * Custom pricing & service configuration
