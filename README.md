@@ -1,4 +1,4 @@
-Cavlog – A Smart Barber Booking Application(✂️) 
+Cavlog – A Smart Barber Booking Application(✂️)
 
 - Project Overview:
 Cavlog is a feature rich, intelligent barber booking platform developed to solve real-life frustrations in salon appointment management. It includes three dedicated panels Admin, Barber, and User each tailored to offer a seamless experience and precise control.
