@@ -29,7 +29,7 @@ Other highlights include real-time chat, notifications, secure payments via Stri
 * Notification alerts for bookings and reminders
 * AI assistant (Gemini AI) for help and suggestions
 * Social media-style post engagement (like, comment, share)
-* Slot duplication prevention using DSA - LIFO queue
+* Slot duplication prevention using DSA - FIFO queue
 
 # Tools & Technologies
 * Flutter & Dart | BLoC & Clean Architecture | Firebase | REST API | Dio / HTTP | Stripe | Gemini AI | Overpass API + Street Map | DSA (LIFO Queue) | Version Control
