@@ -1,3 +1,6 @@
+![image alt](https://github.com/Abhiram-ks/CAVLOG/blob/ce04ad57bd8fca53bff8f069d2749f34287ad218/Cavlog.png)
+
+
 # Cavlog – A Smart Barber Booking Application(✂️) 
 
 # Project Overview:
